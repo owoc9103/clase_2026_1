@@ -1,0 +1,330 @@
+---
+alwaysApply: true
+---
+
+# Reglas para Presentaciones Slidev - ML Finanzas
+
+## Contexto del Proyecto
+
+Este proyecto contiene presentaciones educativas sobre Machine Learning en Finanzas usando Slidev. Las presentaciones están organizadas en la carpeta `Clases/` y las imágenes en `imagenes/`.
+
+## Estructura de Archivos Slidev
+
+### Organización
+- Cada clase tiene su propia carpeta: `Clases/Clase X/`
+- Archivo principal: `Clase_X_Slidev.md`
+- Imágenes compartidas: `imagenes/` (rutas relativas: `../imagenes/`)
+- Configuración centralizada: `package.json` y `vite.config.ts` en la raíz
+
+### Rutas de Imágenes
+- Desde `Clases/Clase X/`: usar `../../imagenes/nombre.jpg`
+- Desde `slidev/`: usar `../ML_Finanzas/imagenes/nombre.jpg`
+
+## Sintaxis y Convenciones Slidev
+
+### Frontmatter (YAML Header)
+```yaml
+---
+theme: seriph  # o 'default'
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+class: text-center
+highlighter: shiki
+lineNumbers: false
+info: |
+  ## Título de la Presentación
+  Descripción breve
+drawings:
+  persist: false
+transition: slide-left
+title: Título Principal
+mdc: true  # Habilita Markdown Components
+colorSchema: dark
+---
+```
+
+### Separación de Slides
+- Usar `---` (tres guiones) para separar slides
+- Puedes agregar frontmatter específico después de `---`:
+```markdown
+---
+layout: image-right
+image: ../imagenes/portada.jpg
+---
+```
+
+### Layouts Disponibles
+- `layout: default` - Layout estándar
+- `layout: image-right` - Imagen a la derecha del contenido
+- `layout: image-left` - Imagen a la izquierda
+- `layout: two-cols` - Dos columnas (usar `::left::` y `::right::`)
+- `layout: center` - Contenido centrado
+- `layout: end` - Slide final/cierre
+- `layout: intro` - Slide de introducción
+- `layout: fact` - Slide de hecho/dato
+- `layout: statement` - Slide de declaración
+- `layout: quote` - Slide de cita
+- `layout: section` - Slide de sección
+- `layout: cover` - Slide de portada
+
+### Componentes MDC (Markdown Components)
+
+Con `mdc: true` puedes usar componentes Vue directamente:
+
+#### v-click (Revelación Progresiva)
+```markdown
+<!-- Componente -->
+<v-click>Este texto aparece al presionar siguiente</v-click>
+
+<!-- Directiva -->
+<div v-click>Este también</div>
+
+<!-- Con índice (aparece en el segundo click) -->
+<div v-click="2">Aparece en el segundo click</div>
+
+<!-- Múltiples elementos -->
+<div v-click class="text-xl">Primero</div>
+<div v-click class="text-xl">Segundo</div>
+<div v-click class="text-xl">Tercero</div>
+```
+
+#### v-motion (Animaciones)
+```markdown
+<div
+  v-motion
+  :initial="{ x: -80 }"
+  :enter="{ x: 0 }">
+  Animado desde la izquierda
+</div>
+```
+
+#### Grid y Layouts
+```markdown
+<div class="grid grid-cols-3 gap-4">
+  <div>Columna 1</div>
+  <div>Columna 2</div>
+  <div>Columna 3</div>
+</div>
+```
+
+### Notas del Presentador
+
+Agregar notas usando comentarios HTML (solo visibles en modo presentador):
+
+```markdown
+<!--
+**Notas del Presentador:**
+
+- Contexto: Explicar por qué es importante
+- Ejemplo: Mencionar caso real de X empresa
+- Pregunta: "¿Alguien ha visto esto?"
+- Datos: Estadísticas relevantes
+- Transición: "Ahora veamos..."
+-->
+```
+
+## Estilos y Clases CSS
+
+### Clases de UnoCSS/Tailwind Disponibles
+
+#### Tipografía
+- `text-left`, `text-center`, `text-right`
+- `text-xl`, `text-2xl`, `text-3xl`, `text-4xl`
+- `font-bold`, `font-semibold`
+- `opacity-50`, `opacity-70`
+
+#### Espaciado
+- `space-y-4`, `space-y-6` - Espaciado vertical
+- `mt-4`, `mt-8`, `mb-4` - Márgenes
+- `p-4`, `p-6` - Padding
+- `gap-4`, `gap-6` - Espaciado en grids
+
+#### Layout
+- `grid grid-cols-2`, `grid grid-cols-3` - Grids
+- `flex`, `flex-col` - Flexbox
+- `rounded-lg`, `rounded-xl` - Bordes redondeados
+- `border`, `border-2` - Bordes
+- `shadow-lg` - Sombras
+
+#### Colores
+- `bg-white`, `bg-gray-100`
+- `text-white`, `text-gray-400`
+- Clases de color personalizadas del tema
+
+### Posicionamiento Absoluto
+```markdown
+<div class="abs-br m-6">Bottom Right</div>
+<div class="abs-bl m-6">Bottom Left</div>
+<div class="abs-tr m-6">Top Right</div>
+<div class="abs-tl m-6">Top Left</div>
+```
+
+## Mejores Prácticas
+
+### Al Crear Slides
+
+1. **Estructura consistente:**
+   - Título principal con `#`
+   - Subtítulo con `##` si es necesario
+   - Contenido organizado
+   - Notas del presentador al final
+
+2. **Uso de Imágenes:**
+   - Verificar rutas relativas correctas
+   - Usar `layout: image-right` o `image: ` en frontmatter
+   - Agregar clases para estilizado: `class="w-full rounded-lg"`
+
+3. **Revelación Progresiva:**
+   - Usar `v-click` para elementos que aparecen secuencialmente
+   - No abusar - máximo 3-4 elementos por slide
+
+4. **Código:**
+   - Usar bloques de código con syntax highlighting
+   - Especificar lenguaje: ` ```python `, ` ```javascript `
+   - Usar `{1-3|4-6}` para revelación progresiva de líneas
+
+### Al Editar Presentaciones Existentes
+
+1. Mantener el formato y estructura existente
+2. Actualizar notas del presentador si cambia el contenido
+3. Verificar rutas de imágenes después de mover archivos
+4. Probar con `npm run dev:X` después de cambios importantes
+
+### Contenido Educativo
+
+- Mantener lenguaje claro y accesible
+- Incluir ejemplos concretos de la industria financiera
+- Agregar preguntas para la audiencia
+- Referenciar el libro fuente cuando corresponda
+- Usar emojis moderadamente para categorías: 📊 📈 🤖 ⚠️ 🏗️ 🛠️ 🧠
+
+## Ejemplos de Slides Comunes
+
+### Slide de Título
+```markdown
+---
+layout: cover
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+---
+
+# Título Principal
+## Subtítulo
+
+Información adicional
+```
+
+### Slide con Imagen
+```markdown
+---
+layout: image-right
+image: ../imagenes/ejemplo.jpg
+---
+
+# Título
+
+Contenido aquí...
+```
+
+### Slide de Dos Columnas
+```markdown
+---
+layout: two-cols
+---
+
+# Título
+
+::left::
+Contenido izquierda
+
+::right::
+Contenido derecha
+```
+
+### Slide con Código
+```markdown
+# Ejemplo de Código
+
+```python {1-3|4-6}
+import pandas as pd
+import numpy as np
+
+# Cargar datos
+df = pd.read_csv('data.csv')
+df.head()
+```
+```
+
+### Slide con Lista Revelada
+```markdown
+# Puntos Clave
+
+- <v-click>Punto 1</v-click>
+- <v-click>Punto 2</v-click>
+- <v-click>Punto 3</v-click>
+```
+
+## Comandos NPM del Proyecto
+
+```bash
+# Desarrollo
+npm run dev:1          # Ejecutar Clase 1
+npm run dev            # Ejecutar archivo por defecto
+
+# Construcción
+npm run build:1        # Construir Clase 1 como SPA
+npm run build          # Construir presentación
+
+# Exportación
+npm run export:1       # Exportar Clase 1 como HTML
+npm run export-pdf:1   # Exportar Clase 1 como PDF
+npm run export-png:1   # Exportar Clase 1 como PNG
+```
+
+## Recursos y Referencias
+
+- Documentación Slidev: https://sli.dev
+- Guía de Sintaxis: https://sli.dev/guide/syntax.html
+- Componentes: https://sli.dev/builtin/components.html
+- Temas: https://sli.dev/themes/gallery.html
+- Animaciones: https://sli.dev/guide/animations.html
+
+## Reglas Específicas para Cursor
+
+### Al Sugerir Código
+- Preferir sintaxis de Slidev sobre HTML puro
+- Usar layouts de Slidev en lugar de HTML custom
+- Sugerir componentes Vue solo cuando sea necesario
+- Mantener consistencia con slides existentes
+
+### Al Sugerir Estructura
+- Seguir el patrón: Frontmatter → Título → Contenido → Notas
+- Usar el mismo formato de notas del presentador
+- Mantener estilo visual consistente
+
+### Al Sugerir Contenido
+- Basarse en "Machine Learning and Data Science Blueprints for Finance"
+- Incluir ejemplos de la industria financiera
+- Mantener enfoque educativo y práctico
+- Agregar notas del presentador para slides importantes
+
+## Estructura Recomendada de Notas del Presentador
+
+```markdown
+<!--
+**Notas del Presentador:**
+
+1. **Contexto/Introducción**: Por qué esta slide es importante
+2. **Ejemplos concretos**: Casos reales, nombres de empresas, datos
+3. **Preguntas para la audiencia**: Para mantener engagement
+4. **Puntos clave a enfatizar**: Lo que NO debe olvidarse
+5. **Transición**: Cómo conectar con la siguiente slide
+-->
+```
+
+## Tips Adicionales
+
+- Usar `v-click` para crear suspense y mantener atención
+- Combinar layouts para variedad visual
+- Usar imágenes de alta calidad desde `imagenes/`
+- Probar la presentación frecuentemente con `npm run dev:X`
+- Exportar a PDF para revisión offline
+- Usar modo presentador (`/presenter/`) durante la clase

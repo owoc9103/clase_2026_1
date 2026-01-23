@@ -1,0 +1,126 @@
+# Cursor Rules para Presentaciones Slidev - ML Finanzas
+
+## Contexto del Proyecto
+Este es un proyecto de presentaciones educativas sobre Machine Learning en Finanzas usando Slidev.
+- Tema principal: Machine Learning aplicado a Finanzas
+- Basado en: "Machine Learning and Data Science Blueprints for Finance"
+- Formato: Presentaciones interactivas con Slidev
+
+## Estructura de Archivos
+- `clase1-ml-finanzas.md` - Presentación principal de la Clase 1
+- `slides.md` - Presentación de ejemplo/template
+- Las imágenes están en `../ML_Finanzas/imagenes/`
+- Rutas de imágenes: usar `../ML_Finanzas/imagenes/nombre_archivo.jpg`
+
+## Convenciones de Slidev
+
+### Frontmatter (YAML)
+- Usar `theme: seriph` o `theme: default`
+- `transition: slide-left` para transiciones suaves
+- `mdc: true` para habilitar MDC syntax
+- `colorSchema: dark` para tema oscuro
+
+### Layouts Comunes
+- `layout: default` - Layout estándar
+- `layout: image-right` - Imagen a la derecha
+- `layout: two-cols` - Dos columnas con `::left::` y `::right::`
+- `layout: center` - Contenido centrado
+- `layout: end` - Slide final
+
+### Notas del Presentador
+Agregar notas usando comentarios HTML:
+```markdown
+<!--
+**Notas del Presentador:**
+- Contexto
+- Ejemplos
+- Preguntas
+-->
+```
+
+### Imágenes
+- Usar rutas relativas: `../ML_Finanzas/imagenes/nombre.jpg`
+- Para backgrounds: `image: ../ML_Finanzas/imagenes/nombre.jpg`
+- Para imágenes inline: `<img src="../ML_Finanzas/imagenes/nombre.jpg" />`
+
+### Estilos y Clases
+- Usar clases de UnoCSS/Tailwind: `text-left`, `space-y-4`, `rounded-lg`
+- Grid layouts: `grid grid-cols-3 gap-4`
+- Borders: `border rounded-lg p-4`
+
+## Guías de Estilo
+
+### Títulos
+- H1 (#) para títulos principales de slide
+- H2 (##) para subtítulos
+- H3 (###) para secciones dentro de slides
+
+### Contenido
+- Usar listas con viñetas para puntos clave
+- Emojis para categorías: 📊 📈 🤖 ⚠️ 🏗️ 🛠️ 🧠
+- Negritas (**texto**) para énfasis
+- Código inline con backticks: `npm run dev`
+
+### Separación de Slides
+- Usar `---` para separar slides
+- Agregar frontmatter específico después de `---` si es necesario
+
+## Comandos NPM
+- `npm run dev:clase1` - Ejecutar Clase 1
+- `npm run build` - Construir presentación
+- `npm run export` - Exportar como HTML/PDF
+
+## Mejores Prácticas
+
+### Al Crear Nuevas Slides
+1. Usar layouts apropiados para el contenido
+2. Agregar notas del presentador para slides importantes
+3. Incluir imágenes relevantes cuando sea posible
+4. Mantener consistencia en el estilo
+
+### Al Editar Slides Existentes
+1. Mantener el formato y estructura existente
+2. Actualizar notas del presentador si cambia el contenido
+3. Verificar que las rutas de imágenes sean correctas
+4. Probar con `npm run dev:clase1` después de cambios
+
+### Contenido Educativo
+- Mantener lenguaje claro y accesible
+- Incluir ejemplos concretos cuando sea posible
+- Agregar preguntas para la audiencia
+- Referenciar el libro fuente cuando corresponda
+
+## Estructura de Notas del Presentador
+```markdown
+<!--
+**Notas del Presentador:**
+
+1. Contexto/Introducción
+2. Ejemplos concretos
+3. Preguntas para la audiencia
+4. Puntos clave a enfatizar
+5. Transición a siguiente slide
+-->
+```
+
+## Recursos
+- Documentación Slidev: https://sli.dev
+- Sintaxis Markdown: https://sli.dev/guide/syntax.html
+- Temas disponibles: https://sli.dev/themes/gallery.html
+
+## Reglas Específicas
+
+### Cuando Sugerir Código
+- Usar sintaxis de Slidev, no HTML puro cuando sea posible
+- Preferir layouts de Slidev sobre HTML custom
+- Usar componentes Vue solo cuando sea necesario
+
+### Cuando Sugerir Estructura
+- Mantener consistencia con slides existentes
+- Usar el mismo patrón de notas del presentador
+- Seguir la estructura: Título → Contenido → Notas
+
+### Cuando Sugerir Contenido
+- Basarse en el libro "Machine Learning and Data Science Blueprints for Finance"
+- Incluir ejemplos de la industria financiera
+- Mantener enfoque educativo y práctico

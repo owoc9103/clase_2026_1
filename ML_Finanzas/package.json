@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Presentaciones Slidev para Machine Learning en Finanzas",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "slidev",
     "dev:1": "slidev Clases/Clase 1/Clase_1_Slidev.md",
@@ -11,7 +12,8 @@
     "export": "slidev export",
     "export:1": "slidev export Clases/Clase 1/Clase_1_Slidev.md",
     "export-pdf:1": "slidev export Clases/Clase 1/Clase_1_Slidev.md --format pdf",
-    "export-png:1": "slidev export Clases/Clase 1/Clase_1_Slidev.md --format png"
+    "export-png:1": "slidev export Clases/Clase 1/Clase_1_Slidev.md --format png",
+    "preview": "slidev Clases/Clase 1/Clase_1_Slidev.md --open"
   },
   "keywords": [
     "slidev",
@@ -30,5 +32,9 @@
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.8",
     "@iconify-json/logos": "^1.1.8"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
   }
 }
