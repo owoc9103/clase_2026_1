@@ -36,14 +36,6 @@ colorSchema: dark
   <span>Hariom Tatsat, Sahil Puri, Brad Lookabaugh</span>
 </div>
 
-<!-- Component usage:
-     this will be invisible until you press "next" -->
-<v-click> Hello World! </v-click>
-
-<!-- Directive usage:
-     this will be invisible until you press "next" the second time -->
-<div v-click class="text-xl"> Hey! </div>
-
 ---
 layout: image-right
 image: ../ML_Finanzas/imagenes/portada_ml_finanzas.jpg
@@ -90,6 +82,18 @@ image: ../ML_Finanzas/imagenes/industria_financiera.jpg
 - **Firmas FinTech**: Innovación disruptiva
 
 </div>
+
+<!--
+**Notas del Presentador:**
+
+- Contexto: La industria financiera está en plena transformación
+- Ejemplos concretos:
+  - Hedge Funds: Renaissance Technologies, Two Sigma
+  - Bancos: JPMorgan, Goldman Sachs invirtiendo millones
+  - FinTech: Revolut, Robinhood usando ML para personalización
+- Preguntar a la audiencia: ¿Conocen algún ejemplo local?
+- Transición: "Ahora veamos por qué esto está sucediendo ahora..."
+-->
 
 ---
 layout: two-cols
@@ -205,6 +209,17 @@ layout: default
 
 </div>
 
+<!--
+**Notas del Presentador:**
+
+- Explicar la diferencia fundamental entre los tres tipos
+- Supervisado: Tenemos datos etiquetados (ej: transacciones fraudulentas vs. normales)
+- No Supervisado: No tenemos etiquetas, buscamos patrones (ej: segmentación de clientes)
+- Refuerzo: El modelo aprende por prueba y error (ej: trading que optimiza ganancias)
+- Pregunta: "¿Qué tipo de ML usarían para detectar fraude?" (Supervisado)
+- Transición: "Ahora veamos dónde se aplican estos tipos en finanzas..."
+-->
+
 ---
 layout: default
 ---
@@ -251,6 +266,17 @@ layout: default
 
 </div>
 
+<!--
+**Notas del Presentador:**
+
+- Estas son las tres áreas principales donde ML se aplica en finanzas
+- Trading: Alta frecuencia, decisiones en milisegundos
+- Riesgos: Crítico para cumplimiento regulatorio
+- Servicios: Mejora la experiencia del cliente
+- Pregunta: "¿En qué área les gustaría trabajar?"
+- Transición: "Profundicemos en trading algorítmico, una de las aplicaciones más interesantes..."
+-->
+
 ---
 layout: default
 ---
@@ -274,6 +300,17 @@ layout: default
 - Decisiones de trading **extremadamente rápidas** y objetivas
 
 </div>
+
+<!--
+**Notas del Presentador:**
+
+- Definición simple: Algoritmos que compran y venden automáticamente
+- Historia: Comenzó en los 70s con sistemas básicos, ahora es extremadamente sofisticado
+- Velocidad: Algunos sistemas ejecutan miles de transacciones por segundo
+- Ejemplo: High-frequency trading (HFT) - microsegundos importan
+- Pregunta: "¿Saben cuánto tiempo tarda una orden en llegar al mercado?" (milisegundos)
+- Transición: "Ahora veamos cómo ML está revolucionando esto..."
+-->
 
 ---
 layout: image-right
@@ -335,6 +372,17 @@ Algoritmos construidos para **calibrar un portafolio financiero** según:
 - La tolerancia al riesgo del usuario
 
 </div>
+
+<!--
+**Notas del Presentador:**
+
+- Contexto: Gestión de portafolios tradicionalmente requiere asesores humanos costosos
+- Robo-advisors democratizan el acceso a gestión profesional de inversiones
+- Datos históricos: Las firmas tienen décadas de datos de mercado que pueden aprovechar
+- Ejemplo: Vanguard, Fidelity ahora ofrecen servicios híbridos (humano + robo)
+- Pregunta: "¿Alguien ha usado un robo-advisor o conoce alguno?"
+- Transición: "Veamos cómo funcionan en detalle..."
+-->
 
 ---
 layout: image-right
