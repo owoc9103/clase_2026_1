@@ -7,7 +7,12 @@ Este script permite:
 3. Descargar múltiples imágenes en lote
 
 Requisitos:
-    pip install requests pillow
+    Las dependencias están especificadas en ../requirements.txt
+    Instalar con: pip install -r ../requirements.txt
+    
+    Dependencias principales para este script:
+    - requests>=2.31.0
+    - Pillow>=10.0.0
 
 Para usar la API de Unsplash (opcional):
     1. Regístrate en https://unsplash.com/developers
@@ -17,14 +22,30 @@ Para usar la API de Unsplash (opcional):
 """
 
 import os
-import requests
+import sys
 from pathlib import Path
 from typing import List, Dict, Optional
 import time
 from urllib.parse import urlparse
 
+# Validar dependencias
+try:
+    import requests
+except ImportError:
+    print("[ERROR] La librería 'requests' no está instalada.")
+    print("   Instala las dependencias con: pip install -r ../requirements.txt")
+    sys.exit(1)
+
+try:
+    from PIL import Image
+    PILOW_AVAILABLE = True
+except ImportError:
+    PILOW_AVAILABLE = False
+    print("[ADVERTENCIA] Pillow no está disponible. La validación de imágenes estará deshabilitada.")
+
 # Configuración
-IMAGENES_DIR = Path(__file__).parent / "imagenes"
+# El script está en la carpeta imagenes, así que guardamos las imágenes en la misma carpeta
+IMAGENES_DIR = Path(__file__).parent
 IMAGENES_DIR.mkdir(exist_ok=True)
 
 # Lista de imágenes necesarias para las presentaciones
@@ -147,6 +168,30 @@ class DescargadorImagenes:
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
         })
     
+    def _validar_imagen(self, ruta_archivo: Path) -> bool:
+        """
+        Valida que el archivo descargado sea una imagen válida.
+        
+        Args:
+            ruta_archivo: Ruta al archivo a validar
+            
+        Returns:
+            True si es una imagen válida, False en caso contrario
+        """
+        if not PILOW_AVAILABLE:
+            return True  # Si Pillow no está disponible, asumimos que es válido
+        
+        try:
+            # verify() cierra el archivo, así que necesitamos abrirlo dos veces
+            with Image.open(ruta_archivo) as img:
+                img.verify()
+            # Reabrir para asegurar que el archivo esté en un estado válido
+            with Image.open(ruta_archivo) as img:
+                img.load()
+            return True
+        except Exception:
+            return False
+    
     def descargar_desde_url(self, url: str, nombre_archivo: str) -> bool:
         """
         Descarga una imagen desde una URL directa.
@@ -169,11 +214,16 @@ class DescargadorImagenes:
                 for chunk in response.iter_content(chunk_size=8192):
                     f.write(chunk)
             
-            print(f"✓ Descargado: {nombre_archivo}")
+            # Validar que sea una imagen válida
+            if not self._validar_imagen(ruta_destino):
+                print(f"[ADVERTENCIA] El archivo descargado podría no ser una imagen válida: {nombre_archivo}")
+                # No eliminamos el archivo, por si acaso es útil
+            
+            print(f"[OK] Descargado: {nombre_archivo}")
             return True
             
         except Exception as e:
-            print(f"✗ Error al descargar {nombre_archivo}: {e}")
+            print(f"[ERROR] Error al descargar {nombre_archivo}: {e}")
             return False
     
     def buscar_unsplash(self, query: str, cantidad: int = 1) -> List[str]:
@@ -188,7 +238,7 @@ class DescargadorImagenes:
             Lista de URLs de imágenes
         """
         if not self.unsplash_key:
-            print("⚠ Advertencia: No se proporcionó clave de Unsplash. Usa URLs directas o configura UNSPLASH_ACCESS_KEY")
+            print("[ADVERTENCIA] No se proporcionó clave de Unsplash. Usa URLs directas o configura UNSPLASH_ACCESS_KEY")
             return []
         
         try:
@@ -208,8 +258,39 @@ class DescargadorImagenes:
             return urls
             
         except Exception as e:
-            print(f"✗ Error al buscar en Unsplash: {e}")
+            print(f"[ERROR] Error al buscar en Unsplash: {e}")
             return []
+    
+    def _obtener_imagen_placeholder(self, ancho: int = 800, alto: int = 600) -> str:
+        """
+        Obtiene una URL de imagen placeholder usando Lorem Picsum.
+        
+        Args:
+            ancho: Ancho de la imagen
+            alto: Alto de la imagen
+            
+        Returns:
+            URL de la imagen placeholder
+        """
+        import random
+        # Usar un ID aleatorio para obtener diferentes imágenes
+        imagen_id = random.randint(1, 1000)
+        return f"https://picsum.photos/{ancho}/{alto}?random={imagen_id}"
+    
+    def descargar_imagen_placeholder(self, nombre_archivo: str, ancho: int = 800, alto: int = 600) -> bool:
+        """
+        Descarga una imagen placeholder (sin API key requerida).
+        
+        Args:
+            nombre_archivo: Nombre del archivo de destino
+            ancho: Ancho de la imagen (default: 800)
+            alto: Alto de la imagen (default: 600)
+            
+        Returns:
+            True si la descarga fue exitosa, False en caso contrario
+        """
+        url = self._obtener_imagen_placeholder(ancho, alto)
+        return self.descargar_desde_url(url, nombre_archivo)
     
     def descargar_imagen_por_busqueda(self, nombre_archivo: str, termino_busqueda: str) -> bool:
         """
@@ -248,23 +329,28 @@ class DescargadorImagenes:
         
         return resultados
     
-    def descargar_imagenes_necesarias(self, usar_unsplash: bool = False) -> None:
+    def descargar_imagenes_necesarias(self, usar_unsplash: bool = False, usar_placeholder: bool = False) -> None:
         """
         Descarga todas las imágenes necesarias para las presentaciones.
         
         Args:
             usar_unsplash: Si True, intenta buscar en Unsplash. Si False, solo muestra las URLs necesarias.
+            usar_placeholder: Si True, descarga imágenes placeholder cuando no hay API key disponible.
         """
-        print(f"\n📁 Directorio de destino: {self.directorio_destino}")
-        print(f"📊 Total de imágenes necesarias: {len(IMAGENES_NECESARIAS)}\n")
+        print(f"\n[DIRECTORIO] Directorio de destino: {self.directorio_destino}")
+        print(f"[INFO] Total de imágenes necesarias: {len(IMAGENES_NECESARIAS)}\n")
         
         if usar_unsplash and not self.unsplash_key:
-            print("⚠ No se puede usar Unsplash sin una clave de acceso.")
-            print("   Opciones:")
-            print("   1. Obtén una clave en https://unsplash.com/developers")
-            print("   2. Configura la variable de entorno UNSPLASH_ACCESS_KEY")
-            print("   3. Usa el método descargar_lote_desde_urls() con URLs directas\n")
-            return
+            if usar_placeholder:
+                print("[INFO] No hay clave de Unsplash. Usando imágenes placeholder...\n")
+            else:
+                print("[ADVERTENCIA] No se puede usar Unsplash sin una clave de acceso.")
+                print("   Opciones:")
+                print("   1. Obtén una clave en https://unsplash.com/developers")
+                print("   2. Configura la variable de entorno UNSPLASH_ACCESS_KEY")
+                print("   3. Usa --placeholder para descargar imágenes placeholder")
+                print("   4. Usa el método descargar_lote_desde_urls() con URLs directas\n")
+                return
         
         exitosas = 0
         fallidas = 0
@@ -274,26 +360,33 @@ class DescargadorImagenes:
             
             # Verificar si ya existe
             if ruta_destino.exists():
-                print(f"⏭  Ya existe: {nombre_archivo}")
+                print(f"[SKIP] Ya existe: {nombre_archivo}")
                 continue
             
-            if usar_unsplash:
+            if usar_unsplash and self.unsplash_key:
                 if self.descargar_imagen_por_busqueda(nombre_archivo, info["busqueda"]):
                     exitosas += 1
                 else:
                     fallidas += 1
                     print(f"   Búsqueda sugerida: {info['busqueda']}")
+            elif usar_placeholder or (usar_unsplash and not self.unsplash_key):
+                # Usar placeholder si se solicita o si no hay API key
+                if self.descargar_imagen_placeholder(nombre_archivo):
+                    exitosas += 1
+                    print(f"   [PLACEHOLDER] Imagen de ejemplo descargada")
+                else:
+                    fallidas += 1
             else:
-                print(f"📝 {nombre_archivo}")
+                print(f"[IMAGEN] {nombre_archivo}")
                 print(f"   Descripción: {info['descripcion']}")
                 print(f"   Búsqueda sugerida: {info['busqueda']}")
-                print(f"   → Necesitas proporcionar una URL para esta imagen\n")
+                print(f"   -> Necesitas proporcionar una URL para esta imagen\n")
             
             time.sleep(0.5)  # Rate limiting
         
-        if usar_unsplash:
-            print(f"\n✅ Descargas exitosas: {exitosas}")
-            print(f"❌ Descargas fallidas: {fallidas}")
+        if usar_unsplash or usar_placeholder:
+            print(f"\n[OK] Descargas exitosas: {exitosas}")
+            print(f"[ERROR] Descargas fallidas: {fallidas}")
 
 
 def main():
@@ -307,6 +400,11 @@ def main():
         "--unsplash",
         action="store_true",
         help="Usar API de Unsplash para buscar imágenes (requiere UNSPLASH_ACCESS_KEY)"
+    )
+    parser.add_argument(
+        "--placeholder",
+        action="store_true",
+        help="Descargar imágenes placeholder (no requiere API key)"
     )
     parser.add_argument(
         "--url",
@@ -337,7 +435,10 @@ def main():
             print("Error: Formato incorrecto. Usa: --url 'https://ejemplo.com/imagen.jpg,nombre_archivo.jpg'")
     else:
         # Descargar imágenes necesarias
-        descargador.descargar_imagenes_necesarias(usar_unsplash=args.unsplash)
+        descargador.descargar_imagenes_necesarias(
+            usar_unsplash=args.unsplash,
+            usar_placeholder=args.placeholder
+        )
 
 
 if __name__ == "__main__":

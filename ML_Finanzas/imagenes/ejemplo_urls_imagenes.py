@@ -8,8 +8,8 @@ Puedes editar este archivo con las URLs de las imágenes que quieras descargar.
 from descargar_imagenes import DescargadorImagenes
 from pathlib import Path
 
-# Directorio donde se guardarán las imágenes
-DIRECTORIO_IMAGENES = Path(__file__).parent / "imagenes"
+# Directorio donde se guardarán las imágenes (misma carpeta donde está este script)
+DIRECTORIO_IMAGENES = Path(__file__).parent
 
 # Ejemplo 1: Descargar una imagen desde una URL específica
 def ejemplo_descarga_simple():

@@ -1,0 +1,34 @@
+{
+  "name": "ml-finanzas-slidev",
+  "version": "1.0.0",
+  "description": "Presentaciones Slidev para Machine Learning en Finanzas",
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "dev:1": "slidev Clases/Clase 1/Clase_1_Slidev.md",
+    "build": "slidev build",
+    "build:1": "slidev build Clases/Clase 1/Clase_1_Slidev.md",
+    "export": "slidev export",
+    "export:1": "slidev export Clases/Clase 1/Clase_1_Slidev.md",
+    "export-pdf:1": "slidev export Clases/Clase 1/Clase_1_Slidev.md --format pdf",
+    "export-png:1": "slidev export Clases/Clase 1/Clase_1_Slidev.md --format png"
+  },
+  "keywords": [
+    "slidev",
+    "presentations",
+    "machine-learning",
+    "finanzas",
+    "education"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@slidev/cli": "^0.52.10",
+    "@slidev/theme-seriph": "^0.28.0",
+    "@slidev/theme-default": "^0.28.0"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.1.8",
+    "@iconify-json/logos": "^1.1.8"
+  }
+}
