@@ -223,19 +223,30 @@ El éxito de machine learning en finanzas depende de:
 -->
 
 ---
-layout: default
+layout: two-cols
 class: text-left
 ---
 
 # Objetivos de la Clase
 
+::left::
+
 <div class="text-left">
 
-- <v-click>Comprender el estado actual del Machine Learning en finanzas</v-click>
+- <v-click>Comprender el estado actual del Machine Learning en finanzas</v-click> 
 - <v-click>Identificar los tres pilares fundamentales para el éxito de ML en finanzas</v-click>
 - <v-click>Conocer los diferentes tipos de Machine Learning aplicables</v-click>
 - <v-click>Entender el panorama futuro de la industria</v-click>
 
+</div>
+
+::right::
+
+<div class="flex items-center justify-center h-full">
+  <img 
+    src="https://media.tenor.com/HX2vaHm3wQYAAAAi/windesheim-thumbs-up.gif" 
+    class="w-full rounded-lg shadow-lg" 
+    alt="Meerkat" />
 </div>
 
 <!--
