@@ -1,13 +1,12 @@
 ---
-theme: default
-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+theme: seriph
+background: linear-gradient(135deg, rgb(42, 67, 176) 0%, rgb(128, 1, 255) 100%)
 class: text-center
 highlighter: shiki
 lineNumbers: false
 info: |
   ## Machine Learning en Finanzas: El Panorama
   Clase 1 - Introducción
-  
   Basado en: Machine Learning and Data Science Blueprints for Finance
 drawings:
   persist: false
@@ -17,7 +16,12 @@ mdc: true
 colorSchema: dark
 ---
 
-# Machine Learning en Finanzas por Walduin
+---
+layout: cover
+background: linear-gradient(135deg, rgb(42, 67, 176) 0%, rgb(128, 1, 255) 100%)
+---
+
+# Machine Learning en Finanzas
 ## El Panorama
 
 <div class="pt-12">
@@ -32,9 +36,191 @@ colorSchema: dark
 </div>
 
 <div class="abs-bl m-6 text-sm opacity-50">
-  <span>Basado en: Machine Learning and Data Science Blueprints for Finance</span><br>
-  <span>Hariom Tatsat, Sahil Puri, Brad Lookabaugh</span>
+  Basado en: Machine Learning and Data Science Blueprints for Finance<br>
+  Tatsat, Puri & Lookabaugh — O'Reilly
 </div>
+
+---
+layout: intro
+class: text-left
+---
+
+# Introducción
+
+<div
+  v-motion
+  :initial="{ y: 30, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }"
+  class="text-center mb-8 p-6 bg-gray-800 rounded-lg border-l-4 border-blue-500">
+
+<div class="text-2xl italic text-gray-300 mb-4">
+  "Machine learning promises to shake up large swathes of finance"
+</div>
+
+<div class="text-sm text-gray-400">
+  —The Economist (2017)
+</div>
+
+</div>
+
+<div class="space-y-4 text-lg">
+
+<div
+  v-motion
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
+Hay una <strong>nueva ola de machine learning y data science en finanzas</strong>, y las aplicaciones relacionadas transformarán la industria en las próximas décadas.
+</div>
+
+<div
+  v-motion
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 400 } }">
+Actualmente, la mayoría de firmas financieras, incluyendo <v-click>hedge funds</v-click>, <v-click>bancos de inversión y minoristas</v-click>, y <v-click>firmas fintech</v-click>, están adoptando e invirtiendo fuertemente en machine learning.
+</div>
+
+<div
+  v-motion
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 600 } }">
+En el futuro, las instituciones financieras necesitarán un <strong>número creciente de expertos en machine learning y data science</strong>.
+</div>
+
+</div>
+
+<!--
+**Notas del Presentador:**
+
+1. **Contexto**: Esta cita de The Economist (2017) fue visionaria; estamos en medio de esa transformación.
+2. **Ejemplos concretos**: Hedge funds (Renaissance, Two Sigma), bancos (JPMorgan, Goldman Sachs), FinTech (Revolut, Robinhood).
+3. **Pregunta**: ¿Conocen algún ejemplo local de adopción de ML en finanzas?
+4. **Punto clave**: La demanda de expertos en ML y data science crece exponencialmente.
+5. **Transición**: "Ahora veamos por qué esto está sucediendo y qué se necesita para tener éxito..."
+-->
+
+---
+layout: default
+class: text-left
+---
+
+# ¿Por qué ahora?
+
+<div class="space-y-6">
+
+<div
+  v-motion
+  :initial="{ x: -100, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+Machine learning en finanzas se ha vuelto más prominente recientemente debido a:
+</div>
+
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 300 } }"
+  class="p-6 bg-blue-900/30 rounded-lg border border-blue-500/50">
+### 📊 Disponibilidad de Grandes Volúmenes de Datos
+
+<v-click>El acceso a vastas cantidades de datos financieros estructurados y no estructurados ha crecido exponencialmente.</v-click>
+</div>
+
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 500 } }"
+  class="p-6 bg-purple-900/30 rounded-lg border border-purple-500/50">
+### 💻 Poder Computacional Más Asequible
+
+<v-click>El cloud computing y las GPUs han hecho el procesamiento de ML accesible para más organizaciones.</v-click>
+</div>
+
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 700 } }"
+  class="p-6 bg-green-900/30 rounded-lg border border-green-500/50">
+### 📈 Crecimiento Exponencial
+
+<v-click>El uso de data science y machine learning está creciendo exponencialmente en todas las áreas de finanzas.</v-click>
+</div>
+
+</div>
+
+<!--
+**Notas del Presentador:**
+
+1. **Contexto**: Hace 10 años esto no era posible; datos y cómputo han cambiado el panorama.
+2. **Ejemplos**: Big data, IoT, APIs; AWS, Google Cloud, Azure; uso de ML en trading, riesgo, servicios.
+3. **Pregunta**: ¿En qué área de finanzas les gustaría aplicar ML?
+4. **Punto clave**: No es una moda; es una tendencia establecida. El éxito requiere tres pilares.
+5. **Transición**: "Pero el éxito no es automático: infraestructura, toolkit y algoritmos..."
+-->
+
+---
+layout: default
+class: text-left
+---
+
+# Los Pilares del Éxito
+
+<div class="space-y-6">
+
+<div
+  v-motion
+  :initial="{ x: -100, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+El éxito de machine learning en finanzas depende de:
+</div>
+
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 200 } }"
+  class="p-6 bg-gradient-to-r from-blue-900/40 to-blue-800/40 rounded-lg border-l-4 border-blue-500">
+### 🏗️ Construir Infraestructura Eficiente
+
+<v-click>Una arquitectura escalable y robusta que pueda manejar grandes volúmenes de datos y procesamiento en tiempo real.</v-click>
+</div>
+
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 400 } }"
+  class="p-6 bg-gradient-to-r from-purple-900/40 to-purple-800/40 rounded-lg border-l-4 border-purple-500">
+### 🛠️ Usar el Toolkit Correcto
+
+<v-click>Seleccionar las herramientas, librerías y frameworks apropiados para cada tarea específica.</v-click>
+</div>
+
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 600 } }"
+  class="p-6 bg-gradient-to-r from-green-900/40 to-green-800/40 rounded-lg border-l-4 border-green-500">
+### 🧠 Aplicar los Algoritmos Correctos
+
+<v-click>Elegir y aplicar los modelos de machine learning adecuados para cada problema de negocio específico.</v-click>
+</div>
+
+</div>
+
+<div
+  v-motion
+  :initial="{ y: 30, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 800 } }"
+  class="mt-6 p-4 bg-yellow-900/30 rounded-lg border border-yellow-500/50 text-center">
+<strong>Estos conceptos fundamentales se demuestran y utilizan a lo largo de este libro.</strong>
+</div>
+
+<!--
+**Notas del Presentador:**
+
+1. **Contexto**: Estos pilares son fundamentales; sin uno, el proyecto falla.
+2. **Ejemplos**: Infraestructura (AWS, GCP); herramientas (Python, TensorFlow, APIs); algoritmos (elegir modelo, no DL para todo).
+3. **Pregunta**: ¿Han visto proyectos fracasar por descuidar alguno de estos pilares?
+4. **Punto clave**: El éxito requiere los TRES; analogía: casa = cimientos + herramientas + conocimiento.
+5. **Transición**: "En este capítulo exploraremos estos conceptos y más..."
+-->
 
 ---
 layout: image-right
@@ -45,24 +231,30 @@ image: ../ML_Finanzas/imagenes/portada_ml_finanzas.jpg
 
 <div class="text-left">
 
-- Comprender el estado actual del Machine Learning en finanzas
-- Identificar los tres pilares fundamentales para el éxito de ML en finanzas
-- Conocer los diferentes tipos de Machine Learning aplicables
-- Entender el panorama futuro de la industria
+- <v-click>Comprender el estado actual del Machine Learning en finanzas</v-click>
+- <v-click>Identificar los tres pilares fundamentales para el éxito de ML en finanzas</v-click>
+- <v-click>Conocer los diferentes tipos de Machine Learning aplicables</v-click>
+- <v-click>Entender el panorama futuro de la industria</v-click>
+
 
 </div>
 
-<div class="mt-8">
+<div 
+  v-motion
+  :initial="{ x: -80, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }"
+  class="mt-8">
   <img src="../ML_Finanzas/imagenes/objetivos_ml.gif" class="w-64 mx-auto rounded-lg shadow-lg" />
 </div>
 
 <!--
 **Notas del Presentador:**
 
-- Bienvenida a la clase
-- Presentar el curso y su estructura
-- Explicar que estos objetivos guiarán toda la clase
-- Mencionar que al final haremos un resumen para verificar que se cumplieron
+1. **Contexto**: Bienvenida; estos objetivos guían toda la clase.
+2. **Ejemplos**: El libro y el curso cubren panorama, pilares, tipos de ML y aplicaciones.
+3. **Pregunta**: ¿Qué les gustaría aprender primero?
+4. **Punto clave**: Al final haremos un resumen para verificar que se cumplieron.
+5. **Transición**: "Veamos el panorama actual de la industria..."
 -->
 
 ---
@@ -76,23 +268,44 @@ image: ../ML_Finanzas/imagenes/industria_financiera.jpg
 
 <div class="text-left space-y-4">
 
+<div
+  v-motion
+  :initial="{ x: -100, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
 - **Hedge Funds**: Inversión masiva en tecnologías de ML
+</div>
+
+<div
+  v-motion
+  :initial="{ x: -100, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
 - **Bancos de Inversión**: Implementación de sistemas inteligentes
+</div>
+
+<div
+  v-motion
+  :initial="{ x: -100, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 400 } }">
 - **Bancos Minoristas**: Automatización y personalización
+</div>
+
+<div
+  v-motion
+  :initial="{ x: -100, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 600 } }">
 - **Firmas FinTech**: Innovación disruptiva
+</div>
 
 </div>
 
 <!--
 **Notas del Presentador:**
 
-- Contexto: La industria financiera está en plena transformación
-- Ejemplos concretos:
-  - Hedge Funds: Renaissance Technologies, Two Sigma
-  - Bancos: JPMorgan, Goldman Sachs invirtiendo millones
-  - FinTech: Revolut, Robinhood usando ML para personalización
-- Preguntar a la audiencia: ¿Conocen algún ejemplo local?
-- Transición: "Ahora veamos por qué esto está sucediendo ahora..."
+1. **Contexto**: La industria financiera está en plena transformación.
+2. **Ejemplos**: Hedge funds (Renaissance, Two Sigma); bancos (JPMorgan, Goldman Sachs); FinTech (Revolut, Robinhood).
+3. **Pregunta**: ¿Conocen algún ejemplo local de adopción de ML?
+4. **Punto clave**: Todas las firmas invierten fuertemente en ML.
+5. **Transición**: "Ahora veamos por qué esto está sucediendo..."
 -->
 
 ---
@@ -107,15 +320,27 @@ layout: two-cols
 
 <div class="space-y-6 text-left">
 
+<div
+  v-motion
+  v-click
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
 ### 1. Disponibilidad de Datos
 - Volúmenes masivos de información financiera
 - Datos estructurados y no estructurados
 - Acceso a datos en tiempo real
+</div>
 
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 400 } }">
 ### 2. Poder Computacional Asequible
 - Cloud computing
 - Procesamiento distribuido
 - GPUs y TPUs
+</div>
 
 </div>
 
@@ -137,33 +362,46 @@ image: ../ML_Finanzas/imagenes/tres_pilares_ml.jpg
 
 Para el éxito de Machine Learning en finanzas se requieren:
 
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
 ### 1. 🏗️ Infraestructura Eficiente
-- Arquitectura escalable
-- Procesamiento de datos en tiempo real
-- Almacenamiento robusto
+- <v-click>Arquitectura escalable</v-click>
+- <v-click>Procesamiento de datos en tiempo real</v-click>
+- <v-click>Almacenamiento robusto</v-click>
+</div>
 
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 300 } }">
 ### 2. 🛠️ Selección Correcta de Herramientas
-- Stack tecnológico apropiado
-- Librerías y frameworks adecuados
-- Ecosistema Python para finanzas
+- <v-click>Stack tecnológico apropiado</v-click>
+- <v-click>Librerías y frameworks adecuados</v-click>
+- <v-click>Ecosistema Python para finanzas</v-click>
+</div>
 
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 600 } }">
 ### 3. 🧠 Aplicación Apropiada de Algoritmos
-- Elección del modelo correcto
-- Entendimiento del problema de negocio
-- Validación y evaluación rigurosa
+- <v-click>Elección del modelo correcto</v-click>
+- <v-click>Entendimiento del problema de negocio</v-click>
+- <v-click>Validación y evaluación rigurosa</v-click>
+</div>
 
 </div>
 
 <!--
 **Notas del Presentador:**
 
-- Estos tres pilares son FUNDAMENTALES - sin uno, el proyecto falla
-- Analogía: Como construir una casa - necesitas cimientos, herramientas y conocimiento
-- Ejemplos:
-  1. Infraestructura: AWS, Google Cloud, sistemas distribuidos
-  2. Herramientas: Python, TensorFlow, pero también bases de datos, APIs
-  3. Algoritmos: No usar deep learning para todo - elegir el modelo correcto
-- Énfasis: El éxito requiere los TRES, no solo uno
+1. **Contexto**: Estos pilares son fundamentales; sin uno, el proyecto falla.
+2. **Ejemplos**: Infraestructura (AWS, GCP); herramientas (Python, TensorFlow, APIs); algoritmos (elegir modelo, no DL para todo).
+3. **Pregunta**: ¿Han visto proyectos descuidar alguno de estos pilares?
+4. **Punto clave**: El éxito requiere los TRES; analogía: casa = cimientos + herramientas + conocimiento.
+5. **Transición**: "Ahora veamos los tipos de ML aplicables..."
 -->
 
 ---
@@ -174,7 +412,12 @@ layout: default
 
 <div class="grid grid-cols-3 gap-6 mt-8">
 
-<div class="border rounded-lg p-4">
+<div
+  v-motion
+  v-click
+  :initial="{ x: -80, opacity: 0, scale: 0.9 }"
+  :enter="{ x: 0, opacity: 1, scale: 1 }"
+  class="border rounded-lg p-4">
 
 ## 📊 Aprendizaje Supervisado
 
@@ -185,7 +428,12 @@ layout: default
 
 </div>
 
-<div class="border rounded-lg p-4">
+<div
+  v-motion
+  v-click="2"
+  :initial="{ y: 80, opacity: 0, scale: 0.9 }"
+  :enter="{ y: 0, opacity: 1, scale: 1, transition: { delay: 200 } }"
+  class="border rounded-lg p-4">
 
 ## 🔍 Aprendizaje No Supervisado
 
@@ -196,7 +444,12 @@ layout: default
 
 </div>
 
-<div class="border rounded-lg p-4">
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: 80, opacity: 0, scale: 0.9 }"
+  :enter="{ x: 0, opacity: 1, scale: 1, transition: { delay: 400 } }"
+  class="border rounded-lg p-4">
 
 ## 🎯 Aprendizaje por Refuerzo
 
@@ -212,12 +465,11 @@ layout: default
 <!--
 **Notas del Presentador:**
 
-- Explicar la diferencia fundamental entre los tres tipos
-- Supervisado: Tenemos datos etiquetados (ej: transacciones fraudulentas vs. normales)
-- No Supervisado: No tenemos etiquetas, buscamos patrones (ej: segmentación de clientes)
-- Refuerzo: El modelo aprende por prueba y error (ej: trading que optimiza ganancias)
-- Pregunta: "¿Qué tipo de ML usarían para detectar fraude?" (Supervisado)
-- Transición: "Ahora veamos dónde se aplican estos tipos en finanzas..."
+1. **Contexto**: Tres tipos de ML; cada uno resuelve problemas distintos.
+2. **Ejemplos**: Supervisado (fraude, scoring); no supervisado (segmentación, anomalías); refuerzo (trading, robo-advisors).
+3. **Pregunta**: ¿Qué tipo usarían para detectar fraude? (Supervisado.)
+4. **Punto clave**: Supervisado = etiquetas; no supervisado = patrones; refuerzo = prueba y error.
+5. **Transición**: "Veamos dónde se aplican en finanzas..."
 -->
 
 ---
@@ -228,7 +480,12 @@ layout: default
 
 <div class="grid grid-cols-3 gap-4 mt-6">
 
-<div class="border rounded-lg p-4">
+<div
+  v-motion
+  v-click
+  :initial="{ rotateX: -90, opacity: 0 }"
+  :enter="{ rotateX: 0, opacity: 1 }"
+  class="border rounded-lg p-4">
 
 ## 📈 Trading y Mercados
 
@@ -240,7 +497,12 @@ layout: default
 
 </div>
 
-<div class="border rounded-lg p-4">
+<div
+  v-motion
+  v-click="2"
+  :initial="{ rotateX: -90, opacity: 0 }"
+  :enter="{ rotateX: 0, opacity: 1, transition: { delay: 200 } }"
+  class="border rounded-lg p-4">
 
 ## ⚠️ Gestión de Riesgos
 
@@ -252,7 +514,12 @@ layout: default
 
 </div>
 
-<div class="border rounded-lg p-4">
+<div
+  v-motion
+  v-click="3"
+  :initial="{ rotateX: -90, opacity: 0 }"
+  :enter="{ rotateX: 0, opacity: 1, transition: { delay: 400 } }"
+  class="border rounded-lg p-4">
 
 ## 🤖 Servicios Financieros
 
@@ -269,12 +536,11 @@ layout: default
 <!--
 **Notas del Presentador:**
 
-- Estas son las tres áreas principales donde ML se aplica en finanzas
-- Trading: Alta frecuencia, decisiones en milisegundos
-- Riesgos: Crítico para cumplimiento regulatorio
-- Servicios: Mejora la experiencia del cliente
-- Pregunta: "¿En qué área les gustaría trabajar?"
-- Transición: "Profundicemos en trading algorítmico, una de las aplicaciones más interesantes..."
+1. **Contexto**: Tres áreas principales donde ML se aplica en finanzas.
+2. **Ejemplos**: Trading (HFT, milisegundos); riesgo (VaR, stress testing); servicios (robo-advisors, chatbots).
+3. **Pregunta**: ¿En qué área les gustaría trabajar?
+4. **Punto clave**: Trading = velocidad; riesgo = cumplimiento; servicios = experiencia de cliente.
+5. **Transición**: "Profundicemos en trading algorítmico..."
 -->
 
 ---
@@ -285,19 +551,34 @@ layout: default
 
 <div class="text-left space-y-6">
 
+<div
+  v-motion
+  :initial="{ x: -100, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
 ## ¿Qué es?
 
 **Trading algorítmico** (o simplemente "algo trading") es el uso de algoritmos para realizar transacciones de forma autónoma.
+</div>
 
+<div
+  v-motion
+  :initial="{ x: -100, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 300 } }">
 ## Orígenes
 
-- Se remonta a la década de **1970**
-- También conocido como **"Sistemas de Trading Automatizados"** (más preciso)
+- <v-click>Se remonta a la década de **1970**</v-click>
+- <v-click>También conocido como **"Sistemas de Trading Automatizados"** (más preciso)</v-click>
+</div>
 
+<div
+  v-motion
+  :initial="{ x: -100, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 600 } }">
 ## Funcionamiento
 
-- Instrucciones de trading preprogramadas y automatizadas
-- Decisiones de trading **extremadamente rápidas** y objetivas
+- <v-click>Instrucciones de trading preprogramadas y automatizadas</v-click>
+- <v-click>Decisiones de trading **extremadamente rápidas** y objetivas</v-click>
+</div>
 
 </div>
 
@@ -327,13 +608,35 @@ Machine Learning está llevando el trading algorítmico a **nuevos niveles**.
 
 ### Ventajas de ML:
 
-- ✅ Estrategias **más avanzadas** que se adaptan en tiempo real
-- ✅ Técnicas basadas en ML ofrecen **más vías** para obtener insights especiales sobre movimientos del mercado
-- ✅ Calibración de decisiones de trading **en tiempo real**
+<div
+  v-motion
+  :initial="{ scale: 0.8, opacity: 0 }"
+  :enter="{ scale: 1, opacity: 1 }">
+- <v-click>✅ Estrategias **más avanzadas** que se adaptan en tiempo real</v-click>
+</div>
+
+<div
+  v-motion
+  :initial="{ scale: 0.8, opacity: 0 }"
+  :enter="{ scale: 1, opacity: 1, transition: { delay: 200 } }">
+- <v-click>✅ Técnicas basadas en ML ofrecen **más vías** para obtener insights especiales sobre movimientos del mercado</v-click>
+</div>
+
+<div
+  v-motion
+  :initial="{ scale: 0.8, opacity: 0 }"
+  :enter="{ scale: 1, opacity: 1, transition: { delay: 400 } }">
+- <v-click>✅ Calibración de decisiones de trading **en tiempo real**</v-click>
+</div>
 
 ### Práctica de la Industria
 
+<div
+  v-motion
+  :initial="{ y: 30, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 600 } }">
 La mayoría de hedge funds e instituciones financieras **no revelan abiertamente** sus enfoques basados en ML (por buenas razones).
+</div>
 
 </div>
 
@@ -439,25 +742,33 @@ layout: default
 
 <div class="grid grid-cols-2 gap-6 mt-8">
 
-<div class="border rounded-lg p-6">
+<div
+  v-motion
+  :initial="{ x: -80, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }"
+  class="border rounded-lg p-6">
 
 ## Aceptación del Mercado
 
 Los robo-advisors han ganado **traction significativa** entre consumidores que:
 
-- No necesitan un asesor humano
-- Se sienten cómodos invirtiendo de forma automatizada
+- <v-click>No necesitan un asesor humano</v-click>
+- <v-click>Se sienten cómodos invirtiendo de forma automatizada</v-click>
 
 </div>
 
-<div class="border rounded-lg p-6">
+<div
+  v-motion
+  :initial="{ x: 80, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }"
+  class="border rounded-lg p-6">
 
 ## Ventajas
 
-- ✅ **Accesibilidad**: Servicios de inversión para más personas
-- ✅ **Bajo costo**: Comisiones reducidas vs. asesores tradicionales
-- ✅ **Automatización**: Rebalanceo continuo del portafolio
-- ✅ **Personalización**: Adaptado a objetivos y riesgo individual
+- <v-click>✅ **Accesibilidad**: Servicios de inversión para más personas</v-click>
+- <v-click>✅ **Bajo costo**: Comisiones reducidas vs. asesores tradicionales</v-click>
+- <v-click>✅ **Automatización**: Rebalanceo continuo del portafolio</v-click>
+- <v-click>✅ **Personalización**: Adaptado a objetivos y riesgo individual</v-click>
 
 </div>
 
@@ -491,39 +802,51 @@ layout: default
 
 <div class="grid grid-cols-3 gap-4 mt-6">
 
-<div class="border rounded-lg p-4">
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0, rotateY: -15 }"
+  :enter="{ y: 0, opacity: 1, rotateY: 0 }"
+  class="border rounded-lg p-4">
 
 ## 📜 Regulación y Compliance
 
 <img src="../ML_Finanzas/imagenes/regulacion.jpg" class="w-full rounded-lg mb-3" />
 
-- Explicabilidad de modelos
-- Transparencia algorítmica
-- Cumplimiento normativo
+- <v-click>Explicabilidad de modelos</v-click>
+- <v-click>Transparencia algorítmica</v-click>
+- <v-click>Cumplimiento normativo</v-click>
 
 </div>
 
-<div class="border rounded-lg p-4">
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0, rotateY: -15 }"
+  :enter="{ y: 0, opacity: 1, rotateY: 0, transition: { delay: 200 } }"
+  class="border rounded-lg p-4">
 
 ## ⚡ Riesgos Tecnológicos
 
 <img src="../ML_Finanzas/imagenes/riesgos_tecnicos.gif" class="w-full rounded-lg mb-3" />
 
-- Overfitting y validación
-- Datos de baja calidad
-- Sesgos en los modelos
+- <v-click>Overfitting y validación</v-click>
+- <v-click>Datos de baja calidad</v-click>
+- <v-click>Sesgos en los modelos</v-click>
 
 </div>
 
-<div class="border rounded-lg p-4">
+<div
+  v-motion
+  :initial="{ y: 50, opacity: 0, rotateY: -15 }"
+  :enter="{ y: 0, opacity: 1, rotateY: 0, transition: { delay: 400 } }"
+  class="border rounded-lg p-4">
 
 ## ⚖️ Ética y Responsabilidad
 
 <img src="../ML_Finanzas/imagenes/etica_ia.jpg" class="w-full rounded-lg mb-3" />
 
-- Uso responsable de datos
-- Prevención de discriminación
-- Privacidad del cliente
+- <v-click>Uso responsable de datos</v-click>
+- <v-click>Prevención de discriminación</v-click>
+- <v-click>Privacidad del cliente</v-click>
 
 </div>
 
@@ -540,20 +863,35 @@ image: ../ML_Finanzas/imagenes/stack_tecnologico.jpg
 
 <div class="text-left space-y-4">
 
+<div
+  v-motion
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
 **💻 Lenguajes:**
-- Python (principal)
-- R (análisis estadístico)
+- <v-click>Python (principal)</v-click>
+- <v-click>R (análisis estadístico)</v-click>
+</div>
 
+<div
+  v-motion
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 300 } }">
 **📚 Librerías Clave:**
-- Pandas, NumPy (manipulación de datos)
-- Scikit-learn (ML tradicional)
-- TensorFlow, PyTorch (Deep Learning)
-- QuantLib (finanzas cuantitativas)
+- <v-click>Pandas, NumPy (manipulación de datos)</v-click>
+- <v-click>Scikit-learn (ML tradicional)</v-click>
+- <v-click>TensorFlow, PyTorch (Deep Learning)</v-click>
+- <v-click>QuantLib (finanzas cuantitativas)</v-click>
+</div>
 
+<div
+  v-motion
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 600 } }">
 **☁️ Infraestructura:**
-- Jupyter Notebooks
-- Cloud platforms (AWS, GCP, Azure)
-- Bases de datos (PostgreSQL, MongoDB)
+- <v-click>Jupyter Notebooks</v-click>
+- <v-click>Cloud platforms (AWS, GCP, Azure)</v-click>
+- <v-click>Bases de datos (PostgreSQL, MongoDB)</v-click>
+</div>
 
 </div>
 
@@ -565,36 +903,48 @@ layout: default
 
 <div class="grid grid-cols-3 gap-4 mt-6">
 
-<div class="border rounded-lg p-4">
+<div
+  v-motion
+  :initial="{ scale: 0.8, opacity: 0, rotateZ: -10 }"
+  :enter="{ scale: 1, opacity: 1, rotateZ: 0 }"
+  class="border rounded-lg p-4">
 
 ## 📊 Estrategias de Trading
 
 <img src="../ML_Finanzas/imagenes/trading_strategies.jpg" class="w-full rounded-lg mb-3" />
 
-- Desarrollo de algoritmos de trading
-- Backtesting y optimización
+- <v-click>Desarrollo de algoritmos de trading</v-click>
+- <v-click>Backtesting y optimización</v-click>
 
 </div>
 
-<div class="border rounded-lg p-4">
+<div
+  v-motion
+  :initial="{ scale: 0.8, opacity: 0, rotateZ: -10 }"
+  :enter="{ scale: 1, opacity: 1, rotateZ: 0, transition: { delay: 200 } }"
+  class="border rounded-lg p-4">
 
 ## 🤖 Robo-Advisors
 
 <img src="../ML_Finanzas/imagenes/robo_advisor_caso.jpg" class="w-full rounded-lg mb-3" />
 
-- Construcción de asesores automatizados
-- Optimización de portafolios
+- <v-click>Construcción de asesores automatizados</v-click>
+- <v-click>Optimización de portafolios</v-click>
 
 </div>
 
-<div class="border rounded-lg p-4">
+<div
+  v-motion
+  :initial="{ scale: 0.8, opacity: 0, rotateZ: -10 }"
+  :enter="{ scale: 1, opacity: 1, rotateZ: 0, transition: { delay: 400 } }"
+  class="border rounded-lg p-4">
 
 ## 📉 Análisis de Riesgo
 
 <img src="../ML_Finanzas/imagenes/analisis_riesgo.gif" class="w-full rounded-lg mb-3" />
 
-- Modelos predictivos
-- Scoring y clasificación
+- <v-click>Modelos predictivos</v-click>
+- <v-click>Scoring y clasificación</v-click>
 
 </div>
 
@@ -608,23 +958,31 @@ layout: default
 
 <div class="grid grid-cols-2 gap-6 mt-8">
 
-<div class="border rounded-lg p-6">
+<div
+  v-motion
+  :initial="{ rotateY: -90, opacity: 0 }"
+  :enter="{ rotateY: 0, opacity: 1 }"
+  class="border rounded-lg p-6">
 
 ## Fundamentos (Clases 1-3)
 
-- Introducción al ML en finanzas
-- Conceptos fundamentales
-- Herramientas y ecosistema
+- <v-click>Introducción al ML en finanzas</v-click>
+- <v-click>Conceptos fundamentales</v-click>
+- <v-click>Herramientas y ecosistema</v-click>
 
 </div>
 
-<div class="border rounded-lg p-6">
+<div
+  v-motion
+  :initial="{ rotateY: 90, opacity: 0 }"
+  :enter="{ rotateY: 0, opacity: 1, transition: { delay: 300 } }"
+  class="border rounded-lg p-6">
 
 ## Casos Prácticos (Clases 4+)
 
-- Implementación de estrategias
-- Desarrollo de modelos
-- Evaluación y optimización
+- <v-click>Implementación de estrategias</v-click>
+- <v-click>Desarrollo de modelos</v-click>
+- <v-click>Evaluación y optimización</v-click>
 
 </div>
 
@@ -641,15 +999,33 @@ image: ../ML_Finanzas/imagenes/resumen_ml.gif
 
 <div class="text-left space-y-3 text-lg">
 
-✅ ML y Data Science están transformando la industria financiera
+<div
+  v-motion
+  :initial="{ x: -100, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+✅ <v-click>ML y Data Science están transformando la industria financiera</v-click>
+</div>
 
-✅ Tres pilares: Infraestructura, Herramientas, Algoritmos
+<div
+  v-motion
+  :initial="{ x: -100, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
+✅ <v-click>Tres pilares: Infraestructura, Herramientas, Algoritmos</v-click>
+</div>
 
-✅ Múltiples tipos de ML aplicables a diferentes problemas
+<div
+  v-motion
+  :initial="{ x: -100, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 400 } }">
+✅ <v-click>Múltiples tipos de ML aplicables a diferentes problemas</v-click>
+</div>
 
-✅ Oportunidades crecientes para profesionales especializados
-
-✅ Importancia de la ética y el cumplimiento normativo
+<div
+  v-motion
+  :initial="{ x: -100, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 600 } }">
+✅ <v-click>Oportunidades crecientes para expertos; ética y cumplimiento normativo son esenciales</v-click>
+</div>
 
 </div>
 
@@ -665,10 +1041,19 @@ layout: default
 
 ## Preparación para la Próxima Clase
 
-1. Revisar conceptos básicos de Python
-2. Instalar entorno de desarrollo (Jupyter, librerías)
-3. Explorar datasets financieros públicos
-4. Leer capítulos 2-3 del libro (fundamentos)
+<div
+  v-motion
+  :initial="{ y: 30, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+1. <v-click>Revisar Python e instalar entorno (Jupyter, librerías)</v-click>
+</div>
+
+<div
+  v-motion
+  :initial="{ y: 30, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 200 } }">
+2. <v-click>Explorar datasets financieros y leer capítulos 2-3 del libro</v-click>
+</div>
 
 </div>
 
@@ -676,9 +1061,19 @@ layout: default
 
 ## Recursos Adicionales
 
-- Documentación de Pandas y NumPy
-- Tutoriales de Scikit-learn
-- Datasets: Yahoo Finance, Quandl, Alpha Vantage
+<div
+  v-motion
+  :initial="{ x: 50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
+- <v-click>Documentación: Pandas, NumPy, Scikit-learn</v-click>
+</div>
+
+<div
+  v-motion
+  :initial="{ x: 50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 400 } }">
+- <v-click>Datasets: Yahoo Finance, Quandl, Alpha Vantage</v-click>
+</div>
 
 </div>
 
@@ -695,9 +1090,26 @@ image: ../ML_Finanzas/imagenes/discusion.jpg
 
 <div class="text-left space-y-4 text-lg">
 
-- 💭 ¿Qué aplicaciones de ML en finanzas conoces?
-- 🤔 ¿Cuáles son los principales desafíos que ves?
-- 🎯 ¿Qué área de finanzas te interesa más?
+<div
+  v-motion
+  :initial="{ rotate: -5, opacity: 0 }"
+  :enter="{ rotate: 0, opacity: 1 }">
+- <v-click>💭 ¿Qué aplicaciones de ML en finanzas conoces?</v-click>
+</div>
+
+<div
+  v-motion
+  :initial="{ rotate: -5, opacity: 0 }"
+  :enter="{ rotate: 0, opacity: 1, transition: { delay: 300 } }">
+- <v-click>🤔 ¿Cuáles son los principales desafíos que ves?</v-click>
+</div>
+
+<div
+  v-motion
+  :initial="{ rotate: -5, opacity: 0 }"
+  :enter="{ rotate: 0, opacity: 1, transition: { delay: 600 } }">
+- <v-click>🎯 ¿Qué área de finanzas te interesa más?</v-click>
+</div>
 
 </div>
 

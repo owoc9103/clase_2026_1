@@ -5,12 +5,12 @@ theme: seriph
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://cover.sli.dev
 # some information about your slides (markdown enabled)
-title: Welcome to Slidev
+title: Bienvenido a Slidev
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
+  ## Plantilla Inicial de Slidev
+  Presentaciones para desarrolladores.
 
-  Learn more at [Sli.dev](https://sli.dev)
+  Aprende más en [Sli.dev](https://sli.dev)
 # apply UnoCSS classes to the current slide
 class: text-center
 # https://sli.dev/features/drawing
@@ -19,21 +19,21 @@ drawings:
 # slide transition: https://sli.dev/guide/animations.html#slide-transitions
 transition: slide-left
 # enable MDC Syntax: https://sli.dev/features/mdc
-mdc: true
+mdc: false
 # duration of the presentation
 duration: 35min
 ---
 
-# Welcome to Slidev
+# Bienvenido a Slidev
 
-Presentation slides for developers
+Presentaciones para desarrolladores
 
 <div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
-  Press Space for next page <carbon:arrow-right />
+  Presiona Espacio para la siguiente página <carbon:arrow-right />
 </div>
 
 <div class="abs-br m-6 text-xl">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="slidev-icon-btn">
+  <button @click="$slidev.nav.openInEditor()" title="Abrir en Editor" class="slidev-icon-btn">
     <carbon:edit />
   </button>
   <a href="https://github.com/slidevjs/slidev" target="_blank" class="slidev-icon-btn">
@@ -42,38 +42,40 @@ Presentation slides for developers
 </div>
 
 <!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
+El último bloque de comentarios de cada diapositiva se tratará como notas de diapositiva. Será visible y editable en el Modo Presentador junto con la diapositiva. [Lee más en la documentación](https://sli.dev/guide/syntax.html#notes)
 -->
 
 ---
 transition: fade-out
 ---
 
-# What is Slidev?
+# ¿Qué es Slidev?
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
+Slidev es un creador y presentador de diapositivas diseñado para desarrolladores, que consta de las siguientes características
 
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
+- 📝 **Basado en texto** - enfócate en el contenido con Markdown, y luego estilízalo después
+- 🎨 **Temático** - los temas pueden compartirse y reutilizarse como paquetes npm
+- 🧑‍💻 **Amigable para desarrolladores** - resaltado de código, codificación en vivo con autocompletado
+- 🤹 **Interactivo** - integra componentes Vue para mejorar tus expresiones
+- 🎥 **Grabación** - grabación integrada y vista de cámara
+- 📤 **Portable** - exporta a PDF, PPTX, PNGs, o incluso una SPA alojable
+- 🛠 **Personalizable** - prácticamente todo lo que es posible en una página web es posible en Slidev
+
+- Es la mejor herramienta para realizar presentaciones
 <br>
 <br>
 
-Read more about [Why Slidev?](https://sli.dev/guide/why)
+Lee más sobre [¿Por qué Slidev?](https://sli.dev/guide/why)
 
 <!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/features/slide-scope-style
+Puedes tener una etiqueta `style` en markdown para sobrescribir el estilo de la página actual.
+Aprende más: https://sli.dev/features/slide-scope-style
 -->
 
 <style>
 h1 {
   background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-image: linear-gradient(45deg, #4EC5D4 30%, #146b8c 80%);
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -83,7 +85,7 @@ h1 {
 </style>
 
 <!--
-Here is another comment.
+Aquí hay otro comentario.
 -->
 
 ---
@@ -111,22 +113,22 @@ Hover on the bottom-left corner to see the navigation's controls panel, [learn m
   src="https://sli.dev/assets/arrow-bottom-left.svg"
   alt=""
 />
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">¡Aquí!</p>
 
 ---
 layout: two-cols
 layoutClass: gap-16
 ---
 
-# Table of contents
+# Tabla de contenidos
 
-You can use the `Toc` component to generate a table of contents for your slides:
+Puedes usar el componente `Toc` para generar una tabla de contenidos para tus diapositivas:
 
 ```html
 <Toc minDepth="1" maxDepth="1" />
 ```
 
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
+El título se inferirá del contenido de tu diapositiva, o puedes sobrescribirlo con `title` y `level` en tu frontmatter.
 
 ::right::
 
@@ -137,14 +139,14 @@ layout: image-right
 image: https://cover.sli.dev
 ---
 
-# Code
+# Código
 
-Use code snippets and get the highlighting directly, and even types hover!
+Usa fragmentos de código y obtén el resaltado directamente, ¡e incluso información al pasar el mouse!
 
 ```ts [filename-example.ts] {all|4|6|6-7|9|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
+// TwoSlash habilita información de hover de TypeScript
+// y errores en bloques de código markdown
+// Más en https://shiki.style/packages/twoslash
 import { computed, ref } from 'vue'
 
 const count = ref(0)
@@ -155,12 +157,12 @@ doubled.value = 2
 
 <arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="342" color="#953" width="2" arrowSize="1" />
 
-<!-- This allow you to embed external code blocks -->
+<!-- Esto te permite integrar bloques de código externos -->
 <<< @/snippets/external.ts#snippet
 
-<!-- Footer -->
+<!-- Pie de página -->
 
-[Learn more](https://sli.dev/features/line-highlighting)
+[Aprende más](https://sli.dev/features/line-highlighting)
 
 <!-- Inline style -->
 <style>
@@ -176,13 +178,13 @@ doubled.value = 2
 </style>
 
 <!--
-Notes can also sync with clicks
+Las notas también pueden sincronizarse con los clics
 
-[click] This will be highlighted after the first click
+[click] Esto se resaltará después del primer clic
 
-[click] Highlighted with `count = ref(0)`
+[click] Resaltado con `count = ref(0)`
 
-[click:3] Last click (skip two clicks)
+[click:3] Último clic (saltar dos clics)
 -->
 
 ---
@@ -191,34 +193,34 @@ level: 2
 
 # Shiki Magic Move
 
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
+Impulsado por [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev admite animaciones entre múltiples fragmentos de código.
 
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
+Agrega múltiples bloques de código y envuélvelos con <code>````md magic-move</code> (cuatro comillas invertidas) para habilitar el movimiento mágico. Por ejemplo:
 
 ````md magic-move {lines: true}
 ```ts {*|2|*}
-// step 1
+// paso 1
 const author = reactive({
   name: 'John Doe',
   books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
+    'Vue 2 - Guía Avanzada',
+    'Vue 3 - Guía Básica',
+    'Vue 4 - El Misterio'
   ]
 })
 ```
 
 ```ts {*|1-2|3-4|3-4,8}
-// step 2
+// paso 2
 export default {
   data() {
     return {
       author: {
         name: 'John Doe',
         books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
+          'Vue 2 - Guía Avanzada',
+          'Vue 3 - Guía Básica',
+          'Vue 4 - El Misterio'
         ]
       }
     }
@@ -227,32 +229,32 @@ export default {
 ```
 
 ```ts
-// step 3
+// paso 3
 export default {
   data: () => ({
     author: {
       name: 'John Doe',
       books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
+        'Vue 2 - Guía Avanzada',
+        'Vue 3 - Guía Básica',
+        'Vue 4 - El Misterio'
       ]
     }
   })
 }
 ```
 
-Non-code blocks are ignored.
+Los bloques que no son código se ignoran.
 
 ```vue
-<!-- step 4 -->
+<!-- paso 4 -->
 <script setup>
 const author = {
   name: 'John Doe',
   books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
+    'Vue 2 - Guía Avanzada',
+    'Vue 3 - Guía Básica',
+    'Vue 4 - El Misterio'
   ]
 }
 </script>
@@ -261,14 +263,14 @@ const author = {
 
 ---
 
-# Components
+# Componentes
 
 <div grid="~ cols-2 gap-4">
 <div>
 
-You can use Vue components directly inside your slides.
+Puedes usar componentes Vue directamente dentro de tus diapositivas.
 
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
+Hemos proporcionado algunos componentes integrados como `<Tweet/>` y `<Youtube/>` que puedes usar directamente. Y agregar tus componentes personalizados también es súper fácil.
 
 ```html
 <Counter :count="10" />
@@ -277,7 +279,7 @@ We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that
 <!-- ./components/Counter.vue -->
 <Counter :count="10" m="t-4" />
 
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
+Consulta [las guías](https://sli.dev/builtin/components.html) para más información.
 
 </div>
 <div>
@@ -292,12 +294,12 @@ Check out [the guides](https://sli.dev/builtin/components.html) for more.
 </div>
 
 <!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
+Nota del presentador con texto en **negrita**, *cursiva* y ~~tachado~~.
 
-Also, HTML elements are valid:
+Además, los elementos HTML son válidos:
 <div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
+  <span style="flex-grow: 1;">Contenido izquierdo</span>
+  <span>Contenido derecho</span>
 </div>
 -->
 
@@ -305,9 +307,9 @@ Also, HTML elements are valid:
 class: px-20
 ---
 
-# Themes
+# Temas
 
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
+Slidev viene con un potente soporte de temas. Los temas pueden proporcionar estilos, diseños, componentes o incluso configuraciones para herramientas. Cambiar entre temas con solo **una edición** en tu frontmatter:
 
 <div grid="~ cols-2 gap-2" m="t-2">
 
@@ -329,21 +331,21 @@ theme: seriph
 
 </div>
 
-Read more about [How to use a theme](https://sli.dev/guide/theme-addon#use-theme) and
-check out the [Awesome Themes Gallery](https://sli.dev/resources/theme-gallery).
+Lee más sobre [Cómo usar un tema](https://sli.dev/guide/theme-addon#use-theme) y
+consulta la [Galería de Temas Impresionantes](https://sli.dev/resources/theme-gallery).
 
 ---
 
-# Clicks Animations
+# Animaciones de Clics
 
-You can add `v-click` to elements to add a click animation.
+Puedes agregar `v-click` a elementos para agregar una animación de clic.
 
 <div v-click>
 
-This shows up when you click the slide:
+Esto aparece cuando haces clic en la diapositiva:
 
 ```html
-<div v-click>This shows up when you click the slide.</div>
+<div v-click>Esto aparece cuando haces clic en la diapositiva.</div>
 ```
 
 </div>
@@ -352,28 +354,28 @@ This shows up when you click the slide:
 
 <v-click>
 
-The <span v-mark.red="3"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="4">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
+La directiva <span v-mark.red="3"><code>v-mark</code></span>
+también te permite agregar
+<span v-mark.circle.orange="4">marcas en línea</span>
+, impulsada por [Rough Notation](https://roughnotation.com/):
 
 ```html
-<span v-mark.underline.orange>inline markers</span>
+<span v-mark.underline.orange>marcadores en línea</span>
 ```
 
 </v-click>
 
 <div mt-20 v-click>
 
-[Learn more](https://sli.dev/guide/animations#click-animation)
+[Aprende más](https://sli.dev/guide/animations#click-animation)
 
 </div>
 
 ---
 
-# Motions
+# Movimientos
 
-Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
+Las animaciones de movimiento están impulsadas por [@vueuse/motion](https://motion.vueuse.org/), activadas por la directiva `v-motion`.
 
 ```html
 <div
@@ -424,7 +426,7 @@ Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), t
   </div>
 </div>
 
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
+<!-- los scripts de vue script setup se pueden usar directamente en markdown, y solo afectarán la página actual -->
 <script setup lang="ts">
 const final = {
   x: 0,
@@ -453,13 +455,13 @@ const final = {
 
 # $\LaTeX$
 
-$\LaTeX$ is supported out-of-box. Powered by [$\KaTeX$](https://katex.org/).
+$\LaTeX$ está soportado de forma predeterminada. Impulsado por [$\KaTeX$](https://katex.org/).
 
 <div h-3 />
 
-Inline $\sqrt{3x-1}+(1+x)^2$
+En línea $\sqrt{3x-1}+(1+x)^2$
 
-Block
+Bloque
 $$ {1|3|all}
 \begin{aligned}
 \nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \\
@@ -469,46 +471,46 @@ $$ {1|3|all}
 \end{aligned}
 $$
 
-[Learn more](https://sli.dev/features/latex)
+[Aprende más](https://sli.dev/features/latex)
 
 ---
 
-# Diagrams
+# Diagramas
 
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
+Puedes crear diagramas / gráficos a partir de descripciones textuales, directamente en tu Markdown.
 
 <div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
 
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
+```mermaid {scale: 0.5, alt: 'Un diagrama de secuencia simple'}
 sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
+    Alice->John: Hola John, ¿cómo estás?
+    Note over Alice,John: Una interacción típica
 ```
 
 ```mermaid {theme: 'neutral', scale: 0.8}
 graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
+B[Texto] --> C{Decisión}
+C -->|Uno| D[Resultado 1]
+C -->|Dos| E[Resultado 2]
 ```
 
 ```mermaid
 mindmap
-  root((mindmap))
-    Origins
-      Long history
+  root((mapa mental))
+    Orígenes
+      Larga historia
       ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectiveness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
+      Popularización
+        Autor británico de psicología popular Tony Buzan
+    Investigación
+      Sobre efectividad<br/>y características
+      Sobre creación automática
+        Usos
+            Técnicas creativas
+            Planificación estratégica
+            Mapeo de argumentos
+    Herramientas
+      Lápiz y papel
       Mermaid
 ```
 
@@ -547,7 +549,7 @@ database "MySql" {
 
 </div>
 
-Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid) and [PlantUML Diagrams](https://sli.dev/features/plantuml)
+Aprende más: [Diagramas Mermaid](https://sli.dev/features/mermaid) y [Diagramas PlantUML](https://sli.dev/features/plantuml)
 
 ---
 foo: bar
@@ -601,11 +603,11 @@ hide: false
 
 ---
 
-# Monaco Editor
+# Editor Monaco
 
-Slidev provides built-in Monaco Editor support.
+Slidev proporciona soporte integrado para el Editor Monaco.
 
-Add `{monaco}` to the code block to turn it into an editor:
+Agrega `{monaco}` al bloque de código para convertirlo en un editor:
 
 ```ts {monaco}
 import { ref } from 'vue'
@@ -614,7 +616,7 @@ import { emptyArray } from './external'
 const arr = ref(emptyArray(10))
 ```
 
-Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
+Usa `{monaco-run}` para crear un editor que pueda ejecutar el código directamente en la diapositiva:
 
 ```ts {monaco-run}
 import { version } from 'vue'
@@ -630,8 +632,8 @@ layout: center
 class: text-center
 ---
 
-# Learn More
+# Aprende Más
 
-[Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/resources/showcases)
+[Documentación](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Muestras](https://sli.dev/resources/showcases)
 
 <PoweredBySlidev mt-10 />
