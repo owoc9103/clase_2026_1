@@ -1133,7 +1133,7 @@ image: ../ML_Finanzas/imagenes/referencias.jpg
 </div>
 
 ---
-layout: end
+layout: image-right
 class: text-center
 image: ../ML_Finanzas/imagenes/cierre_clase.jpg
 ---

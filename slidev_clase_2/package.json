@@ -5,6 +5,7 @@
   "scripts": {
     "build": "slidev build clase1-ml-finanzas.md",
     "dev": "slidev clase1-ml-finanzas.md --open",
+    "dev:clase1": "slidev clase1-ml-finanzas.md --open",
     "export": "slidev export clase1-ml-finanzas.md",
     "export-pdf": "slidev export clase1-ml-finanzas.md --format pdf",
     "export-png": "slidev export clase1-ml-finanzas.md --format png"
