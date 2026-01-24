@@ -223,8 +223,8 @@ El éxito de machine learning en finanzas depende de:
 -->
 
 ---
-layout: image-right
-image: ../ML_Finanzas/imagenes/portada_ml_finanzas.jpg
+layout: default
+class: text-left
 ---
 
 # Objetivos de la Clase
@@ -236,15 +236,6 @@ image: ../ML_Finanzas/imagenes/portada_ml_finanzas.jpg
 - <v-click>Conocer los diferentes tipos de Machine Learning aplicables</v-click>
 - <v-click>Entender el panorama futuro de la industria</v-click>
 
-
-</div>
-
-<div 
-  v-motion
-  :initial="{ x: -80, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }"
-  class="mt-8">
-  <img src="../ML_Finanzas/imagenes/objetivos_ml.gif" class="w-64 mx-auto rounded-lg shadow-lg" />
 </div>
 
 <!--
@@ -258,8 +249,8 @@ image: ../ML_Finanzas/imagenes/portada_ml_finanzas.jpg
 -->
 
 ---
-layout: image-right
-image: ../ML_Finanzas/imagenes/industria_financiera.jpg
+layout: default
+class: text-left
 ---
 
 # El Panorama Actual
@@ -346,14 +337,20 @@ layout: two-cols
 
 ::right::
 
-<div class="space-y-4">
-  <img src="../ML_Finanzas/imagenes/big_data_finanzas.jpg" class="w-full rounded-lg shadow-lg" />
-  <img src="../ML_Finanzas/imagenes/cloud_computing.gif" class="w-full rounded-lg shadow-lg" />
+<div class="space-y-4 text-left">
+  <div class="p-4 bg-blue-900/20 rounded-lg">
+    <strong>Big Data en Finanzas</strong><br>
+    Volúmenes masivos de información financiera
+  </div>
+  <div class="p-4 bg-purple-900/20 rounded-lg">
+    <strong>Cloud Computing</strong><br>
+    Procesamiento distribuido y escalable
+  </div>
 </div>
 
 ---
-layout: image-right
-image: ../ML_Finanzas/imagenes/tres_pilares_ml.jpg
+layout: default
+class: text-left
 ---
 
 # Los Tres Pilares Fundamentales
@@ -421,8 +418,6 @@ layout: default
 
 ## 📊 Aprendizaje Supervisado
 
-<img src="../ML_Finanzas/imagenes/supervised_learning.jpg" class="w-full rounded-lg mb-4" />
-
 - **Clasificación**: Detección de fraude, scoring crediticio
 - **Regresión**: Predicción de precios, valoración de activos
 
@@ -437,8 +432,6 @@ layout: default
 
 ## 🔍 Aprendizaje No Supervisado
 
-<img src="../ML_Finanzas/imagenes/unsupervised_learning.jpg" class="w-full rounded-lg mb-4" />
-
 - **Clustering**: Segmentación de clientes
 - **Detección de anomalías**: Identificación de transacciones sospechosas
 
@@ -452,8 +445,6 @@ layout: default
   class="border rounded-lg p-4">
 
 ## 🎯 Aprendizaje por Refuerzo
-
-<img src="../ML_Finanzas/imagenes/reinforcement_learning.gif" class="w-full rounded-lg mb-4" />
 
 - **Trading algorítmico**: Optimización de estrategias
 - **Robo-advisors**: Gestión automatizada de portafolios
@@ -489,8 +480,6 @@ layout: default
 
 ## 📈 Trading y Mercados
 
-<img src="../ML_Finanzas/imagenes/trading_algoritmico.jpg" class="w-full rounded-lg mb-3" />
-
 - Estrategias de trading algorítmico
 - Predicción de movimientos de precios
 - Arbitraje y market making
@@ -506,8 +495,6 @@ layout: default
 
 ## ⚠️ Gestión de Riesgos
 
-<img src="../ML_Finanzas/imagenes/gestion_riesgos.jpg" class="w-full rounded-lg mb-3" />
-
 - Modelos de riesgo crediticio
 - Value at Risk (VaR)
 - Stress testing
@@ -522,8 +509,6 @@ layout: default
   class="border rounded-lg p-4">
 
 ## 🤖 Servicios Financieros
-
-<img src="../ML_Finanzas/imagenes/robo_advisor.gif" class="w-full rounded-lg mb-3" />
 
 - Robo-advisors
 - Chatbots y atención al cliente
@@ -594,8 +579,8 @@ layout: default
 -->
 
 ---
-layout: image-right
-image: ../ML_Finanzas/imagenes/trading_algoritmico.jpg
+layout: default
+class: text-left
 ---
 
 # Machine Learning en Trading Algorítmico
@@ -688,8 +673,8 @@ Algoritmos construidos para **calibrar un portafolio financiero** según:
 -->
 
 ---
-layout: image-right
-image: ../ML_Finanzas/imagenes/robo_advisor.gif
+layout: default
+class: text-left
 ---
 
 # Funcionamiento de Robo-Advisors
@@ -775,8 +760,8 @@ Los robo-advisors han ganado **traction significativa** entre consumidores que:
 </div>
 
 ---
-layout: image-right
-image: ../ML_Finanzas/imagenes/futuro_finanzas.jpg
+layout: default
+class: text-left
 ---
 
 # El Panorama Futuro
@@ -810,8 +795,6 @@ layout: default
 
 ## 📜 Regulación y Compliance
 
-<img src="../ML_Finanzas/imagenes/regulacion.jpg" class="w-full rounded-lg mb-3" />
-
 - <v-click>Explicabilidad de modelos</v-click>
 - <v-click>Transparencia algorítmica</v-click>
 - <v-click>Cumplimiento normativo</v-click>
@@ -825,8 +808,6 @@ layout: default
   class="border rounded-lg p-4">
 
 ## ⚡ Riesgos Tecnológicos
-
-<img src="../ML_Finanzas/imagenes/riesgos_tecnicos.gif" class="w-full rounded-lg mb-3" />
 
 - <v-click>Overfitting y validación</v-click>
 - <v-click>Datos de baja calidad</v-click>
@@ -842,8 +823,6 @@ layout: default
 
 ## ⚖️ Ética y Responsabilidad
 
-<img src="../ML_Finanzas/imagenes/etica_ia.jpg" class="w-full rounded-lg mb-3" />
-
 - <v-click>Uso responsable de datos</v-click>
 - <v-click>Prevención de discriminación</v-click>
 - <v-click>Privacidad del cliente</v-click>
@@ -853,8 +832,8 @@ layout: default
 </div>
 
 ---
-layout: image-right
-image: ../ML_Finanzas/imagenes/stack_tecnologico.jpg
+layout: default
+class: text-left
 ---
 
 # Stack Tecnológico
@@ -911,8 +890,6 @@ layout: default
 
 ## 📊 Estrategias de Trading
 
-<img src="../ML_Finanzas/imagenes/trading_strategies.jpg" class="w-full rounded-lg mb-3" />
-
 - <v-click>Desarrollo de algoritmos de trading</v-click>
 - <v-click>Backtesting y optimización</v-click>
 
@@ -926,8 +903,6 @@ layout: default
 
 ## 🤖 Robo-Advisors
 
-<img src="../ML_Finanzas/imagenes/robo_advisor_caso.jpg" class="w-full rounded-lg mb-3" />
-
 - <v-click>Construcción de asesores automatizados</v-click>
 - <v-click>Optimización de portafolios</v-click>
 
@@ -940,8 +915,6 @@ layout: default
   class="border rounded-lg p-4">
 
 ## 📉 Análisis de Riesgo
-
-<img src="../ML_Finanzas/imagenes/analisis_riesgo.gif" class="w-full rounded-lg mb-3" />
 
 - <v-click>Modelos predictivos</v-click>
 - <v-click>Scoring y clasificación</v-click>
@@ -989,8 +962,8 @@ layout: default
 </div>
 
 ---
-layout: image-right
-image: ../ML_Finanzas/imagenes/resumen_ml.gif
+layout: default
+class: text-left
 ---
 
 # Resumen
@@ -1080,8 +1053,8 @@ layout: default
 </div>
 
 ---
-layout: image-right
-image: ../ML_Finanzas/imagenes/discusion.jpg
+layout: default
+class: text-left
 ---
 
 # Preguntas y Discusión
@@ -1114,8 +1087,8 @@ image: ../ML_Finanzas/imagenes/discusion.jpg
 </div>
 
 ---
-layout: image-right
-image: ../ML_Finanzas/imagenes/referencias.jpg
+layout: default
+class: text-left
 ---
 
 # Referencias
@@ -1133,9 +1106,8 @@ image: ../ML_Finanzas/imagenes/referencias.jpg
 </div>
 
 ---
-layout: image-right
+layout: default
 class: text-center
-image: ../ML_Finanzas/imagenes/cierre_clase.jpg
 ---
 
 # Fin de la Clase 1
