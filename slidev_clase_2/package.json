@@ -1,0 +1,18 @@
+{
+  "name": "slidev_clase_2",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "slidev build clase1-ml-finanzas.md",
+    "dev": "slidev clase1-ml-finanzas.md --open",
+    "export": "slidev export clase1-ml-finanzas.md",
+    "export-pdf": "slidev export clase1-ml-finanzas.md --format pdf",
+    "export-png": "slidev export clase1-ml-finanzas.md --format png"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.11.3",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "vue": "^3.5.26"
+  }
+}
