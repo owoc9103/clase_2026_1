@@ -1,51 +1,664 @@
 ---
+# try also 'default' to start simple
 theme: seriph
-background: linear-gradient(135deg, rgb(42, 67, 176) 0%, rgb(128, 1, 255) 100%)
-class: text-center
-highlighter: shiki
-lineNumbers: false
+# random image from a curated Unsplash collection by Anthony
+# like them? see https://unsplash.com/collections/94734566/slidev
+background: https://cover.sli.dev
+# some information about your slides (markdown enabled)
+title: Bienvenido a Slidev
 info: |
-  ## Machine Learning en Finanzas: El Panorama
-  Clase 1 - Introducción
-  Basado en: Machine Learning and Data Science Blueprints for Finance
+  ## Plantilla Inicial de Slidev
+  Presentaciones para desarrolladores.
+
+  Aprende más en [Sli.dev](https://sli.dev)
+# apply UnoCSS classes to the current slide
+class: text-center
+# https://sli.dev/features/drawing
 drawings:
   persist: false
+# slide transition: https://sli.dev/guide/animations.html#slide-transitions
 transition: slide-left
-title: Machine Learning en Finanzas
-mdc: true
-colorSchema: dark
+# enable MDC Syntax: https://sli.dev/features/mdc
+mdc: false
+# duration of the presentation
+duration: 35min
 ---
 
 ---
 layout: cover
 background: linear-gradient(135deg, rgb(42, 67, 176) 0%, rgb(128, 1, 255) 100%)
+class: text-center
 ---
 
-# Machine Learning en Finanzas
-## El Panorama
+<div class="text-blue-900 font-bold- text-6xl">
+Machine Learning en Finanzas: 
+El Panorama
+</div>
 
 <div class="pt-12">
-  <span class="text-lg opacity-70">Clase 1 - Introducción</span>
+  <span class="text-lg text-blue-900 font-bold- ">Clase 1 - Introducción</span>
 </div>
 
 <div class="abs-br m-6 flex gap-2">
   <a href="https://sli.dev" target="_blank" alt="Slidev" title="Slidev"
-    class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
+    class="text-xl slidev-icon-btn text-blue-900 opacity-70 !border-none !hover:text-blue">
     <carbon-logo-github />
   </a>
 </div>
 
-<div class="abs-bl m-6 text-sm opacity-50">
-  Basado en: Machine Learning and Data Science Blueprints for Finance<br>
-  Tatsat, Puri & Lookabaugh — O'Reilly
+<div class="abs-bl m-6 text-sm text-blue-900 ">
+By: OWOC<br>
+
 </div>
 
+
+
 ---
-layout: intro
+layout: default
 class: text-left
 ---
 
-# Introducción
+# Historia del Machine Learning
+
+<div class="max-w-lg mx-auto mt-6">
+  <img 
+    src="https://pbs.twimg.com/media/E51K5HwUYAgggrr.jpg" 
+    alt="Historia del Machine Learning"
+    class="w-full rounded-lg shadow-lg" />
+</div>
+
+<!-- Descripciones en la parte inferior -->
+<div class="mt-4 relative min-h-[40px] max-w-sm mx-auto">
+  <div
+    v-click="1"
+    class="absolute inset-0 text-[10px] px-2 py-1 rounded border-l-2 bg-blue-50 dark:bg-blue-50 text-black dark:text-black border-blue-500 dark:border-blue-400">
+    <strong class="text-blue-700">1950:</strong> Test de Turing - Propuesta para evaluar la inteligencia de máquinas.
+  </div>
+  
+  <div
+    v-click="2"
+    class="absolute inset-0 text-[10px] px-2 py-1 rounded border-l-2 bg-blue-50 dark:bg-blue-50 text-black dark:text-black border-blue-500 dark:border-blue-400">
+    <strong class="text-blue-700">1956:</strong> Conferencia de Dartmouth - Nacimiento oficial del término "Inteligencia Artificial".
+  </div>
+  
+  <div
+    v-click="3"
+    class="absolute inset-0 text-[10px] px-2 py-1 rounded border-l-2 bg-blue-50 dark:bg-blue-50 text-black dark:text-black border-blue-500 dark:border-blue-400">
+    <strong class="text-blue-700">1986:</strong> Backpropagation popularizado - Avance clave en entrenamiento de redes neuronales.
+  </div>
+  
+  <div
+    v-click="4"
+    class="absolute inset-0 text-[10px] px-2 py-1 rounded border-l-2 bg-blue-50 dark:bg-blue-50 text-black dark:text-black border-blue-500 dark:border-blue-400">
+    <strong class="text-blue-700">1997:</strong> Deep Blue vence a Kasparov - Primer campeón mundial de ajedrez derrotado por IA.
+  </div>
+  
+  <div
+    v-click="5"
+    class="absolute inset-0 text-[10px] px-2 py-1 rounded border-l-2 bg-blue-50 dark:bg-blue-50 text-black dark:text-black border-blue-500 dark:border-blue-400">
+    <strong class="text-blue-700">2006:</strong> Renacimiento del Deep Learning - Geoffrey Hinton populariza el aprendizaje profundo.
+  </div>
+  
+  <div
+    v-click="6"
+    class="absolute inset-0 text-[10px] px-2 py-1 rounded border-l-2 bg-blue-50 dark:bg-blue-50 text-black dark:text-black border-blue-500 dark:border-blue-400">
+    <strong class="text-blue-700">2012:</strong> AlexNet - Breakthrough en reconocimiento de imágenes con deep learning.
+  </div>
+  
+  <div
+    v-click="7"
+    class="absolute inset-0 text-[10px] px-2 py-1 rounded border-l-2 bg-blue-50 dark:bg-blue-50 text-black dark:text-black border-blue-500 dark:border-blue-400">
+    <strong class="text-blue-700">2016:</strong> AlphaGo vence a Lee Sedol - IA supera al mejor jugador de Go del mundo.
+  </div>
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+# Historia del Machine Learning
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+## 1950 - Test de Turing
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+### Contexto Histórico
+- **Período**: Post Segunda Guerra Mundial
+- **Contexto**: Inicio de la computación moderna
+- **Figura clave**: Alan Turing
+</div>
+
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+### Contribución Principal
+- Propuesta del **Test de Turing** como criterio para evaluar la inteligencia de máquinas
+- Publicado en el artículo "Computing Machinery and Intelligence" (1950)
+- Establece la base filosófica para la IA
+</div>
+
+<div
+  v-motion
+  v-click="4"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+### Impacto
+- Fundamento teórico para el desarrollo de la IA
+- Inspiró décadas de investigación en inteligencia artificial
+</div>
+
+<div class="mt-6">
+
+<div
+  v-motion
+  v-click="5"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+### Cita Relevante
+
+<div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
+  "I propose to consider the question, 'Can machines think?' This should begin with definitions of the meaning of the terms 'machine' and 'think'."
+</div>
+
+<div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">
+  — Alan Turing, 1950
+</div>
+</div>
+
+<div
+  v-motion
+  v-click="6"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
+<div class="mt-6 bg-blue-50 dark:bg-blue-50 text-black dark:text-white p-4 rounded-lg text-sm">
+  <strong>Concepto clave:</strong> Si una máquina puede engañar a un humano haciéndole creer que es otro humano, entonces puede considerarse "inteligente".
+</div>
+</div>
+
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+# Historia del Machine Learning
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+## 1956 - Conferencia de Dartmouth
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+### Contexto Histórico
+- **Evento**: Conferencia de Dartmouth
+- **Organizadores**: John McCarthy, Marvin Minsky, Claude Shannon, Nathaniel Rochester
+- **Duración**: 6-8 semanas en verano de 1956
+</div>
+
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+### Contribución Principal
+- **Nacimiento oficial del término "Inteligencia Artificial"**
+- Propuesta de crear máquinas que puedan simular la inteligencia humana
+- Establecimiento de objetivos ambiciosos para la IA
+</div>
+
+<div
+  v-motion
+  v-click="4"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+### Impacto
+- Fundación del campo de la IA como disciplina académica
+- Creación de los primeros programas de investigación en IA
+</div>
+
+<div class="mt-6">
+
+<div
+  v-motion
+  v-click="5"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+### Cita Relevante
+
+<div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
+  "Every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it."
+</div>
+
+<div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">
+  — Propuesta de Dartmouth, 1956
+</div>
+</div>
+
+<div
+  v-motion
+  v-click="6"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
+<div class="mt-6 bg-blue-50 dark:bg-blue-50 text-black dark:text-white p-4 rounded-lg text-sm">
+  <strong>Concepto clave:</strong> La inteligencia puede ser descrita formalmente y replicada en máquinas mediante algoritmos.
+</div>
+</div>
+
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+# Historia del Machine Learning
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+## 1986 - Renacimiento del Backpropagation
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+### Contexto Histórico
+- **Período**: Fin del "Invierno de la IA"
+- **Contexto**: Avances en computación y disponibilidad de datos
+- **Figura clave**: Geoffrey Hinton, David Rumelhart, Ronald Williams
+</div>
+
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+### Contribución Principal
+- **Popularización del algoritmo de Backpropagation**
+- Publicación del artículo "Learning representations by back-propagating errors" (Nature, 1986)
+- Demostración práctica de entrenamiento de redes neuronales multicapa
+</div>
+
+<div
+  v-motion
+  v-click="4"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+### Impacto
+- Revitalización del interés en redes neuronales
+- Base para el desarrollo del Deep Learning moderno
+</div>
+
+<div class="mt-6">
+
+<div
+  v-motion
+  v-click="5"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+### Cita Relevante
+
+<div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
+  "We describe a new learning procedure, back-propagation, for networks of neuron-like units. The procedure repeatedly adjusts the weights of the connections in the network so as to minimize a measure of the difference between the actual output vector of the net and the desired output vector."
+</div>
+
+<div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">
+  — Rumelhart, Hinton & Williams, 1986
+</div>
+</div>
+
+<div
+  v-motion
+  v-click="6"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
+<div class="mt-6 bg-blue-50 dark:bg-blue-50 text-black dark:text-white p-4 rounded-lg text-sm">
+  <strong>Concepto clave:</strong> El backpropagation permite entrenar redes neuronales profundas ajustando los pesos de manera sistemática.
+</div>
+</div>
+
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+# Historia del Machine Learning
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+## 1997 - Deep Blue vs Kasparov
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+### Contexto Histórico
+- **Evento**: Partida de ajedrez histórico
+- **Contendientes**: Deep Blue (IBM) vs Garry Kasparov
+- **Resultado**: Victoria de Deep Blue 3.5 - 2.5
+</div>
+
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+### Contribución Principal
+- **Primera derrota de un campeón mundial de ajedrez por una máquina**
+- Demostración del poder de la búsqueda exhaustiva y evaluación posicional
+- Uso de hardware especializado (procesadores paralelos)
+</div>
+
+<div
+  v-motion
+  v-click="4"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+### Impacto
+- Cambio de percepción pública sobre las capacidades de la IA
+- Inspiración para futuros sistemas de IA en juegos (AlphaGo, AlphaZero)
+</div>
+
+<div class="mt-6">
+
+<div
+  v-motion
+  v-click="5"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+### Cita Relevante
+
+<div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
+  "I could feel — I could smell — a new kind of intelligence across the table."
+</div>
+
+<div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">
+  — Garry Kasparov, 1997
+</div>
+</div>
+
+<div
+  v-motion
+  v-click="6"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
+<div class="mt-6 bg-blue-50 dark:bg-blue-50 text-black dark:text-white p-4 rounded-lg text-sm">
+  <strong>Concepto clave:</strong> La combinación de poder computacional masivo y algoritmos sofisticados puede superar la intuición humana en dominios específicos.
+</div>
+</div>
+
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+# Historia del Machine Learning
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+## 2006 - Renacimiento del Deep Learning
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+### Contexto Histórico
+- **Período**: Inicio de la era del Big Data
+- **Contexto**: Mayor disponibilidad de datos y poder computacional
+- **Figura clave**: Geoffrey Hinton, Yann LeCun, Yoshua Bengio
+</div>
+
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+### Contribución Principal
+- **Popularización del término "Deep Learning"**
+- Desarrollo de técnicas para entrenar redes neuronales profundas
+- Aprendizaje no supervisado de representaciones
+</div>
+
+<div
+  v-motion
+  v-click="4"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+### Impacto
+- Fundación de la revolución del Deep Learning
+- Aplicaciones exitosas en visión computacional y reconocimiento de voz
+</div>
+
+<div class="mt-6">
+
+<div
+  v-motion
+  v-click="5"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+### Cita Relevante
+
+<div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
+  "Our goal is to discover learning algorithms that can discover good internal representations of the data at multiple levels of abstraction."
+</div>
+
+<div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">
+  — Geoffrey Hinton, 2006
+</div>
+</div>
+
+<div
+  v-motion
+  v-click="6"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
+<div class="mt-6 bg-blue-50 dark:bg-blue-50 text-black dark:text-white p-4 rounded-lg text-sm">
+  <strong>Concepto clave:</strong> Las redes profundas pueden aprender representaciones jerárquicas de los datos, desde características simples hasta conceptos complejos.
+</div>
+</div>
+
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+# Historia del Machine Learning
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+## 2012 - AlexNet y el Breakthrough
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+### Contexto Histórico
+- **Evento**: ImageNet Challenge 2012
+- **Equipo**: Alex Krizhevsky, Ilya Sutskever, Geoffrey Hinton
+- **Resultado**: Reducción del error del 26% al 15.3%
+</div>
+
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+### Contribución Principal
+- **AlexNet**: Primera red neuronal profunda ganadora de ImageNet
+- Uso de GPUs para entrenamiento acelerado
+- Técnicas de regularización (Dropout, Data Augmentation)
+</div>
+
+<div
+  v-motion
+  v-click="4"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+### Impacto
+- Inicio de la era moderna del Deep Learning
+- Revolución en visión computacional
+- Adopción masiva de CNNs en la industria
+</div>
+
+<div class="mt-6">
+
+<div
+  v-motion
+  v-click="5"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+### Cita Relevante
+
+<div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
+  "We trained a large, deep convolutional neural network to classify the 1.2 million high-resolution images in the ImageNet LSVRC-2010 contest into the 1000 different classes."
+</div>
+
+<div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">
+  — Krizhevsky, Sutskever & Hinton, 2012
+</div>
+</div>
+
+<div
+  v-motion
+  v-click="6"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
+<div class="mt-6 bg-blue-50 dark:bg-blue-50 text-black dark:text-white p-4 rounded-lg text-sm">
+  <strong>Concepto clave:</strong> Las redes convolucionales profundas pueden aprender representaciones visuales jerárquicas de manera end-to-end.
+</div>
+</div>
+
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+# Historia del Machine Learning
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+## 2016 - AlphaGo y el Go
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+### Contexto Histórico
+- **Evento**: Partida AlphaGo vs Lee Sedol
+- **Organización**: DeepMind (Google)
+- **Resultado**: Victoria de AlphaGo 4-1
+</div>
+
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+### Contribución Principal
+- **Primera derrota de un campeón mundial de Go por IA**
+- Combinación de Deep Learning y Monte Carlo Tree Search
+- Aprendizaje por refuerzo y redes de valor/política
+</div>
+
+<div
+  v-motion
+  v-click="4"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+### Impacto
+- Demostración de IA que supera a humanos en juegos complejos
+- Inspiración para AlphaZero (aprendizaje sin conocimiento previo)
+- Aplicaciones en optimización y toma de decisiones
+</div>
+
+<div class="mt-6">
+
+<div
+  v-motion
+  v-click="5"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+### Cita Relevante
+
+<div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
+  "The game of Go has long been viewed as the most challenging of classic games for artificial intelligence."
+</div>
+
+<div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">
+  — DeepMind Team, 2016
+</div>
+</div>
+
+<div
+  v-motion
+  v-click="6"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
+<div class="mt-6 bg-blue-50 dark:bg-blue-50 text-black dark:text-white p-4 rounded-lg text-sm">
+  <strong>Concepto clave:</strong> La combinación de aprendizaje profundo y búsqueda puede resolver problemas que se consideraban intratables para las máquinas.
+</div>
+</div>
+
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+# Historia del Macchine Leraning
 
 <div
   v-motion
@@ -298,6 +911,7 @@ class: text-left
 - **Firmas FinTech**: Innovación disruptiva
 </div>
 
+$a=3$
 </div>
 
 <!--
