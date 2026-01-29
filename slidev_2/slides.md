@@ -3,7 +3,7 @@
 theme: seriph
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-background: https://cover.sli.dev
+background: https://images.squarespace-cdn.com/content/v1/59d9b2749f8dce3ebe4e676d/1516589724361-VFYWDK9T32VHB1OO72Z9/ML-word-cloud.png
 # some information about your slides (markdown enabled)
 title: Bienvenido a Slidev
 info: |
@@ -39,12 +39,7 @@ El Panorama
   <span class="text-lg text-blue-900 font-bold- ">Clase 1 - Introducción</span>
 </div>
 
-<div class="abs-br m-6 flex gap-2">
-  <a href="https://sli.dev" target="_blank" alt="Slidev" title="Slidev"
-    class="text-xl slidev-icon-btn text-blue-900 opacity-70 !border-none !hover:text-blue">
-    <carbon-logo-github />
-  </a>
-</div>
+
 
 <div class="abs-bl m-6 text-sm text-blue-900 ">
 By: OWOC<br>
@@ -58,7 +53,7 @@ layout: default
 class: text-left
 ---
 
-# Historia del Machine Learning
+<div class="text-3xl font-bold mb-4">Historia del Machine Learning</div>
 
 <div class="max-w-lg mx-auto mt-6">
   <img 
@@ -117,14 +112,14 @@ layout: default
 class: text-left
 ---
 
-# Historia del Machine Learning
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
 
 <div
   v-motion
   v-click="1"
   :initial="{ y: -20, opacity: 0 }"
   :enter="{ y: 0, opacity: 1 }">
-## 1950 - Test de Turing
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">1950 - Test de Turing</h2>
 </div>
 
 <div
@@ -132,10 +127,12 @@ class: text-left
   v-click="2"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1 }">
-### Contexto Histórico
-- **Período**: Post Segunda Guerra Mundial
-- **Contexto**: Inicio de la computación moderna
-- **Figura clave**: Alan Turing
+  <h3 class="text-lg font-semibold mt-4 mb-2">Contexto Histórico</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li><strong>Período:</strong> Post Segunda Guerra Mundial</li>
+    <li><strong>Contexto:</strong> Inicio de la computación moderna</li>
+    <li><strong>Figura clave:</strong> Alan Turing</li>
+  </ul>
 </div>
 
 <div
@@ -143,10 +140,12 @@ class: text-left
   v-click="3"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
-### Contribución Principal
-- Propuesta del **Test de Turing** como criterio para evaluar la inteligencia de máquinas
-- Publicado en el artículo "Computing Machinery and Intelligence" (1950)
-- Establece la base filosófica para la IA
+  <h3 class="text-lg font-semibold mt-4 mb-2">Contribución Principal</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li>Propuesta del <strong>Test de Turing</strong> como criterio para evaluar la inteligencia de máquinas</li>
+    <li>Publicado en el artículo "Computing Machinery and Intelligence" (1950)</li>
+    <li>Establece la base filosófica para la IA</li>
+  </ul>
 </div>
 
 <div
@@ -154,39 +153,11 @@ class: text-left
   v-click="4"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
-### Impacto
-- Fundamento teórico para el desarrollo de la IA
-- Inspiró décadas de investigación en inteligencia artificial
-</div>
-
-<div class="mt-6">
-
-<div
-  v-motion
-  v-click="5"
-  :initial="{ x: 0, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }">
-### Cita Relevante
-
-<div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
-  "I propose to consider the question, 'Can machines think?' This should begin with definitions of the meaning of the terms 'machine' and 'think'."
-</div>
-
-<div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">
-  — Alan Turing, 1950
-</div>
-</div>
-
-<div
-  v-motion
-  v-click="6"
-  :initial="{ x: 0, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
-<div class="mt-6 bg-blue-50 dark:bg-blue-50 text-black dark:text-white p-4 rounded-lg text-sm">
-  <strong>Concepto clave:</strong> Si una máquina puede engañar a un humano haciéndole creer que es otro humano, entonces puede considerarse "inteligente".
-</div>
-</div>
-
+  <h3 class="text-lg font-semibold mt-4 mb-2">Impacto</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li>Fundamento teórico para el desarrollo de la IA</li>
+    <li>Inspiró décadas de investigación en inteligencia artificial</li>
+  </ul>
 </div>
 
 ---
@@ -194,14 +165,14 @@ layout: default
 class: text-left
 ---
 
-# Historia del Machine Learning
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
 
 <div
   v-motion
   v-click="1"
   :initial="{ y: -20, opacity: 0 }"
   :enter="{ y: 0, opacity: 1 }">
-## 1956 - Conferencia de Dartmouth
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">1950 - Test de Turing</h2>
 </div>
 
 <div
@@ -209,10 +180,11 @@ class: text-left
   v-click="2"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1 }">
-### Contexto Histórico
-- **Evento**: Conferencia de Dartmouth
-- **Organizadores**: John McCarthy, Marvin Minsky, Claude Shannon, Nathaniel Rochester
-- **Duración**: 6-8 semanas en verano de 1956
+  <h3 class="text-lg font-semibold mt-4 mb-2">Cita Relevante</h3>
+  <div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
+    "Propongo considerar la pregunta: '¿Pueden pensar las máquinas?' Esto debe comenzar con definiciones del significado de los términos 'máquina' y 'pensar'."
+  </div>
+  <div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">— Alan Turing, 1950</div>
 </div>
 
 <div
@@ -220,50 +192,21 @@ class: text-left
   v-click="3"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
-### Contribución Principal
-- **Nacimiento oficial del término "Inteligencia Artificial"**
-- Propuesta de crear máquinas que puedan simular la inteligencia humana
-- Establecimiento de objetivos ambiciosos para la IA
+  <div class="mt-6 bg-blue-50 dark:bg-blue-900/90 text-black dark:text-gray-100 p-4 rounded-lg text-sm">
+    <strong>Concepto clave:</strong> Si una máquina puede engañar a un humano haciéndole creer que es otro humano, entonces puede considerarse "inteligente".
+  </div>
 </div>
 
 <div
   v-motion
   v-click="4"
-  :initial="{ x: -50, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
-### Impacto
-- Fundación del campo de la IA como disciplina académica
-- Creación de los primeros programas de investigación en IA
-</div>
-
-<div class="mt-6">
-
-<div
-  v-motion
-  v-click="5"
-  :initial="{ x: 0, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }">
-### Cita Relevante
-
-<div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
-  "Every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it."
-</div>
-
-<div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">
-  — Propuesta de Dartmouth, 1956
-</div>
-</div>
-
-<div
-  v-motion
-  v-click="6"
   :initial="{ x: 0, opacity: 0 }"
   :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
-<div class="mt-6 bg-blue-50 dark:bg-blue-50 text-black dark:text-white p-4 rounded-lg text-sm">
-  <strong>Concepto clave:</strong> La inteligencia puede ser descrita formalmente y replicada en máquinas mediante algoritmos.
-</div>
-</div>
-
+  <div class="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+    <a href="https://www.youtube.com/watch?v=iaXLDz_UeYY" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium">
+      📺 Ver video: Test de Turing (YouTube)
+    </a>
+  </div>
 </div>
 
 ---
@@ -271,14 +214,14 @@ layout: default
 class: text-left
 ---
 
-# Historia del Machine Learning
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
 
 <div
   v-motion
   v-click="1"
   :initial="{ y: -20, opacity: 0 }"
   :enter="{ y: 0, opacity: 1 }">
-## 1986 - Renacimiento del Backpropagation
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">1956 - Conferencia de Dartmouth</h2>
 </div>
 
 <div
@@ -286,10 +229,12 @@ class: text-left
   v-click="2"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1 }">
-### Contexto Histórico
-- **Período**: Fin del "Invierno de la IA"
-- **Contexto**: Avances en computación y disponibilidad de datos
-- **Figura clave**: Geoffrey Hinton, David Rumelhart, Ronald Williams
+  <h3 class="text-lg font-semibold mt-4 mb-2">Contexto Histórico</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li><strong>Evento:</strong> Conferencia de Dartmouth</li>
+    <li><strong>Organizadores:</strong> John McCarthy, Marvin Minsky, Claude Shannon, Nathaniel Rochester</li>
+    <li><strong>Duración:</strong> 6-8 semanas en verano de 1956</li>
+  </ul>
 </div>
 
 <div
@@ -297,10 +242,12 @@ class: text-left
   v-click="3"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
-### Contribución Principal
-- **Popularización del algoritmo de Backpropagation**
-- Publicación del artículo "Learning representations by back-propagating errors" (Nature, 1986)
-- Demostración práctica de entrenamiento de redes neuronales multicapa
+  <h3 class="text-lg font-semibold mt-4 mb-2">Contribución Principal</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li><strong>Nacimiento oficial del término "Inteligencia Artificial"</strong></li>
+    <li>Propuesta de crear máquinas que puedan simular la inteligencia humana</li>
+    <li>Establecimiento de objetivos ambiciosos para la IA</li>
+  </ul>
 </div>
 
 <div
@@ -308,39 +255,11 @@ class: text-left
   v-click="4"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
-### Impacto
-- Revitalización del interés en redes neuronales
-- Base para el desarrollo del Deep Learning moderno
-</div>
-
-<div class="mt-6">
-
-<div
-  v-motion
-  v-click="5"
-  :initial="{ x: 0, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }">
-### Cita Relevante
-
-<div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
-  "We describe a new learning procedure, back-propagation, for networks of neuron-like units. The procedure repeatedly adjusts the weights of the connections in the network so as to minimize a measure of the difference between the actual output vector of the net and the desired output vector."
-</div>
-
-<div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">
-  — Rumelhart, Hinton & Williams, 1986
-</div>
-</div>
-
-<div
-  v-motion
-  v-click="6"
-  :initial="{ x: 0, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
-<div class="mt-6 bg-blue-50 dark:bg-blue-50 text-black dark:text-white p-4 rounded-lg text-sm">
-  <strong>Concepto clave:</strong> El backpropagation permite entrenar redes neuronales profundas ajustando los pesos de manera sistemática.
-</div>
-</div>
-
+  <h3 class="text-lg font-semibold mt-4 mb-2">Impacto</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li>Fundación del campo de la IA como disciplina académica</li>
+    <li>Creación de los primeros programas de investigación en IA</li>
+  </ul>
 </div>
 
 ---
@@ -348,14 +267,14 @@ layout: default
 class: text-left
 ---
 
-# Historia del Machine Learning
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
 
 <div
   v-motion
   v-click="1"
   :initial="{ y: -20, opacity: 0 }"
   :enter="{ y: 0, opacity: 1 }">
-## 1997 - Deep Blue vs Kasparov
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">1956 - Conferencia de Dartmouth (continuación)</h2>
 </div>
 
 <div
@@ -363,10 +282,11 @@ class: text-left
   v-click="2"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1 }">
-### Contexto Histórico
-- **Evento**: Partida de ajedrez histórico
-- **Contendientes**: Deep Blue (IBM) vs Garry Kasparov
-- **Resultado**: Victoria de Deep Blue 3.5 - 2.5
+  <h3 class="text-lg font-semibold mt-4 mb-2">Cita Relevante</h3>
+  <div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
+    "Cada aspecto del aprendizaje o cualquier otra característica de la inteligencia puede en principio describirse con tal precisión que una máquina pueda simularla."
+  </div>
+  <div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">— Propuesta de Dartmouth, 1956</div>
 </div>
 
 <div
@@ -374,50 +294,9 @@ class: text-left
   v-click="3"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
-### Contribución Principal
-- **Primera derrota de un campeón mundial de ajedrez por una máquina**
-- Demostración del poder de la búsqueda exhaustiva y evaluación posicional
-- Uso de hardware especializado (procesadores paralelos)
-</div>
-
-<div
-  v-motion
-  v-click="4"
-  :initial="{ x: -50, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
-### Impacto
-- Cambio de percepción pública sobre las capacidades de la IA
-- Inspiración para futuros sistemas de IA en juegos (AlphaGo, AlphaZero)
-</div>
-
-<div class="mt-6">
-
-<div
-  v-motion
-  v-click="5"
-  :initial="{ x: 0, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }">
-### Cita Relevante
-
-<div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
-  "I could feel — I could smell — a new kind of intelligence across the table."
-</div>
-
-<div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">
-  — Garry Kasparov, 1997
-</div>
-</div>
-
-<div
-  v-motion
-  v-click="6"
-  :initial="{ x: 0, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
-<div class="mt-6 bg-blue-50 dark:bg-blue-50 text-black dark:text-white p-4 rounded-lg text-sm">
-  <strong>Concepto clave:</strong> La combinación de poder computacional masivo y algoritmos sofisticados puede superar la intuición humana en dominios específicos.
-</div>
-</div>
-
+  <div class="mt-6 bg-blue-50 dark:bg-blue-900/90 text-black dark:text-gray-100 p-4 rounded-lg text-sm">
+    <strong>Concepto clave:</strong> La inteligencia puede ser descrita formalmente y replicada en máquinas mediante algoritmos.
+  </div>
 </div>
 
 ---
@@ -425,14 +304,14 @@ layout: default
 class: text-left
 ---
 
-# Historia del Machine Learning
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
 
 <div
   v-motion
   v-click="1"
   :initial="{ y: -20, opacity: 0 }"
   :enter="{ y: 0, opacity: 1 }">
-## 2006 - Renacimiento del Deep Learning
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">1986 - Renacimiento del Backpropagation</h2>
 </div>
 
 <div
@@ -440,10 +319,12 @@ class: text-left
   v-click="2"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1 }">
-### Contexto Histórico
-- **Período**: Inicio de la era del Big Data
-- **Contexto**: Mayor disponibilidad de datos y poder computacional
-- **Figura clave**: Geoffrey Hinton, Yann LeCun, Yoshua Bengio
+  <h3 class="text-lg font-semibold mt-4 mb-2">Contexto Histórico</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li><strong>Período:</strong> Fin del "Invierno de la IA"</li>
+    <li><strong>Contexto:</strong> Avances en computación y disponibilidad de datos</li>
+    <li><strong>Figura clave:</strong> Geoffrey Hinton, David Rumelhart, Ronald Williams</li>
+  </ul>
 </div>
 
 <div
@@ -451,10 +332,12 @@ class: text-left
   v-click="3"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
-### Contribución Principal
-- **Popularización del término "Deep Learning"**
-- Desarrollo de técnicas para entrenar redes neuronales profundas
-- Aprendizaje no supervisado de representaciones
+  <h3 class="text-lg font-semibold mt-4 mb-2">Contribución Principal</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li><strong>Popularización del algoritmo de Backpropagation</strong></li>
+    <li>Publicación del artículo "Learning representations by back-propagating errors" (Nature, 1986)</li>
+    <li>Demostración práctica de entrenamiento de redes neuronales multicapa</li>
+  </ul>
 </div>
 
 <div
@@ -462,39 +345,11 @@ class: text-left
   v-click="4"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
-### Impacto
-- Fundación de la revolución del Deep Learning
-- Aplicaciones exitosas en visión computacional y reconocimiento de voz
-</div>
-
-<div class="mt-6">
-
-<div
-  v-motion
-  v-click="5"
-  :initial="{ x: 0, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }">
-### Cita Relevante
-
-<div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
-  "Our goal is to discover learning algorithms that can discover good internal representations of the data at multiple levels of abstraction."
-</div>
-
-<div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">
-  — Geoffrey Hinton, 2006
-</div>
-</div>
-
-<div
-  v-motion
-  v-click="6"
-  :initial="{ x: 0, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
-<div class="mt-6 bg-blue-50 dark:bg-blue-50 text-black dark:text-white p-4 rounded-lg text-sm">
-  <strong>Concepto clave:</strong> Las redes profundas pueden aprender representaciones jerárquicas de los datos, desde características simples hasta conceptos complejos.
-</div>
-</div>
-
+  <h3 class="text-lg font-semibold mt-4 mb-2">Impacto</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li>Revitalización del interés en redes neuronales</li>
+    <li>Base para el desarrollo del Deep Learning moderno</li>
+  </ul>
 </div>
 
 ---
@@ -502,14 +357,14 @@ layout: default
 class: text-left
 ---
 
-# Historia del Machine Learning
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
 
 <div
   v-motion
   v-click="1"
   :initial="{ y: -20, opacity: 0 }"
   :enter="{ y: 0, opacity: 1 }">
-## 2012 - AlexNet y el Breakthrough
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">1986 - Renacimiento del Backpropagation (continuación)</h2>
 </div>
 
 <div
@@ -517,10 +372,11 @@ class: text-left
   v-click="2"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1 }">
-### Contexto Histórico
-- **Evento**: ImageNet Challenge 2012
-- **Equipo**: Alex Krizhevsky, Ilya Sutskever, Geoffrey Hinton
-- **Resultado**: Reducción del error del 26% al 15.3%
+  <h3 class="text-lg font-semibold mt-4 mb-2">Cita Relevante</h3>
+  <div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
+    "Describimos un nuevo procedimiento de aprendizaje, la retropropagación, para redes de unidades similares a neuronas. El procedimiento ajusta repetidamente los pesos de las conexiones de la red para minimizar una medida de la diferencia entre el vector de salida real y el deseado."
+  </div>
+  <div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">— Rumelhart, Hinton & Williams, 1986</div>
 </div>
 
 <div
@@ -528,51 +384,9 @@ class: text-left
   v-click="3"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
-### Contribución Principal
-- **AlexNet**: Primera red neuronal profunda ganadora de ImageNet
-- Uso de GPUs para entrenamiento acelerado
-- Técnicas de regularización (Dropout, Data Augmentation)
-</div>
-
-<div
-  v-motion
-  v-click="4"
-  :initial="{ x: -50, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
-### Impacto
-- Inicio de la era moderna del Deep Learning
-- Revolución en visión computacional
-- Adopción masiva de CNNs en la industria
-</div>
-
-<div class="mt-6">
-
-<div
-  v-motion
-  v-click="5"
-  :initial="{ x: 0, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }">
-### Cita Relevante
-
-<div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
-  "We trained a large, deep convolutional neural network to classify the 1.2 million high-resolution images in the ImageNet LSVRC-2010 contest into the 1000 different classes."
-</div>
-
-<div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">
-  — Krizhevsky, Sutskever & Hinton, 2012
-</div>
-</div>
-
-<div
-  v-motion
-  v-click="6"
-  :initial="{ x: 0, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
-<div class="mt-6 bg-blue-50 dark:bg-blue-50 text-black dark:text-white p-4 rounded-lg text-sm">
-  <strong>Concepto clave:</strong> Las redes convolucionales profundas pueden aprender representaciones visuales jerárquicas de manera end-to-end.
-</div>
-</div>
-
+  <div class="mt-6 bg-blue-50 dark:bg-blue-900/90 text-black dark:text-gray-100 p-4 rounded-lg text-sm">
+    <strong>Concepto clave:</strong> El backpropagation permite entrenar redes neuronales profundas ajustando los pesos de manera sistemática.
+  </div>
 </div>
 
 ---
@@ -580,14 +394,41 @@ layout: default
 class: text-left
 ---
 
-# Historia del Machine Learning
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
 
 <div
   v-motion
   v-click="1"
   :initial="{ y: -20, opacity: 0 }"
   :enter="{ y: 0, opacity: 1 }">
-## 2016 - AlphaGo y el Go
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">1997 - Deep Blue vs Kasparov</h2>
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ opacity: 0 }"
+  :enter="{ opacity: 1, transition: { delay: 100 } }"
+  class="mt-6 flex justify-center">
+  <img
+    src="https://94fa3c88.delivery.rocketcdn.me/es/files/2024/11/Deep-Blue-DataScientest.webp"
+    alt="Deep Blue vs Kasparov"
+    class="max-w-md w-full rounded-lg shadow-lg" />
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">1997 - Deep Blue vs Kasparov</h2>
 </div>
 
 <div
@@ -595,10 +436,12 @@ class: text-left
   v-click="2"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1 }">
-### Contexto Histórico
-- **Evento**: Partida AlphaGo vs Lee Sedol
-- **Organización**: DeepMind (Google)
-- **Resultado**: Victoria de AlphaGo 4-1
+  <h3 class="text-lg font-semibold mt-4 mb-2">Contexto Histórico</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li><strong>Evento:</strong> Partida de ajedrez histórico</li>
+    <li><strong>Contendientes:</strong> Deep Blue (IBM) vs Garry Kasparov</li>
+    <li><strong>Resultado:</strong> Victoria de Deep Blue</li>
+  </ul>
 </div>
 
 <div
@@ -606,10 +449,12 @@ class: text-left
   v-click="3"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
-### Contribución Principal
-- **Primera derrota de un campeón mundial de Go por IA**
-- Combinación de Deep Learning y Monte Carlo Tree Search
-- Aprendizaje por refuerzo y redes de valor/política
+  <h3 class="text-lg font-semibold mt-4 mb-2">Contribución Principal</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li><strong>Primera derrota de un campeón mundial de ajedrez por una máquina</strong></li>
+    <li>Demostración del poder de la búsqueda exhaustiva y evaluación posicional</li>
+    <li>Uso de hardware especializado (procesadores paralelos)</li>
+  </ul>
 </div>
 
 <div
@@ -617,40 +462,11 @@ class: text-left
   v-click="4"
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
-### Impacto
-- Demostración de IA que supera a humanos en juegos complejos
-- Inspiración para AlphaZero (aprendizaje sin conocimiento previo)
-- Aplicaciones en optimización y toma de decisiones
-</div>
-
-<div class="mt-6">
-
-<div
-  v-motion
-  v-click="5"
-  :initial="{ x: 0, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }">
-### Cita Relevante
-
-<div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
-  "The game of Go has long been viewed as the most challenging of classic games for artificial intelligence."
-</div>
-
-<div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">
-  — DeepMind Team, 2016
-</div>
-</div>
-
-<div
-  v-motion
-  v-click="6"
-  :initial="{ x: 0, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
-<div class="mt-6 bg-blue-50 dark:bg-blue-50 text-black dark:text-white p-4 rounded-lg text-sm">
-  <strong>Concepto clave:</strong> La combinación de aprendizaje profundo y búsqueda puede resolver problemas que se consideraban intratables para las máquinas.
-</div>
-</div>
-
+  <h3 class="text-lg font-semibold mt-4 mb-2">Impacto</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li>Cambio de percepción pública sobre las capacidades de la IA</li>
+    <li>Inspiración para futuros sistemas de IA en juegos (AlphaGo, AlphaZero)</li>
+  </ul>
 </div>
 
 ---
@@ -658,7 +474,328 @@ layout: default
 class: text-left
 ---
 
-# Historia del Macchine Leraning
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">1997 - Deep Blue vs Kasparov (continuación)</h2>
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+  <h3 class="text-lg font-semibold mt-4 mb-2">Cita Relevante</h3>
+  <div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
+    "Podía sentir — podía percibir — una nueva clase de inteligencia al otro lado de la mesa."
+  </div>
+  <div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">— Garry Kasparov, 1997</div>
+</div>
+
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+  <div class="mt-6 bg-blue-50 dark:bg-blue-900/90 text-black dark:text-gray-100 p-4 rounded-lg text-sm">
+    <strong>Concepto clave:</strong> La combinación de poder computacional masivo y algoritmos sofisticados puede superar la intuición humana en dominios específicos.
+  </div>
+
+<div
+  v-motion
+  v-click="4"
+  :initial="{ x: 0, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
+  <div class="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+    <a href="https://www.youtube.com/watch?v=hS7GnYUKs8k" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium">
+      📺 Ver video: Deep Blue vs Kasparov (YouTube)
+    </a>
+  </div>
+</div>
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">2006 - Renacimiento del Deep Learning</h2>
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+  <h3 class="text-lg font-semibold mt-4 mb-2">Contexto Histórico</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li><strong>Período:</strong> Inicio de la era del Big Data</li>
+    <li><strong>Contexto:</strong> Mayor disponibilidad de datos y poder computacional</li>
+    <li><strong>Figura clave:</strong> Geoffrey Hinton, Yann LeCun, Yoshua Bengio</li>
+  </ul>
+</div>
+
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+  <h3 class="text-lg font-semibold mt-4 mb-2">Contribución Principal</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li><strong>Popularización del término "Deep Learning"</strong></li>
+    <li>Desarrollo de técnicas para entrenar redes neuronales profundas</li>
+    <li>Aprendizaje no supervisado de representaciones</li>
+  </ul>
+</div>
+
+<div
+  v-motion
+  v-click="4"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+  <h3 class="text-lg font-semibold mt-4 mb-2">Impacto</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li>Fundación de la revolución del Deep Learning</li>
+    <li>Aplicaciones exitosas en visión computacional y reconocimiento de voz</li>
+  </ul>
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">2006 - Renacimiento del Deep Learning (continuación)</h2>
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+  <h3 class="text-lg font-semibold mt-4 mb-2">Cita Relevante</h3>
+  <div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
+    "Nuestro objetivo es descubrir algoritmos de aprendizaje que puedan descubrir buenas representaciones internas de los datos en múltiples niveles de abstracción."
+  </div>
+  <div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">— Geoffrey Hinton, 2006</div>
+</div>
+
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+  <div class="mt-6 bg-blue-50 dark:bg-blue-900/90 text-black dark:text-gray-100 p-4 rounded-lg text-sm">
+    <strong>Concepto clave:</strong> Las redes profundas pueden aprender representaciones jerárquicas de los datos, desde características simples hasta conceptos complejos.
+  </div>
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">2012 - AlexNet y el Breakthrough</h2>
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+  <h3 class="text-lg font-semibold mt-4 mb-2">Contexto Histórico</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li><strong>Evento:</strong> ImageNet Challenge 2012</li>
+    <li><strong>Equipo:</strong> Alex Krizhevsky, Ilya Sutskever, Geoffrey Hinton</li>
+    <li><strong>Resultado:</strong> Reducción del error del 26% al 15.3%</li>
+  </ul>
+</div>
+
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+  <h3 class="text-lg font-semibold mt-4 mb-2">Contribución Principal</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li><strong>AlexNet:</strong> Primera red neuronal profunda ganadora de ImageNet</li>
+    <li>Uso de GPUs para entrenamiento acelerado</li>
+    <li>Técnicas de regularización (Dropout, Data Augmentation)</li>
+  </ul>
+</div>
+
+<div
+  v-motion
+  v-click="4"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+  <h3 class="text-lg font-semibold mt-4 mb-2">Impacto</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li>Inicio de la era moderna del Deep Learning</li>
+    <li>Revolución en visión computacional</li>
+    <li>Adopción masiva de CNNs en la industria</li>
+  </ul>
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">2012 - AlexNet y el Breakthrough (continuación)</h2>
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+  <h3 class="text-lg font-semibold mt-4 mb-2">Cita Relevante</h3>
+  <div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
+    "Entrenamos una gran red neuronal convolucional profunda para clasificar los 1,2 millones de imágenes de alta resolución del concurso ImageNet LSVRC-2010 en las 1000 clases diferentes."
+  </div>
+  <div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">— Krizhevsky, Sutskever & Hinton, 2012</div>
+</div>
+
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+  <div class="mt-6 bg-blue-50 dark:bg-blue-900/90 text-black dark:text-gray-100 p-4 rounded-lg text-sm">
+    <strong>Concepto clave:</strong> Las redes convolucionales profundas pueden aprender representaciones visuales jerárquicas de manera end-to-end.
+  </div>
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">2016 - AlphaGo y el Go</h2>
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+  <h3 class="text-lg font-semibold mt-4 mb-2">Contexto Histórico</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li><strong>Evento:</strong> Partida AlphaGo vs Lee Sedol</li>
+    <li><strong>Organización:</strong> DeepMind (Google)</li>
+    <li><strong>Resultado:</strong> Victoria de AlphaGo 4-1</li>
+  </ul>
+</div>
+
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+  <h3 class="text-lg font-semibold mt-4 mb-2">Contribución Principal</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li><strong>Primera derrota de un campeón mundial de Go por IA</strong></li>
+    <li>Combinación de Deep Learning y Monte Carlo Tree Search</li>
+    <li>Aprendizaje por refuerzo y redes de valor/política</li>
+  </ul>
+</div>
+
+<div
+  v-motion
+  v-click="4"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+  <h3 class="text-lg font-semibold mt-4 mb-2">Impacto</h3>
+  <ul class="list-disc list-inside text-sm space-y-1">
+    <li>Demostración de IA que supera a humanos en juegos complejos</li>
+    <li>Inspiración para AlphaZero (aprendizaje sin conocimiento previo)</li>
+    <li>Aplicaciones en optimización y toma de decisiones</li>
+  </ul>
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
+
+<div
+  v-motion
+  v-click="1"
+  :initial="{ y: -20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1 }">
+  <h2 class="text-2xl font-semibold text-blue-700 dark:text-blue-400">2016 - AlphaGo y el Go (continuación)</h2>
+</div>
+
+<div
+  v-motion
+  v-click="2"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1 }">
+  <h3 class="text-lg font-semibold mt-4 mb-2">Cita Relevante</h3>
+  <div class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white p-4 rounded-lg border-l-4 border-blue-500 dark:border-blue-400 italic text-sm">
+    "El juego del Go ha sido considerado durante mucho tiempo el más desafiante de los juegos clásicos para la inteligencia artificial."
+  </div>
+  <div class="text-xs text-gray-600 dark:text-gray-400 mt-2 text-right">— DeepMind Team, 2016</div>
+</div>
+
+<div
+  v-motion
+  v-click="3"
+  :initial="{ x: -50, opacity: 0 }"
+  :enter="{ x: 0, opacity: 1, transition: { delay: 100 } }">
+  <div class="mt-6 bg-blue-50 dark:bg-blue-900/90 text-black dark:text-gray-100 p-4 rounded-lg text-sm">
+    <strong>Concepto clave:</strong> La combinación de aprendizaje profundo y búsqueda puede resolver problemas que se consideraban intratables para las máquinas.
+  </div>
+</div>
+
+---
+layout: default
+class: text-left
+---
+
+<div class="text-3xl font-bold mb-6">Historia del Machine Learning</div>
 
 <div
   v-motion
@@ -667,7 +804,7 @@ class: text-left
   class="text-center mb-8 p-6 bg-gray-800 rounded-lg border-l-4 border-blue-500">
 
 <div class="text-2xl italic text-gray-300 mb-4">
-  "Machine learning promises to shake up large swathes of finance"
+  "El aprendizaje automático promete transformar amplios segmentos del sector financiero."
 </div>
 
 <div class="text-sm text-gray-400">
@@ -689,7 +826,7 @@ Hay una <strong>nueva ola de machine learning y data science en finanzas</strong
   v-motion
   :initial="{ x: -50, opacity: 0 }"
   :enter="{ x: 0, opacity: 1, transition: { delay: 400 } }">
-Actualmente, la mayoría de firmas financieras, incluyendo <v-click>hedge funds</v-click>, <v-click>bancos de inversión y minoristas</v-click>, y <v-click>firmas fintech</v-click>, están adoptando e invirtiendo fuertemente en machine learning.
+Actualmente, la mayoría de firmas financieras, incluyendo <v-click>fondos de cobertura</v-click>, <v-click>bancos de inversión y minoristas</v-click>, y <v-click>firmas fintech</v-click>, están adoptando e invirtiendo fuertemente en machine learning.
 </div>
 
 <div
@@ -716,45 +853,37 @@ layout: default
 class: text-left
 ---
 
-# ¿Por qué ahora?
+<div class="text-3xl font-bold mb-4">¿Por qué ahora?</div>
 
-<div class="space-y-6">
+<p class="text-base text-gray-700 dark:text-gray-300 mb-5">Machine learning en finanzas se ha vuelto más prominente recientemente debido a:</p>
+
+<div class="grid grid-cols-3 gap-4">
 
 <div
   v-motion
-  :initial="{ x: -100, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }">
-Machine learning en finanzas se ha vuelto más prominente recientemente debido a:
+  :initial="{ y: 20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 200 } }"
+  class="p-4 rounded-xl border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/30 dark:border-blue-400">
+  <h3 class="text-base font-semibold mb-2 text-blue-800 dark:text-blue-200">📊 Grandes Volúmenes de Datos</h3>
+  <p class="text-sm text-gray-700 dark:text-gray-200">El acceso a datos financieros estructurados y no estructurados ha crecido exponencialmente.</p>
 </div>
 
 <div
   v-motion
-  :initial="{ y: 50, opacity: 0 }"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 300 } }"
-  class="p-6 bg-blue-900/30 rounded-lg border border-blue-500/50">
-### 📊 Disponibilidad de Grandes Volúmenes de Datos
-
-<v-click>El acceso a vastas cantidades de datos financieros estructurados y no estructurados ha crecido exponencialmente.</v-click>
+  :initial="{ y: 20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 350 } }"
+  class="p-4 rounded-xl border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-900/30 dark:border-purple-400">
+  <h3 class="text-base font-semibold mb-2 text-purple-800 dark:text-purple-200">💻 Poder Computacional Asequible</h3>
+  <p class="text-sm text-gray-700 dark:text-gray-200">Cloud computing y GPUs han hecho el procesamiento de ML accesible para más organizaciones.</p>
 </div>
 
 <div
   v-motion
-  :initial="{ y: 50, opacity: 0 }"
+  :initial="{ y: 20, opacity: 0 }"
   :enter="{ y: 0, opacity: 1, transition: { delay: 500 } }"
-  class="p-6 bg-purple-900/30 rounded-lg border border-purple-500/50">
-### 💻 Poder Computacional Más Asequible
-
-<v-click>El cloud computing y las GPUs han hecho el procesamiento de ML accesible para más organizaciones.</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ y: 50, opacity: 0 }"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 700 } }"
-  class="p-6 bg-green-900/30 rounded-lg border border-green-500/50">
-### 📈 Crecimiento Exponencial
-
-<v-click>El uso de data science y machine learning está creciendo exponencialmente en todas las áreas de finanzas.</v-click>
+  class="p-4 rounded-xl border-l-4 border-green-500 bg-green-50 dark:bg-green-900/30 dark:border-green-400">
+  <h3 class="text-base font-semibold mb-2 text-green-800 dark:text-green-200">📈 Crecimiento Exponencial</h3>
+  <p class="text-sm text-gray-700 dark:text-gray-200">El uso de data science y ML crece exponencialmente en todas las áreas de finanzas.</p>
 </div>
 
 </div>
@@ -774,55 +903,47 @@ layout: default
 class: text-left
 ---
 
-# Los Pilares del Éxito
+<div class="text-3xl font-bold mb-4">Los Pilares del Éxito</div>
 
-<div class="space-y-6">
+<p class="text-base text-gray-700 dark:text-gray-300 mb-5">El éxito de machine learning en finanzas depende de:</p>
 
-<div
-  v-motion
-  :initial="{ x: -100, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }">
-El éxito de machine learning en finanzas depende de:
-</div>
+<div class="grid grid-cols-3 gap-4">
 
 <div
   v-motion
-  :initial="{ y: 50, opacity: 0 }"
+  :initial="{ y: 20, opacity: 0 }"
   :enter="{ y: 0, opacity: 1, transition: { delay: 200 } }"
-  class="p-6 bg-gradient-to-r from-blue-900/40 to-blue-800/40 rounded-lg border-l-4 border-blue-500">
-### 🏗️ Construir Infraestructura Eficiente
-
-<v-click>Una arquitectura escalable y robusta que pueda manejar grandes volúmenes de datos y procesamiento en tiempo real.</v-click>
+  class="p-4 rounded-xl border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/30 dark:border-blue-400">
+  <h3 class="text-base font-semibold mb-2 text-blue-800 dark:text-blue-200">🏗️ Infraestructura Eficiente</h3>
+  <p class="text-sm text-gray-700 dark:text-gray-200">Arquitectura escalable y robusta para grandes volúmenes de datos y procesamiento en tiempo real.</p>
 </div>
 
 <div
   v-motion
-  :initial="{ y: 50, opacity: 0 }"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 400 } }"
-  class="p-6 bg-gradient-to-r from-purple-900/40 to-purple-800/40 rounded-lg border-l-4 border-purple-500">
-### 🛠️ Usar el Toolkit Correcto
-
-<v-click>Seleccionar las herramientas, librerías y frameworks apropiados para cada tarea específica.</v-click>
+  :initial="{ y: 20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 350 } }"
+  class="p-4 rounded-xl border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-900/30 dark:border-purple-400">
+  <h3 class="text-base font-semibold mb-2 text-purple-800 dark:text-purple-200">🛠️ Toolkit Correcto</h3>
+  <p class="text-sm text-gray-700 dark:text-gray-200">Herramientas, librerías y frameworks apropiados para cada tarea.</p>
 </div>
 
 <div
   v-motion
-  :initial="{ y: 50, opacity: 0 }"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 600 } }"
-  class="p-6 bg-gradient-to-r from-green-900/40 to-green-800/40 rounded-lg border-l-4 border-green-500">
-### 🧠 Aplicar los Algoritmos Correctos
-
-<v-click>Elegir y aplicar los modelos de machine learning adecuados para cada problema de negocio específico.</v-click>
+  :initial="{ y: 20, opacity: 0 }"
+  :enter="{ y: 0, opacity: 1, transition: { delay: 500 } }"
+  class="p-4 rounded-xl border-l-4 border-green-500 bg-green-50 dark:bg-green-900/30 dark:border-green-400">
+  <h3 class="text-base font-semibold mb-2 text-green-800 dark:text-green-200">🧠 Algoritmos Correctos</h3>
+  <p class="text-sm text-gray-700 dark:text-gray-200">Modelos de ML adecuados para cada problema de negocio.</p>
 </div>
 
 </div>
 
 <div
   v-motion
-  :initial="{ y: 30, opacity: 0 }"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 800 } }"
-  class="mt-6 p-4 bg-yellow-900/30 rounded-lg border border-yellow-500/50 text-center">
-<strong>Estos conceptos fundamentales se demuestran y utilizan a lo largo de este libro.</strong>
+  :initial="{ opacity: 0 }"
+  :enter="{ opacity: 1, transition: { delay: 650 } }"
+  class="mt-5 py-3 px-4 rounded-lg bg-amber-100 dark:bg-amber-900/40 border border-amber-400/50 dark:border-amber-500/50 text-center">
+  <p class="text-sm font-semibold text-amber-900 dark:text-amber-100">Estos conceptos se demuestran y utilizan a lo largo de este curso.</p>
 </div>
 
 <!--
@@ -836,915 +957,22 @@ El éxito de machine learning en finanzas depende de:
 -->
 
 ---
-layout: two-cols
-class: text-left
----
-
-# Objetivos de la Clase
-
-::left::
-
-<div class="text-left">
-
-- <v-click>Comprender el estado actual del Machine Learning en finanzas</v-click> 
-- <v-click>Identificar los tres pilares fundamentales para el éxito de ML en finanzas</v-click>
-- <v-click>Conocer los diferentes tipos de Machine Learning aplicables</v-click>
-- <v-click>Entender el panorama futuro de la industria</v-click>
-
-</div>
-
-::right::
-
-<div class="flex items-center justify-center h-full">
-  <img 
-    src="https://media.tenor.com/HX2vaHm3wQYAAAAi/windesheim-thumbs-up.gif" 
-    class="w-full rounded-lg shadow-lg" 
-    alt="Meerkat" />
-</div>
-
-<!--
-**Notas del Presentador:**
-
-1. **Contexto**: Bienvenida; estos objetivos guían toda la clase.
-2. **Ejemplos**: El libro y el curso cubren panorama, pilares, tipos de ML y aplicaciones.
-3. **Pregunta**: ¿Qué les gustaría aprender primero?
-4. **Punto clave**: Al final haremos un resumen para verificar que se cumplieron.
-5. **Transición**: "Veamos el panorama actual de la industria..."
--->
-
----
-layout: default
-class: text-left
----
-
-# El Panorama Actual
-
-## Adopción Rápida en la Industria Financiera
-
-<div class="text-left space-y-4">
-
-<div
-  v-motion
-  :initial="{ x: -100, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }">
-- **Hedge Funds**: Inversión masiva en tecnologías de ML
-</div>
-
-<div
-  v-motion
-  :initial="{ x: -100, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
-- **Bancos de Inversión**: Implementación de sistemas inteligentes
-</div>
-
-<div
-  v-motion
-  :initial="{ x: -100, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 400 } }">
-- **Bancos Minoristas**: Automatización y personalización
-</div>
-
-<div
-  v-motion
-  :initial="{ x: -100, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 600 } }">
-- **Firmas FinTech**: Innovación disruptiva
-</div>
-
-$a=3$
-</div>
-
-<!--
-**Notas del Presentador:**
-
-1. **Contexto**: La industria financiera está en plena transformación.
-2. **Ejemplos**: Hedge funds (Renaissance, Two Sigma); bancos (JPMorgan, Goldman Sachs); FinTech (Revolut, Robinhood).
-3. **Pregunta**: ¿Conocen algún ejemplo local de adopción de ML?
-4. **Punto clave**: Todas las firmas invierten fuertemente en ML.
-5. **Transición**: "Ahora veamos por qué esto está sucediendo..."
--->
-
----
-layout: two-cols
----
-
-# Factores de Crecimiento
-
-## ¿Por qué ahora?
-
-::left::
-
-<div class="space-y-6 text-left">
-
-<div
-  v-motion
-  v-click
-  :initial="{ x: -50, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }">
-### 1. Disponibilidad de Datos
-- Volúmenes masivos de información financiera
-- Datos estructurados y no estructurados
-- Acceso a datos en tiempo real
-</div>
-
-<div
-  v-motion
-  v-click="2"
-  :initial="{ x: -50, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 400 } }">
-### 2. Poder Computacional Asequible
-- Cloud computing
-- Procesamiento distribuido
-- GPUs y TPUs
-</div>
-
-</div>
-
-::right::
-
-<div class="space-y-4 text-left">
-  <div class="p-4 bg-blue-900/20 rounded-lg">
-    <strong>Big Data en Finanzas</strong><br>
-    Volúmenes masivos de información financiera
-  </div>
-  <div class="p-4 bg-purple-900/20 rounded-lg">
-    <strong>Cloud Computing</strong><br>
-    Procesamiento distribuido y escalable
-  </div>
-</div>
-
----
-layout: default
-class: text-left
----
-
-# Los Tres Pilares Fundamentales
-
-<div class="text-left space-y-6">
-
-Para el éxito de Machine Learning en finanzas se requieren:
-
-<div
-  v-motion
-  :initial="{ y: 50, opacity: 0 }"
-  :enter="{ y: 0, opacity: 1 }">
-### 1. 🏗️ Infraestructura Eficiente
-- <v-click>Arquitectura escalable</v-click>
-- <v-click>Procesamiento de datos en tiempo real</v-click>
-- <v-click>Almacenamiento robusto</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ y: 50, opacity: 0 }"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 300 } }">
-### 2. 🛠️ Selección Correcta de Herramientas
-- <v-click>Stack tecnológico apropiado</v-click>
-- <v-click>Librerías y frameworks adecuados</v-click>
-- <v-click>Ecosistema Python para finanzas</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ y: 50, opacity: 0 }"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 600 } }">
-### 3. 🧠 Aplicación Apropiada de Algoritmos
-- <v-click>Elección del modelo correcto</v-click>
-- <v-click>Entendimiento del problema de negocio</v-click>
-- <v-click>Validación y evaluación rigurosa</v-click>
-</div>
-
-</div>
-
-<!--
-**Notas del Presentador:**
-
-1. **Contexto**: Estos pilares son fundamentales; sin uno, el proyecto falla.
-2. **Ejemplos**: Infraestructura (AWS, GCP); herramientas (Python, TensorFlow, APIs); algoritmos (elegir modelo, no DL para todo).
-3. **Pregunta**: ¿Han visto proyectos descuidar alguno de estos pilares?
-4. **Punto clave**: El éxito requiere los TRES; analogía: casa = cimientos + herramientas + conocimiento.
-5. **Transición**: "Ahora veamos los tipos de ML aplicables..."
--->
-
----
-layout: default
----
-
-# Tipos de Machine Learning
-
-<div class="grid grid-cols-3 gap-6 mt-8">
-
-<div
-  v-motion
-  v-click
-  :initial="{ x: -80, opacity: 0, scale: 0.9 }"
-  :enter="{ x: 0, opacity: 1, scale: 1 }"
-  class="border rounded-lg p-4">
-
-## 📊 Aprendizaje Supervisado
-
-- **Clasificación**: Detección de fraude, scoring crediticio
-- **Regresión**: Predicción de precios, valoración de activos
-
-</div>
-
-<div
-  v-motion
-  v-click="2"
-  :initial="{ y: 80, opacity: 0, scale: 0.9 }"
-  :enter="{ y: 0, opacity: 1, scale: 1, transition: { delay: 200 } }"
-  class="border rounded-lg p-4">
-
-## 🔍 Aprendizaje No Supervisado
-
-- **Clustering**: Segmentación de clientes
-- **Detección de anomalías**: Identificación de transacciones sospechosas
-
-</div>
-
-<div
-  v-motion
-  v-click="3"
-  :initial="{ x: 80, opacity: 0, scale: 0.9 }"
-  :enter="{ x: 0, opacity: 1, scale: 1, transition: { delay: 400 } }"
-  class="border rounded-lg p-4">
-
-## 🎯 Aprendizaje por Refuerzo
-
-- **Trading algorítmico**: Optimización de estrategias
-- **Robo-advisors**: Gestión automatizada de portafolios
-
-</div>
-
-</div>
-
-<!--
-**Notas del Presentador:**
-
-1. **Contexto**: Tres tipos de ML; cada uno resuelve problemas distintos.
-2. **Ejemplos**: Supervisado (fraude, scoring); no supervisado (segmentación, anomalías); refuerzo (trading, robo-advisors).
-3. **Pregunta**: ¿Qué tipo usarían para detectar fraude? (Supervisado.)
-4. **Punto clave**: Supervisado = etiquetas; no supervisado = patrones; refuerzo = prueba y error.
-5. **Transición**: "Veamos dónde se aplican en finanzas..."
--->
-
----
-layout: default
----
-
-# Aplicaciones en Finanzas
-
-<div class="grid grid-cols-3 gap-4 mt-6">
-
-<div
-  v-motion
-  v-click
-  :initial="{ rotateX: -90, opacity: 0 }"
-  :enter="{ rotateX: 0, opacity: 1 }"
-  class="border rounded-lg p-4">
-
-## 📈 Trading y Mercados
-
-- Estrategias de trading algorítmico
-- Predicción de movimientos de precios
-- Arbitraje y market making
-
-</div>
-
-<div
-  v-motion
-  v-click="2"
-  :initial="{ rotateX: -90, opacity: 0 }"
-  :enter="{ rotateX: 0, opacity: 1, transition: { delay: 200 } }"
-  class="border rounded-lg p-4">
-
-## ⚠️ Gestión de Riesgos
-
-- Modelos de riesgo crediticio
-- Value at Risk (VaR)
-- Stress testing
-
-</div>
-
-<div
-  v-motion
-  v-click="3"
-  :initial="{ rotateX: -90, opacity: 0 }"
-  :enter="{ rotateX: 0, opacity: 1, transition: { delay: 400 } }"
-  class="border rounded-lg p-4">
-
-## 🤖 Servicios Financieros
-
-- Robo-advisors
-- Chatbots y atención al cliente
-- Personalización de productos
-
-</div>
-
-</div>
-
-<!--
-**Notas del Presentador:**
-
-1. **Contexto**: Tres áreas principales donde ML se aplica en finanzas.
-2. **Ejemplos**: Trading (HFT, milisegundos); riesgo (VaR, stress testing); servicios (robo-advisors, chatbots).
-3. **Pregunta**: ¿En qué área les gustaría trabajar?
-4. **Punto clave**: Trading = velocidad; riesgo = cumplimiento; servicios = experiencia de cliente.
-5. **Transición**: "Profundicemos en trading algorítmico..."
--->
-
----
-layout: default
----
-
-# Trading Algorítmico
-
-<div class="text-left space-y-6">
-
-<div
-  v-motion
-  :initial="{ x: -100, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }">
-## ¿Qué es?
-
-**Trading algorítmico** (o simplemente "algo trading") es el uso de algoritmos para realizar transacciones de forma autónoma.
-</div>
-
-<div
-  v-motion
-  :initial="{ x: -100, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 300 } }">
-## Orígenes
-
-- <v-click>Se remonta a la década de **1970**</v-click>
-- <v-click>También conocido como **"Sistemas de Trading Automatizados"** (más preciso)</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ x: -100, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 600 } }">
-## Funcionamiento
-
-- <v-click>Instrucciones de trading preprogramadas y automatizadas</v-click>
-- <v-click>Decisiones de trading **extremadamente rápidas** y objetivas</v-click>
-</div>
-
-</div>
-
-<!--
-**Notas del Presentador:**
-
-- Definición simple: Algoritmos que compran y venden automáticamente
-- Historia: Comenzó en los 70s con sistemas básicos, ahora es extremadamente sofisticado
-- Velocidad: Algunos sistemas ejecutan miles de transacciones por segundo
-- Ejemplo: High-frequency trading (HFT) - microsegundos importan
-- Pregunta: "¿Saben cuánto tiempo tarda una orden en llegar al mercado?" (milisegundos)
-- Transición: "Ahora veamos cómo ML está revolucionando esto..."
--->
-
----
-layout: default
-class: text-left
----
-
-# Machine Learning en Trading Algorítmico
-
-<div class="text-left space-y-4">
-
-## El Rol de ML
-
-Machine Learning está llevando el trading algorítmico a **nuevos niveles**.
-
-### Ventajas de ML:
-
-<div
-  v-motion
-  :initial="{ scale: 0.8, opacity: 0 }"
-  :enter="{ scale: 1, opacity: 1 }">
-- <v-click>✅ Estrategias **más avanzadas** que se adaptan en tiempo real</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ scale: 0.8, opacity: 0 }"
-  :enter="{ scale: 1, opacity: 1, transition: { delay: 200 } }">
-- <v-click>✅ Técnicas basadas en ML ofrecen **más vías** para obtener insights especiales sobre movimientos del mercado</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ scale: 0.8, opacity: 0 }"
-  :enter="{ scale: 1, opacity: 1, transition: { delay: 400 } }">
-- <v-click>✅ Calibración de decisiones de trading **en tiempo real**</v-click>
-</div>
-
-### Práctica de la Industria
-
-<div
-  v-motion
-  :initial="{ y: 30, opacity: 0 }"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 600 } }">
-La mayoría de hedge funds e instituciones financieras **no revelan abiertamente** sus enfoques basados en ML (por buenas razones).
-</div>
-
-</div>
-
-<!--
-**Notas del Presentador:**
-
-- Contexto histórico: Trading algorítmico existe desde los 70s, pero ML lo está revolucionando
-- Ejemplos de ventajas:
-  - Detección de patrones complejos que humanos no ven
-  - Adaptación automática a cambios de mercado
-  - Procesamiento de datos no estructurados (noticias, redes sociales)
-- Por qué no revelan estrategias: Ventaja competitiva - si todos saben, deja de funcionar
-- Ejemplo: Renaissance Medallion Fund - uno de los más exitosos, muy secreto
-- Pregunta para reflexión: ¿Es ético mantener estas estrategias secretas?
--->
-
----
-layout: default
----
-
-# Gestión de Portafolios y Robo-Advisors
-
-<div class="text-left space-y-6">
-
-## Exploración de IA
-
-Las firmas de gestión de activos y riqueza están explorando soluciones de **Inteligencia Artificial (IA)** para:
-
-- Mejorar sus decisiones de inversión
-- Aprovechar sus **trozos de datos históricos**
-
-## ¿Qué son los Robo-Advisors?
-
-Algoritmos construidos para **calibrar un portafolio financiero** según:
-- Los objetivos del usuario
-- La tolerancia al riesgo del usuario
-
-</div>
-
-<!--
-**Notas del Presentador:**
-
-- Contexto: Gestión de portafolios tradicionalmente requiere asesores humanos costosos
-- Robo-advisors democratizan el acceso a gestión profesional de inversiones
-- Datos históricos: Las firmas tienen décadas de datos de mercado que pueden aprovechar
-- Ejemplo: Vanguard, Fidelity ahora ofrecen servicios híbridos (humano + robo)
-- Pregunta: "¿Alguien ha usado un robo-advisor o conoce alguno?"
-- Transición: "Veamos cómo funcionan en detalle..."
--->
-
----
-layout: default
-class: text-left
----
-
-# Funcionamiento de Robo-Advisors
-
-<div class="text-left space-y-4">
-
-## Servicios Proporcionados
-
-Proporcionan **orientación y servicio financiero automatizado** a inversores finales y clientes.
-
-## Proceso de Usuario
-
-1. **Input del usuario:**
-   - Objetivos financieros (ej: "jubilarme a los 65 con $250,000")
-   - Edad, ingresos, activos financieros actuales
-
-2. **Asignación:**
-   - El asesor (el asignador) distribuye inversiones
-   - Entre clases de activos e instrumentos financieros
-   - Para alcanzar los objetivos del usuario
-
-3. **Calibración dinámica:**
-   - Se adapta a cambios en objetivos del usuario
-   - Cambios en tiempo real del mercado
-   - Siempre buscando el mejor ajuste para los objetivos originales
-
-</div>
-
-<!--
-**Notas del Presentador:**
-
-- Ejemplos reales: Betterment, Wealthfront, Vanguard Personal Advisor
-- Demostración práctica: Mostrar cómo funciona el proceso
-- Ventajas vs. asesores humanos:
-  - Disponibilidad 24/7
-  - Sin sesgos emocionales
-  - Costos más bajos
-- Limitaciones:
-  - No reemplaza completamente el asesoramiento humano para casos complejos
-  - Depende de la calidad de los datos del usuario
-- Caso de uso: Millennials y Gen Z prefieren robo-advisors
-- Pregunta: ¿Alguien ha usado un robo-advisor?
--->
-
----
-layout: default
----
-
-# Tracción de Robo-Advisors
-
-<div class="grid grid-cols-2 gap-6 mt-8">
-
-<div
-  v-motion
-  :initial="{ x: -80, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }"
-  class="border rounded-lg p-6">
-
-## Aceptación del Mercado
-
-Los robo-advisors han ganado **traction significativa** entre consumidores que:
-
-- <v-click>No necesitan un asesor humano</v-click>
-- <v-click>Se sienten cómodos invirtiendo de forma automatizada</v-click>
-
-</div>
-
-<div
-  v-motion
-  :initial="{ x: 80, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }"
-  class="border rounded-lg p-6">
-
-## Ventajas
-
-- <v-click>✅ **Accesibilidad**: Servicios de inversión para más personas</v-click>
-- <v-click>✅ **Bajo costo**: Comisiones reducidas vs. asesores tradicionales</v-click>
-- <v-click>✅ **Automatización**: Rebalanceo continuo del portafolio</v-click>
-- <v-click>✅ **Personalización**: Adaptado a objetivos y riesgo individual</v-click>
-
-</div>
-
-</div>
-
----
-layout: default
-class: text-left
----
-
-# El Panorama Futuro
-
-## Transformación de la Industria
-
-<div class="text-left space-y-4">
-
-- **Próximas Décadas**: La industria financiera será transformada por ML y Data Science
-- **Demanda de Expertos**: Crecimiento exponencial en la necesidad de profesionales especializados
-- **Nuevas Oportunidades**: Aplicaciones emergentes en áreas como:
-  - 💰 Criptomonedas y DeFi
-  - 🌱 Finanzas sostenibles (ESG)
-  - 📋 RegTech y Compliance automatizado
-
-</div>
-
----
-layout: default
----
-
-# Desafíos y Consideraciones
-
-<div class="grid grid-cols-3 gap-4 mt-6">
-
-<div
-  v-motion
-  :initial="{ y: 50, opacity: 0, rotateY: -15 }"
-  :enter="{ y: 0, opacity: 1, rotateY: 0 }"
-  class="border rounded-lg p-4">
-
-## 📜 Regulación y Compliance
-
-- <v-click>Explicabilidad de modelos</v-click>
-- <v-click>Transparencia algorítmica</v-click>
-- <v-click>Cumplimiento normativo</v-click>
-
-</div>
-
-<div
-  v-motion
-  :initial="{ y: 50, opacity: 0, rotateY: -15 }"
-  :enter="{ y: 0, opacity: 1, rotateY: 0, transition: { delay: 200 } }"
-  class="border rounded-lg p-4">
-
-## ⚡ Riesgos Tecnológicos
-
-- <v-click>Overfitting y validación</v-click>
-- <v-click>Datos de baja calidad</v-click>
-- <v-click>Sesgos en los modelos</v-click>
-
-</div>
-
-<div
-  v-motion
-  :initial="{ y: 50, opacity: 0, rotateY: -15 }"
-  :enter="{ y: 0, opacity: 1, rotateY: 0, transition: { delay: 400 } }"
-  class="border rounded-lg p-4">
-
-## ⚖️ Ética y Responsabilidad
-
-- <v-click>Uso responsable de datos</v-click>
-- <v-click>Prevención de discriminación</v-click>
-- <v-click>Privacidad del cliente</v-click>
-
-</div>
-
-</div>
-
----
-layout: default
-class: text-left
----
-
-# Stack Tecnológico
-
-## Herramientas Principales
-
-<div class="text-left space-y-4">
-
-<div
-  v-motion
-  :initial="{ x: -50, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }">
-**💻 Lenguajes:**
-- <v-click>Python (principal)</v-click>
-- <v-click>R (análisis estadístico)</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ x: -50, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 300 } }">
-**📚 Librerías Clave:**
-- <v-click>Pandas, NumPy (manipulación de datos)</v-click>
-- <v-click>Scikit-learn (ML tradicional)</v-click>
-- <v-click>TensorFlow, PyTorch (Deep Learning)</v-click>
-- <v-click>QuantLib (finanzas cuantitativas)</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ x: -50, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 600 } }">
-**☁️ Infraestructura:**
-- <v-click>Jupyter Notebooks</v-click>
-- <v-click>Cloud platforms (AWS, GCP, Azure)</v-click>
-- <v-click>Bases de datos (PostgreSQL, MongoDB)</v-click>
-</div>
-
-</div>
-
----
-layout: default
----
-
-# Casos de Estudio del Libro
-
-<div class="grid grid-cols-3 gap-4 mt-6">
-
-<div
-  v-motion
-  :initial="{ scale: 0.8, opacity: 0, rotateZ: -10 }"
-  :enter="{ scale: 1, opacity: 1, rotateZ: 0 }"
-  class="border rounded-lg p-4">
-
-## 📊 Estrategias de Trading
-
-- <v-click>Desarrollo de algoritmos de trading</v-click>
-- <v-click>Backtesting y optimización</v-click>
-
-</div>
-
-<div
-  v-motion
-  :initial="{ scale: 0.8, opacity: 0, rotateZ: -10 }"
-  :enter="{ scale: 1, opacity: 1, rotateZ: 0, transition: { delay: 200 } }"
-  class="border rounded-lg p-4">
-
-## 🤖 Robo-Advisors
-
-- <v-click>Construcción de asesores automatizados</v-click>
-- <v-click>Optimización de portafolios</v-click>
-
-</div>
-
-<div
-  v-motion
-  :initial="{ scale: 0.8, opacity: 0, rotateZ: -10 }"
-  :enter="{ scale: 1, opacity: 1, rotateZ: 0, transition: { delay: 400 } }"
-  class="border rounded-lg p-4">
-
-## 📉 Análisis de Riesgo
-
-- <v-click>Modelos predictivos</v-click>
-- <v-click>Scoring y clasificación</v-click>
-
-</div>
-
-</div>
-
----
-layout: default
----
-
-# Estructura del Curso
-
-<div class="grid grid-cols-2 gap-6 mt-8">
-
-<div
-  v-motion
-  :initial="{ rotateY: -90, opacity: 0 }"
-  :enter="{ rotateY: 0, opacity: 1 }"
-  class="border rounded-lg p-6">
-
-## Fundamentos (Clases 1-3)
-
-- <v-click>Introducción al ML en finanzas</v-click>
-- <v-click>Conceptos fundamentales</v-click>
-- <v-click>Herramientas y ecosistema</v-click>
-
-</div>
-
-<div
-  v-motion
-  :initial="{ rotateY: 90, opacity: 0 }"
-  :enter="{ rotateY: 0, opacity: 1, transition: { delay: 300 } }"
-  class="border rounded-lg p-6">
-
-## Casos Prácticos (Clases 4+)
-
-- <v-click>Implementación de estrategias</v-click>
-- <v-click>Desarrollo de modelos</v-click>
-- <v-click>Evaluación y optimización</v-click>
-
-</div>
-
-</div>
-
----
-layout: default
-class: text-left
----
-
-# Resumen
-
-## Puntos Clave
-
-<div class="text-left space-y-3 text-lg">
-
-<div
-  v-motion
-  :initial="{ x: -100, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1 }">
-✅ <v-click>ML y Data Science están transformando la industria financiera</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ x: -100, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
-✅ <v-click>Tres pilares: Infraestructura, Herramientas, Algoritmos</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ x: -100, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 400 } }">
-✅ <v-click>Múltiples tipos de ML aplicables a diferentes problemas</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ x: -100, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 600 } }">
-✅ <v-click>Oportunidades crecientes para expertos; ética y cumplimiento normativo son esenciales</v-click>
-</div>
-
-</div>
-
----
-layout: default
----
-
-# Próximos Pasos
-
-<div class="grid grid-cols-2 gap-6 mt-8">
-
-<div class="border rounded-lg p-6">
-
-## Preparación para la Próxima Clase
-
-<div
-  v-motion
-  :initial="{ y: 30, opacity: 0 }"
-  :enter="{ y: 0, opacity: 1 }">
-1. <v-click>Revisar Python e instalar entorno (Jupyter, librerías)</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ y: 30, opacity: 0 }"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 200 } }">
-2. <v-click>Explorar datasets financieros y leer capítulos 2-3 del libro</v-click>
-</div>
-
-</div>
-
-<div class="border rounded-lg p-6">
-
-## Recursos Adicionales
-
-<div
-  v-motion
-  :initial="{ x: 50, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 200 } }">
-- <v-click>Documentación: Pandas, NumPy, Scikit-learn</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ x: 50, opacity: 0 }"
-  :enter="{ x: 0, opacity: 1, transition: { delay: 400 } }">
-- <v-click>Datasets: Yahoo Finance, Quandl, Alpha Vantage</v-click>
-</div>
-
-</div>
-
-</div>
-
----
-layout: default
-class: text-left
----
-
-# Preguntas y Discusión
-
-## Temas para Reflexionar
-
-<div class="text-left space-y-4 text-lg">
-
-<div
-  v-motion
-  :initial="{ rotate: -5, opacity: 0 }"
-  :enter="{ rotate: 0, opacity: 1 }">
-- <v-click>💭 ¿Qué aplicaciones de ML en finanzas conoces?</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ rotate: -5, opacity: 0 }"
-  :enter="{ rotate: 0, opacity: 1, transition: { delay: 300 } }">
-- <v-click>🤔 ¿Cuáles son los principales desafíos que ves?</v-click>
-</div>
-
-<div
-  v-motion
-  :initial="{ rotate: -5, opacity: 0 }"
-  :enter="{ rotate: 0, opacity: 1, transition: { delay: 600 } }">
-- <v-click>🎯 ¿Qué área de finanzas te interesa más?</v-click>
-</div>
-
-</div>
-
----
-layout: default
-class: text-left
----
-
-# Referencias
-
-<div class="text-left space-y-4">
-
-**Libro Principal:**
-- Tatsat, H., Puri, S., & Lookabaugh, B. (2020). *Machine Learning and Data Science Blueprints for Finance*. O'Reilly Media.
-
-**Recursos Adicionales:**
-- O'Reilly Learning Platform
-- GitHub: Repositorios de finanzas cuantitativas
-- Papers académicos sobre ML en finanzas
-
-</div>
-
----
-layout: default
+layout: cover
+background: linear-gradient(135deg, rgb(42, 67, 176) 0%, rgb(128, 1, 255) 100%)
 class: text-center
 ---
 
-# Fin de la Clase 1
-
-<div class="text-2xl mt-8">
-
-**Próxima clase:** Fundamentos de Machine Learning aplicados a Finanzas
-
+<div class="text-blue-900 font-bold- text-6xl">
+Machine Learning en Finanzas: 
+El Panorama
 </div>
 
-<div class="text-4xl mt-12">
+<div class="pt-12">
+  <span class="text-lg text-blue-900 font-bold- ">Gracias por su atención</span>
+</div>
 
-# ¡Gracias por su atención!
+
+<div class="abs-bl m-6 text-sm text-blue-900 ">
+By: OWOC<br>
 
 </div>
