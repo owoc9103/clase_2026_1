@@ -1,0 +1,29 @@
+{
+  "logs": {
+      "level": "debug",
+      "transports": {
+          "console": {
+              "enabled": false
+          },
+          "file": {
+              "enabled": false,
+              "name": "lseg-data-lib.log"
+          }
+      }
+  },
+  "sessions": {
+      "default": "desktop.workspace",
+      "platform": {
+          "ldp": {
+              "app-key": "5ff5a42f8733439d9a008f9d4c9184580f6f762d",
+              "username": "docentecali@javerianacali.edu.co",
+              "password": "Datafinance*"
+          }
+      },
+      "desktop": {
+          "workspace": {
+              "app-key": "5ff5a42f8733439d9a008f9d4c9184580f6f762d"
+          }
+      }
+  }
+}
