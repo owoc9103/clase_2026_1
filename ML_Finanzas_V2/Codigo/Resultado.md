@@ -1,0 +1,1 @@
+# Esta app se encarga de generar estadísticas descriptivas.

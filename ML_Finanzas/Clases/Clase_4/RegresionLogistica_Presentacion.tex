@@ -1,0 +1,410 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\newif\ifbibliography
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% remove section numbering
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Regresión Logística},
+  pdfauthor={ML Finanzas - Clase 4},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Regresión Logística}
+\subtitle{Todo lo que necesitas saber}
+\author{ML Finanzas - Clase 4}
+\date{26/02/2026}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}
+\begin{block}{Tabla de contenidos}
+\phantomsection\label{tabla-de-contenidos}
+\begin{enumerate}
+\tightlist
+\item
+  Matemáticas detrás de la regresión logística
+\item
+  Implementación desde cero
+\item
+  Regresión logística regularizada
+\item
+  Clasificación multiclase: Uno-contra-todos
+\item
+  Comparación con sklearn y SVM
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{¿Qué es la Regresión Logística?}
+\phantomsection\label{quuxe9-es-la-regresiuxf3n-loguxedstica}
+\begin{itemize}
+\tightlist
+\item
+  Algoritmo de \textbf{Aprendizaje Supervisado}
+\item
+  Tiene la etiqueta (variable dependiente) para cada ejemplo de
+  entrenamiento
+\item
+  \textbf{Objetivo:} Encontrar la mejor frontera de decisión que separa
+  los datos en diferentes clases
+\item
+  Responde preguntas como: \emph{``¿Es un gato o un perro?''}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Hipótesis y Función Sigmoide}
+\phantomsection\label{hipuxf3tesis-y-funciuxf3n-sigmoide}
+La hipótesis de la regresión logística se define como:
+
+\[h_\theta(x) = g(\theta^Tx)\]
+
+donde \(g\) es la función sigmoide:
+
+\[g(z) = \frac{1}{1+e^{-z}}\]
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{¿Por qué es un modelo lineal?}
+\phantomsection\label{por-quuxe9-es-un-modelo-lineal}
+\(g\) modela la relación entre \(p(x) = Pr(y=1|x)\) y \(x\).
+
+Se puede demostrar que:
+
+\[\log\left(\frac{p(x)}{1 - p(x)}\right) = \theta^Tx\]
+
+La cantidad \(\frac{p(x)}{1 - p(x)}\) se llama \textbf{odds}. El logit
+(log-odds) es \textbf{lineal} en \(x\).
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Función de Costo}
+\phantomsection\label{funciuxf3n-de-costo}
+No podemos usar mínimos cuadrados (no es convexa). Usamos \textbf{máxima
+verosimilitud}:
+
+\[J(\theta) = \frac{1}{m}\sum_{i=1}^m\left(-y_i \log(h_i(\theta)) - (1-y_i)\log(1-h_i(\theta))\right)\]
+
+\begin{itemize}
+\tightlist
+\item
+  Buscamos \(\theta\) que minimice \(J(\theta)\)
+\item
+  Función de costo convexa para regresión logística
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Descenso de Gradiente}
+\phantomsection\label{descenso-de-gradiente}
+Actualización en cada iteración:
+
+\[\theta_j := \theta_j - \frac{\alpha}{m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)}\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(\alpha\): tasa de aprendizaje
+\item
+  Actualizar simultáneamente todos los \(\theta_j\)
+\item
+  Con cada paso, los parámetros se acercan al óptimo
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Ejemplo: Admisión Universitaria}
+\phantomsection\label{ejemplo-admisiuxf3n-universitaria}
+\textbf{Problema:} Determinar la probabilidad de admisión de aspirantes
+basándose en: - Calificación Examen 1 - Calificación Examen 2
+
+\textbf{Datos:} Histórico de aspirantes con decisión de admisión (sí/no)
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{block}{Funciones Clave - Implementación}
+\phantomsection\label{funciones-clave---implementaciuxf3n}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ sigmoid(z):}
+    \ControlFlowTok{return} \DecValTok{1}\OperatorTok{/}\NormalTok{(}\DecValTok{1}\OperatorTok{+}\NormalTok{np.exp(}\OperatorTok{{-}}\NormalTok{z))}
+
+\KeywordTok{def}\NormalTok{ costFunction(theta, X, y):}
+\NormalTok{    h }\OperatorTok{=}\NormalTok{ sigmoid(X }\OperatorTok{@}\NormalTok{ theta)}
+    \ControlFlowTok{return}\NormalTok{ (}\OperatorTok{{-}}\NormalTok{y.T }\OperatorTok{@}\NormalTok{ np.log(h) }\OperatorTok{{-}}\NormalTok{ (}\DecValTok{1}\OperatorTok{{-}}\NormalTok{y).T }\OperatorTok{@}\NormalTok{ np.log(}\DecValTok{1}\OperatorTok{{-}}\NormalTok{h)) }\OperatorTok{/}\NormalTok{ m}
+\end{Highlighting}
+\end{Shaded}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{block}{Algoritmo BFGS}
+\phantomsection\label{algoritmo-bfgs}
+\begin{itemize}
+\tightlist
+\item
+  Alternativa al descenso de gradiente
+\item
+  Algoritmo \textbf{Broyden--Fletcher--Goldfarb--Shanno}
+\item
+  Evita quedar atrapado en óptimos locales
+\item
+  Usado en \texttt{scipy.optimize.fmin\_bfgs}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Regresión Logística Regularizada}
+\phantomsection\label{regresiuxf3n-loguxedstica-regularizada}
+\textbf{Problema:} Datos que no se separan con una línea recta
+
+\textbf{Solución:} 1. \textbf{Mapeo de características} - términos
+polinomiales hasta potencia 6 2. \textbf{Regularización} - penalizar
+parámetros grandes con \(\lambda\)
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Función de Costo Regularizada}
+\phantomsection\label{funciuxf3n-de-costo-regularizada}
+\[J(\theta) = \frac{1}{m}\sum_{i=1}^m\left(-y_i \log(h_i) - (1-y_i)\log(1-h_i)\right) + \frac{\lambda}{2m}\sum_{j=1}^n\theta_j^2\]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{No regularizar} \(\theta_0\) (término de bias)
+\item
+  \(\lambda\) controla el balance sesgo-varianza
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Clasificación Multiclase: Uno-contra-todos}
+\phantomsection\label{clasificaciuxf3n-multiclase-uno-contra-todos}
+Para \(y \in \{0, 1, ..., n\}\):
+
+\begin{itemize}
+\tightlist
+\item
+  Entrenar \(n+1\) clasificadores binarios
+\item
+  Cada uno predice \(P(y = i | x; \theta)\)
+\item
+  \textbf{Predicción:} \(\arg\max_i h_\theta^{(i)}(x)\)
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Comparación: Implementación vs sklearn}
+\phantomsection\label{comparaciuxf3n-implementaciuxf3n-vs-sklearn}
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Método & Precisión típica \\
+\midrule\noalign{}
+\endhead
+Nuestra implementación (One-vs-all) & \textasciitilde82\% \\
+sklearn LogisticRegression & \textasciitilde92\% \\
+\bottomrule\noalign{}
+\end{longtable}
+
+sklearn usa optimización más eficiente y configuración por defecto
+mejor.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Comparación: Regresión Logística vs SVM}
+\phantomsection\label{comparaciuxf3n-regresiuxf3n-loguxedstica-vs-svm}
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Modelo & Precisión (dígitos MNIST) \\
+\midrule\noalign{}
+\endhead
+Regresión Logística (sklearn) & \textasciitilde92\% \\
+SVM (kernel RBF) & \textasciitilde89\% \\
+\bottomrule\noalign{}
+\end{longtable}
+
+La elección depende del problema: RL es más interpretable, SVM puede
+capturar fronteras no lineales complejas.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Resumen}
+\phantomsection\label{resumen}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Regresión logística:} clasificación binaria/multiclase
+\item
+  \textbf{Función sigmoide} para probabilidades entre 0 y 1
+\item
+  \textbf{Descenso de gradiente} o \textbf{BFGS} para optimización
+\item
+  \textbf{Regularización} para evitar sobreajuste
+\item
+  \textbf{Uno-contra-todos} para múltiples clases
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Referencias}
+\phantomsection\label{referencias}
+\begin{itemize}
+\tightlist
+\item
+  Notebook original:
+  \href{https://github.com/pptr3/personal-blog/blob/master/article/logistic-regression/LogisticRegressionArticle.ipynb}{LogisticRegressionArticle}
+\item
+  Curso Machine Learning - Andrew Ng (Coursera)
+\item
+  Documentación:
+  \href{https://scikit-learn.org/stable/modules/linear_model.html\#logistic-regression}{scikit-learn
+  Logistic Regression}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{¡Gracias!}
+\phantomsection\label{gracias}
+\textbf{Preguntas}
+\end{frame}
+
+\end{document}

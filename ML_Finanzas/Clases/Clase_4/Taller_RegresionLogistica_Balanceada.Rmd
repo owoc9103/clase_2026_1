@@ -1,0 +1,436 @@
+---
+title: "Taller: Regresión Logística con Clases Balanceadas"
+author: "ML Finanzas - Clase 4"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    highlight: tango
+    latex_engine: pdflatex
+header-includes:
+  - \usepackage[utf8]{inputenc}
+  - \usepackage[T1]{fontenc}
+  - \usepackage{float}
+  - \floatplacement{figure}{H}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.align = "center")
+```
+
+# Introducción
+
+**Paquetes requeridos:** `tidyverse`, `caret`, `pROC`, `smotefamily`, `knitr`, `kableExtra`. Instalar con:
+`install.packages(c("tidyverse", "caret", "pROC", "smotefamily", "knitr", "kableExtra"))`
+
+Este taller guía el análisis de clasificación binaria con **regresión logística** cuando las clases están **desbalanceadas**. Se utiliza el dataset **Bank Marketing** (UCI) de campañas de marketing telefónico de una institución bancaria portuguesa.
+
+**Objetivo:** Predecir si el cliente suscribirá (1) o no (0) un depósito a plazo (variable `y`).
+
+**Contenido del taller:**
+1. Carga y preprocesamiento de datos
+2. Análisis descriptivo univariado y bivariado
+3. Balanceo de clases con SMOTE
+4. Selección de variables (RFE)
+5. Modelo de regresión logística
+6. Evaluación: matriz de confusión y curva ROC
+
+---
+
+# 1. Carga de librerías y datos
+
+```{r librerias}
+library(tidyverse)
+library(caret)
+library(pROC)
+library(smotefamily)  # SMOTE
+library(knitr)
+library(kableExtra)
+```
+
+```{r carga-datos}
+# Carga del dataset (separador ;). Asegúrese de que el archivo esté en el directorio de trabajo.
+data <- read.csv("bank-additional-full.csv", sep = ";", stringsAsFactors = FALSE)
+
+# Conversión de y: yes -> 1, no -> 0
+data$y <- ifelse(data$y == "yes", 1, 0)
+
+# Renombrar columnas con puntos (formato UCI)
+data <- data %>% rename(
+  emp_var_rate = emp.var.rate,
+  cons_price_idx = cons.price.idx,
+  cons_conf_idx = cons.conf.idx,
+  nr_employed = nr.employed
+)
+
+# Eliminar filas con NA
+data <- na.omit(data)
+
+cat("Dimensiones:", dim(data)[1], "filas x", dim(data)[2], "columnas\n")
+```
+
+```{r head}
+head(data, 5) %>% kable(caption = "Primeras filas del dataset")
+```
+
+---
+
+# 2. Preprocesamiento: agrupación de educación
+
+La columna `education` tiene muchas categorías. Se agrupan `basic.4y`, `basic.6y` y `basic.9y` en "Basic".
+
+```{r educacion}
+# Categorías originales
+cat("Antes:", paste(unique(data$education), collapse = ", "), "\n")
+
+# Agrupación
+data$education <- ifelse(data$education %in% c("basic.4y", "basic.6y", "basic.9y"), 
+                         "Basic", data$education)
+
+cat("Después:", paste(unique(data$education), collapse = ", "))
+```
+
+---
+
+# 3. Análisis descriptivo univariado
+
+Se examina cada variable por separado: distribución, tendencia central y dispersión.
+
+## 3.1 Variables numéricas
+
+```{r stats-num}
+vars_num <- c("age", "duration", "campaign", "pdays", "previous", 
+              "emp_var_rate", "cons_price_idx", "cons_conf_idx", "euribor3m", "nr_employed")
+
+data[, vars_num] %>% summary() %>% kable(caption = "Estadísticos descriptivos (variables numéricas)")
+```
+
+```{r hist-num, fig.height=6, fig.width=10}
+# Histogramas de variables numéricas clave
+data %>% 
+  select(age, duration, campaign, pdays, previous, euribor3m) %>%
+  pivot_longer(everything(), names_to = "variable", values_to = "valor") %>%
+  ggplot(aes(x = valor)) +
+  geom_histogram(bins = 30, fill = "steelblue", color = "black", alpha = 0.7) +
+  facet_wrap(~variable, scales = "free") +
+  labs(title = "Análisis univariado: distribuciones de variables numéricas",
+       x = "Valor", y = "Frecuencia") +
+  theme_minimal()
+```
+
+```{r boxplot-num, fig.height=6, fig.width=10}
+# Boxplots para detectar outliers
+data %>% 
+  select(age, duration, campaign, pdays, previous, euribor3m) %>%
+  pivot_longer(everything(), names_to = "variable", values_to = "valor") %>%
+  ggplot(aes(x = variable, y = valor)) +
+  geom_boxplot(fill = "steelblue", alpha = 0.7) +
+  facet_wrap(~variable, scales = "free", ncol = 3) +
+  labs(title = "Boxplots: valores atípicos y dispersión", x = "", y = "Valor") +
+  theme_minimal() +
+  theme(axis.text.x = element_blank())
+```
+
+## 3.2 Variables categóricas
+
+```{r freq-cat}
+vars_cat <- c("job", "marital", "education", "default", "housing", "loan", 
+              "contact", "month", "day_of_week", "poutcome")
+
+# Frecuencias para variables principales
+for (v in c("job", "marital", "education", "poutcome")) {
+  cat("\n---", v, "---\n")
+  print(table(data[[v]]))
+  print(round(prop.table(table(data[[v]])) * 100, 2))
+}
+```
+
+```{r bar-cat, fig.height=8, fig.width=10}
+# Gráficos de barras para variables categóricas principales
+data %>% 
+  select(job, marital, education, poutcome) %>%
+  pivot_longer(everything(), names_to = "variable", values_to = "categoria") %>%
+  count(variable, categoria) %>%
+  ggplot(aes(x = reorder(categoria, n), y = n)) +
+  geom_col(fill = "steelblue") +
+  facet_wrap(~variable, scales = "free") +
+  coord_flip() +
+  labs(title = "Distribución de variables categóricas", x = "", y = "Frecuencia") +
+  theme_minimal()
+```
+
+---
+
+# 4. Análisis descriptivo bivariado con la variable respuesta (y)
+
+## 4.1 Variables numéricas vs y
+
+```{r medias-grupo}
+# Medias por grupo (y=0 vs y=1)
+medias <- data %>% 
+  group_by(y) %>% 
+  summarise(across(all_of(vars_num), mean, na.rm = TRUE)) %>%
+  pivot_longer(-y, names_to = "variable", values_to = "media") %>%
+  pivot_wider(names_from = y, values_from = media, names_prefix = "y_") %>%
+  mutate(Diferencia = y_1 - y_0)
+
+kable(medias, digits = 4, caption = "Medias por grupo (No suscripción vs Suscripción)")
+```
+
+```{r boxplot-biv, fig.height=6, fig.width=10}
+# Boxplots bivariados
+data %>% 
+  mutate(y_lab = ifelse(y == 1, "Sí (1)", "No (0)")) %>%
+  select(y_lab, age, duration, campaign, pdays, previous, euribor3m) %>%
+  pivot_longer(-y_lab, names_to = "variable", values_to = "valor") %>%
+  ggplot(aes(x = y_lab, y = valor, fill = y_lab)) +
+  geom_boxplot() +
+  facet_wrap(~variable, scales = "free") +
+  labs(title = "Variables numéricas vs variable respuesta (y)", 
+       x = "Suscripción", y = "Valor") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+```{r t-test}
+# Prueba t de Student
+cat("=== Prueba t: diferencia de medias entre y=0 e y=1 ===\n\n")
+for (v in vars_num) {
+  t_res <- t.test(data[[v]] ~ data$y)
+  sig <- ifelse(t_res$p.value < 0.001, "***", 
+                ifelse(t_res$p.value < 0.01, "**", 
+                       ifelse(t_res$p.value < 0.05, "*", "")))
+  cat(sprintf("%s: t = %.4f, p-valor = %.4e %s\n", v, t_res$statistic, t_res$p.value, sig))
+}
+```
+
+## 4.2 Variables categóricas vs y
+
+```{r tablas-cruzadas}
+# Tablas cruzadas y % de suscripción
+for (v in c("job", "marital", "education", "poutcome")) {
+  cat("\n---", v, "---\n")
+  tbl <- table(data[[v]], data$y)
+  print(addmargins(tbl))
+  cat("\n% por fila (col 1 = % suscripción):\n")
+  print(round(prop.table(tbl, 1) * 100, 2))
+}
+```
+
+```{r chi2}
+# Chi-cuadrado de independencia
+cat("=== Chi-cuadrado: asociación entre variables categóricas y y ===\n\n")
+for (v in vars_cat) {
+  tbl <- table(data[[v]], data$y)
+  chi <- chisq.test(tbl)
+  sig <- ifelse(chi$p.value < 0.001, "***", 
+               ifelse(chi$p.value < 0.01, "**", 
+                      ifelse(chi$p.value < 0.05, "*", "")))
+  cat(sprintf("%s: chi2 = %.2f, p-valor = %.4e %s\n", v, chi$statistic, chi$p.value, sig))
+}
+```
+
+```{r bar-apiladas, fig.height=8, fig.width=10}
+# Barras apiladas: categóricas vs y
+data %>% 
+  mutate(y_lab = ifelse(y == 1, "Sí (1)", "No (0)")) %>%
+  select(job, marital, education, poutcome, y_lab) %>%
+  pivot_longer(-y_lab, names_to = "variable", values_to = "categoria") %>%
+  count(variable, categoria, y_lab) %>%
+  ggplot(aes(x = categoria, y = n, fill = y_lab)) +
+  geom_col(position = "stack") +
+  facet_wrap(~variable, scales = "free_x") +
+  labs(title = "Variables categóricas vs variable respuesta", 
+       x = "", y = "Frecuencia", fill = "Suscripción") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+---
+
+# 5. Desbalance de clases
+
+Un ratio 89:11 implica que un modelo "naive" que prediga siempre "no" alcanzaría ~89% de precisión sin aprender nada.
+
+```{r desbalance}
+cat("Conteo por clase:\n")
+print(table(data$y))
+cat("\nPorcentajes:\n")
+pct_no <- mean(data$y == 0) * 100
+pct_si <- mean(data$y == 1) * 100
+cat(sprintf("No suscripción: %.2f%%\n", pct_no))
+cat(sprintf("Suscripción: %.2f%%\n", pct_si))
+```
+
+```{r plot-desbalance, fig.height=4}
+ggplot(data, aes(x = factor(y, labels = c("No (0)", "Sí (1)")))) +
+  geom_bar(fill = c("steelblue", "coral")) +
+  labs(title = "Distribución de la variable objetivo (y)", x = "Suscripción", y = "Frecuencia") +
+  theme_minimal()
+```
+
+---
+
+# 6. Creación de variables dummy y preparación
+
+```{r dummies}
+# Preparar variables categóricas como factores
+df_model <- data[, c(vars_num, vars_cat, "y")]
+for (v in vars_cat) df_model[[v]] <- as.factor(df_model[[v]])
+
+# One-hot encoding con model.matrix
+X_raw <- as.data.frame(model.matrix(~ . - 1, data = df_model[, c(vars_num, vars_cat)]))
+y_raw <- df_model$y
+
+# Eliminar columnas con varianza cero (opcional)
+nzv <- nearZeroVar(X_raw)
+if (length(nzv) > 0) X_raw <- X_raw[, -nzv]
+
+cat("Dimensiones X:", nrow(X_raw), "x", ncol(X_raw), "\n")
+```
+
+---
+
+# 7. Balanceo con SMOTE
+
+SMOTE genera ejemplos sintéticos de la clase minoritaria interpolando entre vecinos cercanos.
+
+```{r smote}
+set.seed(0)
+train_idx <- createDataPartition(y_raw, p = 0.7, list = FALSE)
+X_train_raw <- X_raw[train_idx, ]
+y_train_raw <- y_raw[train_idx]
+X_test <- X_raw[-train_idx, ]
+y_test <- y_raw[-train_idx]
+
+# SMOTE (smotefamily): genera ejemplos sintéticos de la clase minoritaria
+smote_data <- SMOTE(X = as.data.frame(X_train_raw), target = y_train_raw, K = 5, dup_size = 0)
+X_train <- as.data.frame(smote_data$data[, -ncol(smote_data$data)])
+names(X_train) <- names(X_train_raw)
+y_train <- smote_data$data[, ncol(smote_data$data)]
+
+cat("Tamaño dataset balanceado:", nrow(X_train), "\n")
+cat("No suscripciones:", sum(y_train == 0), "\n")
+cat("Suscripciones:", sum(y_train == 1), "\n")
+cat("Proporción clase 0:", round(mean(y_train == 0), 2), "\n")
+cat("Proporción clase 1:", round(mean(y_train == 1), 2), "\n")
+```
+
+---
+
+# 8. Selección de variables (RFE)
+
+RFE selecciona las features más relevantes eliminando iterativamente las menos importantes.
+
+```{r rfe}
+# RFE con regresión logística
+n_feat <- min(20, ncol(X_train))
+ctrl <- rfeControl(functions = lrFuncs, method = "cv", number = 5)
+set.seed(0)
+rfe_result <- rfe(X_train, factor(y_train), sizes = c(10, 15, n_feat), rfeControl = ctrl)
+
+cat("Features seleccionadas (top 20):\n")
+print(predictors(rfe_result))
+```
+
+```{r rfe-plot, fig.height=4}
+plot(rfe_result, type = c("g", "o"), main = "RFE: precisión vs número de variables")
+```
+
+---
+
+# 9. Modelo de regresión logística
+
+```{r modelo}
+# Usar subconjunto de variables (basado en RFE o significancia)
+cols_sel <- predictors(rfe_result)[1:min(20, length(predictors(rfe_result)))]
+cols_sel <- cols_sel[cols_sel %in% names(X_train)]
+
+X_train_final <- X_train[, cols_sel]
+X_test_final <- X_test[, cols_sel]
+
+# Ajuste del modelo
+modelo <- glm(y_train ~ ., data = cbind(y_train = y_train, X_train_final), 
+              family = binomial)
+
+summary(modelo)
+```
+
+---
+
+# 10. Evaluación del modelo
+
+## 10.1 Precisión y clasificación
+
+```{r prediccion}
+y_pred_prob <- predict(modelo, newdata = X_test_final, type = "response")
+y_pred <- ifelse(y_pred_prob > 0.5, 1, 0)
+
+cat("Precisión en conjunto de prueba:", round(mean(y_pred == y_test), 2), "\n")
+```
+
+## 10.2 Matriz de confusión
+
+```{r confusion}
+cm <- table(Real = y_test, Predicho = y_pred)
+cat("Matriz de confusión [TN, FP / FN, TP]:\n")
+print(cm)
+```
+
+```{r classification-report}
+# Métricas por clase
+library(caret)
+cat("\nReporte de clasificación:\n")
+print(confusionMatrix(factor(y_pred), factor(y_test), positive = "1"))
+```
+
+## 10.3 Curva ROC
+
+```{r roc}
+roc_obj <- roc(y_test, y_pred_prob)
+auc_val <- auc(roc_obj)[1]
+
+cat("AUC:", round(auc_val, 2), "\n")
+cat("(AUC=0.5 aleatorio; >0.7 aceptable; >0.8 bueno)\n")
+```
+
+```{r roc-plot, fig.height=5}
+plot(roc_obj, main = "Curva ROC - Regresión Logística", 
+     col = "steelblue", lwd = 2)
+abline(a = 0, b = 1, lty = 2, col = "gray")
+legend("bottomright", legend = paste0("AUC = ", round(auc_val, 2)), 
+       col = "steelblue", lwd = 2, bty = "n")
+```
+
+---
+
+# 11. Ejercicios del taller
+
+Responda las siguientes preguntas basándose en los resultados obtenidos:
+
+1. **Desbalance:** ¿Qué porcentaje de la muestra corresponde a la clase minoritaria? ¿Por qué la precisión global puede ser engañosa?
+
+2. **Análisis bivariado:** ¿Qué variables numéricas muestran diferencias significativas (p < 0.05) entre suscritos y no suscritos? Interprete.
+
+3. **Categóricas:** ¿Qué variable categórica tiene mayor asociación con `y` según chi-cuadrado? ¿Qué categorías tienen mayor tasa de suscripción?
+
+4. **SMOTE:** ¿Cómo cambió la proporción de clases después de aplicar SMOTE? ¿Por qué es preferible SMOTE al simple oversampling por repetición?
+
+5. **Modelo:** Interprete el coeficiente de una variable significativa en el modelo logístico (odds ratio).
+
+6. **Evaluación:** Si el objetivo es maximizar la detección de clientes que sí suscribirán, ¿qué métrica priorizaría: precisión, recall o F1? Justifique.
+
+---
+
+# 12. Resumen
+
+| Aspecto | Descripción |
+|---------|-------------|
+| **Dataset** | Bank Marketing (UCI), campañas de depósitos a plazo |
+| **Problema** | Clasificación binaria con clases desbalanceadas (~89:11) |
+| **Solución** | SMOTE para balanceo + RFE para selección de features |
+| **Modelo** | Regresión logística |
+| **Variables clave** | euribor3m, poutcome_success, mes, tipo de empleo |
+| **Evaluación** | Matriz de confusión, AUC-ROC, precision/recall |

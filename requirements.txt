@@ -1,0 +1,64 @@
+# ============================================
+# Proyecto 2026-I - Dependencias unificadas
+# ============================================
+# Instalar: pip install -r requirements.txt
+# Con venv: python -m venv .venv && .venv\Scripts\Activate.ps1
+# Luego: pip install -r requirements.txt
+
+# ============================================
+# Core - Manipulación y análisis de datos
+# ============================================
+numpy>=1.26.0
+pandas>=2.2.0
+
+# ============================================
+# Machine Learning (ML_Finanzas)
+# ============================================
+scikit-learn>=1.4.0
+
+# ============================================
+# Visualización
+# ============================================
+matplotlib>=3.8.0
+seaborn>=0.13.0
+plotly>=5.18.0
+
+# ============================================
+# Jupyter Notebooks
+# ============================================
+jupyter>=1.0.0
+jupyterlab>=4.0.0
+ipykernel>=6.29.0
+notebook>=7.0.0
+ipywidgets>=8.1.0
+IPython>=8.0.0
+
+# ============================================
+# Análisis estadístico
+# ============================================
+scipy>=1.12.0
+statsmodels>=0.14.1
+
+# ============================================
+# Datos financieros (ML_Finanzas)
+# ============================================
+yfinance>=0.2.40
+pandas-datareader>=0.10.0
+
+# ============================================
+# Utilidades
+# ============================================
+openpyxl>=3.1.0  # Lectura de archivos .xlsx
+python-dateutil>=2.9.0
+pytz>=2024.1
+requests>=2.31.0
+Pillow>=10.2.0
+tqdm>=4.66.0
+
+# ============================================
+# Opcionales - Descomentar si los necesitas
+# ============================================
+# lseg  # Refinitiv/LSEG data (FundProg - tallerpandas)
+# alpha-vantage>=2.3.1
+# tensorflow>=2.15.0
+# torch>=2.2.0

@@ -1,0 +1,184 @@
+---
+title: "Regresión Logística"
+author: "ML Finanzas - Clase 4"
+date: "`r format(Sys.Date(), '%d/%m/%Y')`"
+output:
+  slidy_presentation: default
+  ioslides_presentation:
+    widescreen: true
+    smaller: true
+    transition: default
+  beamer_presentation: default
+subtitle: Todo lo que necesitas saber
+---
+
+## Tabla de contenidos
+
+1. Matemáticas detrás de la regresión logística
+2. Implementación desde cero
+3. Regresión logística regularizada
+4. Clasificación multiclase: Uno-contra-todos
+5. Comparación con sklearn y SVM
+
+---
+
+## ¿Qué es la Regresión Logística?
+
+- Algoritmo de **Aprendizaje Supervisado**
+- Tiene la etiqueta (variable dependiente) para cada ejemplo de entrenamiento
+- **Objetivo:** Encontrar la mejor frontera de decisión que separa los datos en diferentes clases
+- Responde preguntas como: *"¿Es un gato o un perro?"*
+
+---
+
+## Hipótesis y Función Sigmoide
+
+La hipótesis de la regresión logística se define como:
+
+$$h_\theta(x) = g(\theta^Tx)$$
+
+donde $g$ es la función sigmoide:
+
+$$g(z) = \frac{1}{1+e^{-z}}$$
+
+---
+
+## ¿Por qué es un modelo lineal?
+
+$g$ modela la relación entre $p(x) = Pr(y=1|x)$ y $x$.
+
+Se puede demostrar que:
+
+$$\log\left(\frac{p(x)}{1 - p(x)}\right) = \theta^Tx$$
+
+La cantidad $\frac{p(x)}{1 - p(x)}$ se llama **odds**. El logit (log-odds) es **lineal** en $x$.
+
+---
+
+## Función de Costo
+
+No podemos usar mínimos cuadrados (no es convexa). Usamos **máxima verosimilitud**:
+
+$$J(\theta) = \frac{1}{m}\sum_{i=1}^m\left(-y_i \log(h_i(\theta)) - (1-y_i)\log(1-h_i(\theta))\right)$$
+
+- Buscamos $\theta$ que minimice $J(\theta)$
+- Función de costo convexa para regresión logística
+
+---
+
+## Descenso de Gradiente
+
+Actualización en cada iteración:
+
+$$\theta_j := \theta_j - \frac{\alpha}{m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)}$$
+
+- $\alpha$: tasa de aprendizaje
+- Actualizar simultáneamente todos los $\theta_j$
+- Con cada paso, los parámetros se acercan al óptimo
+
+---
+
+## Ejemplo: Admisión Universitaria
+
+**Problema:** Determinar la probabilidad de admisión de aspirantes basándose en:
+- Calificación Examen 1
+- Calificación Examen 2
+
+**Datos:** Histórico de aspirantes con decisión de admisión (sí/no)
+
+---
+
+## Funciones Clave - Implementación
+
+```python
+def sigmoid(z):
+    return 1/(1+np.exp(-z))
+
+def costFunction(theta, X, y):
+    h = sigmoid(X @ theta)
+    return (-y.T @ np.log(h) - (1-y).T @ np.log(1-h)) / m
+```
+
+---
+
+## Algoritmo BFGS
+
+- Alternativa al descenso de gradiente
+- Algoritmo **Broyden–Fletcher–Goldfarb–Shanno**
+- Evita quedar atrapado en óptimos locales
+- Usado en `scipy.optimize.fmin_bfgs`
+
+---
+
+## Regresión Logística Regularizada
+
+**Problema:** Datos que no se separan con una línea recta
+
+**Solución:** 
+1. **Mapeo de características** - términos polinomiales hasta potencia 6
+2. **Regularización** - penalizar parámetros grandes con $\lambda$
+
+---
+
+## Función de Costo Regularizada
+
+$$J(\theta) = \frac{1}{m}\sum_{i=1}^m\left(-y_i \log(h_i) - (1-y_i)\log(1-h_i)\right) + \frac{\lambda}{2m}\sum_{j=1}^n\theta_j^2$$
+
+- **No regularizar** $\theta_0$ (término de bias)
+- $\lambda$ controla el balance sesgo-varianza
+
+---
+
+## Clasificación Multiclase: Uno-contra-todos
+
+Para $y \in \{0, 1, ..., n\}$:
+
+- Entrenar $n+1$ clasificadores binarios
+- Cada uno predice $P(y = i | x; \theta)$
+- **Predicción:** $\arg\max_i h_\theta^{(i)}(x)$
+
+---
+
+## Comparación: Implementación vs sklearn
+
+| Método | Precisión típica |
+|--------|------------------|
+| Nuestra implementación (One-vs-all) | ~82% |
+| sklearn LogisticRegression | ~92% |
+
+sklearn usa optimización más eficiente y configuración por defecto mejor.
+
+---
+
+## Comparación: Regresión Logística vs SVM
+
+| Modelo | Precisión (dígitos MNIST) |
+|--------|---------------------------|
+| Regresión Logística (sklearn) | ~92% |
+| SVM (kernel RBF) | ~89% |
+
+La elección depende del problema: RL es más interpretable, SVM puede capturar fronteras no lineales complejas.
+
+---
+
+## Resumen
+
+- **Regresión logística:** clasificación binaria/multiclase
+- **Función sigmoide** para probabilidades entre 0 y 1
+- **Descenso de gradiente** o **BFGS** para optimización
+- **Regularización** para evitar sobreajuste
+- **Uno-contra-todos** para múltiples clases
+
+---
+
+## Referencias
+
+- Notebook original: [LogisticRegressionArticle](https://github.com/pptr3/personal-blog/blob/master/article/logistic-regression/LogisticRegressionArticle.ipynb)
+- Curso Machine Learning - Andrew Ng (Coursera)
+- Documentación: [scikit-learn Logistic Regression](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)
+
+---
+
+# ¡Gracias!
+
+**Preguntas**

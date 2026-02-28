@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+    <entry key="node_file" type="xstring" value="settings.xml"/>
+    <config key="flow_stack"/>
+    <config key="internal_node_subsettings">
+        <entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+    </config>
+    <config key="model">
+        <config key="grouByColumns_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_filterString"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <config key="grouByColumns">
+            <config key="InclList">
+                <entry key="array-size" type="xint" value="1"/>
+                <entry key="0" type="xstring" value="hhsize"/>
+            </config>
+            <config key="ExclList">
+                <entry key="array-size" type="xint" value="418"/>
+                <entry key="0" type="xstring" value="country"/>
+                <entry key="1" type="xstring" value="country_name"/>
+                <entry key="2" type="xstring" value="gender"/>
+                <entry key="3" type="xstring" value="age"/>
+                <entry key="4" type="xstring" value="age7c"/>
+                <entry key="5" type="xstring" value="age9c"/>
+                <entry key="6" type="xstring" value="knowentR"/>
+                <entry key="7" type="xstring" value="opportL"/>
+                <entry key="8" type="xstring" value="suskillL"/>
+                <entry key="9" type="xstring" value="fearfailL"/>
+                <entry key="10" type="xstring" value="easystartL"/>
+                <entry key="11" type="xstring" value="oppism"/>
+                <entry key="12" type="xstring" value="proact"/>
+                <entry key="13" type="xstring" value="creativ"/>
+                <entry key="14" type="xstring" value="vision"/>
+                <entry key="15" type="xstring" value="equalincL"/>
+                <entry key="16" type="xstring" value="nbgoodcL"/>
+                <entry key="17" type="xstring" value="nbstatusL"/>
+                <entry key="18" type="xstring" value="nbmediaL"/>
+                <entry key="19" type="xstring" value="nbsocentL"/>
+                <entry key="20" type="xstring" value="bstart"/>
+                <entry key="21" type="xstring" value="bjobst"/>
+                <entry key="22" type="xstring" value="suacts"/>
+                <entry key="23" type="xstring" value="suown"/>
+                <entry key="24" type="xstring" value="suowners"/>
+                <entry key="25" type="xstring" value="suwage"/>
+                <entry key="26" type="xstring" value="suwageyr"/>
+                <entry key="27" type="xstring" value="supay2"/>
+                <entry key="28" type="xstring" value="subustype"/>
+                <entry key="29" type="xstring" value="sucstloc"/>
+                <entry key="30" type="xstring" value="sucstnat"/>
+                <entry key="31" type="xstring" value="sucstexp"/>
+                <entry key="32" type="xstring" value="suexport"/>
+                <entry key="33" type="xstring" value="sunewprod"/>
+                <entry key="34" type="xstring" value="sunewproc"/>
+                <entry key="35" type="xstring" value="sunowjob"/>
+                <entry key="36" type="xstring" value="suyr5job"/>
+                <entry key="37" type="xstring" value="sucrstart"/>
+                <entry key="38" type="xstring" value="sucrgrow"/>
+                <entry key="39" type="xstring" value="sumotiv1"/>
+                <entry key="40" type="xstring" value="sumotiv2"/>
+                <entry key="41" type="xstring" value="sumotiv3"/>
+                <entry key="42" type="xstring" value="sumotiv4"/>
+                <entry key="43" type="xstring" value="sucpnewopp"/>
+                <entry key="44" type="xstring" value="sucpgovres"/>
+                <entry key="45" type="xstring" value="sucptech1"/>
+                <entry key="46" type="xstring" value="sucptech2"/>
+                <entry key="47" type="xstring" value="susdg_soc"/>
+                <entry key="48" type="xstring" value="susdg_env"/>
+                <entry key="49" type="xstring" value="susdg_pri"/>
+                <entry key="50" type="xstring" value="susdg_steps1"/>
+                <entry key="51" type="xstring" value="susdg_steps2"/>
+                <entry key="52" type="xstring" value="susdg_aware1"/>
+                <entry key="53" type="xstring" value="susdg_aware2"/>
+                <entry key="54" type="xstring" value="ownmge"/>
+                <entry key="55" type="xstring" value="omjobst"/>
+                <entry key="56" type="xstring" value="su_om"/>
+                <entry key="57" type="xstring" value="omown"/>
+                <entry key="58" type="xstring" value="omowners"/>
+                <entry key="59" type="xstring" value="omwageyr"/>
+                <entry key="60" type="xstring" value="ompay2"/>
+                <entry key="61" type="xstring" value="ombustype"/>
+                <entry key="62" type="xstring" value="omcstloc"/>
+                <entry key="63" type="xstring" value="omcstnat"/>
+                <entry key="64" type="xstring" value="omcstexp"/>
+                <entry key="65" type="xstring" value="omexport"/>
+                <entry key="66" type="xstring" value="omnewprod"/>
+                <entry key="67" type="xstring" value="omnewproc"/>
+                <entry key="68" type="xstring" value="omnowjob"/>
+                <entry key="69" type="xstring" value="omyr5job"/>
+                <entry key="70" type="xstring" value="omcrstart"/>
+                <entry key="71" type="xstring" value="omcrgrow"/>
+                <entry key="72" type="xstring" value="ommotiv1"/>
+                <entry key="73" type="xstring" value="ommotiv2"/>
+                <entry key="74" type="xstring" value="ommotiv3"/>
+                <entry key="75" type="xstring" value="ommotiv4"/>
+                <entry key="76" type="xstring" value="omrstart"/>
+                <entry key="77" type="xstring" value="omcrnewopp"/>
+                <entry key="78" type="xstring" value="omcrgovres"/>
+                <entry key="79" type="xstring" value="omcrtech1"/>
+                <entry key="80" type="xstring" value="omcrtech2"/>
+                <entry key="81" type="xstring" value="omsdg_soc"/>
+                <entry key="82" type="xstring" value="omsdg_env"/>
+                <entry key="83" type="xstring" value="omsdg_pri"/>
+                <entry key="84" type="xstring" value="omsdg_steps1"/>
+                <entry key="85" type="xstring" value="omsdg_steps2"/>
+                <entry key="86" type="xstring" value="omsdg_aware1"/>
+                <entry key="87" type="xstring" value="omsdg_aware2"/>
+                <entry key="88" type="xstring" value="futsup"/>
+                <entry key="89" type="xstring" value="discent"/>
+                <entry key="90" type="xstring" value="exbuscon"/>
+                <entry key="91" type="xstring" value="exreason"/>
+                <entry key="92" type="xstring" value="exreason_oth"/>
+                <entry key="93" type="xstring" value="busang"/>
+                <entry key="94" type="xstring" value="bafund"/>
+                <entry key="95" type="xstring" value="barel"/>
+                <entry key="96" type="xstring" value="barel_oth"/>
+                <entry key="97" type="xstring" value="doublecount"/>
+                <entry key="98" type="xstring" value="occup"/>
+                <entry key="99" type="xstring" value="occup_oth"/>
+                <entry key="100" type="xstring" value="SUTYPE_ISIC4"/>
+                <entry key="101" type="xstring" value="SUTYPE_R"/>
+                <entry key="102" type="xstring" value="OMTYPE_ISIC4"/>
+                <entry key="103" type="xstring" value="OMTYPE_R"/>
+                <entry key="104" type="xstring" value="EXREAS_O"/>
+                <entry key="105" type="xstring" value="BAREL_O"/>
+                <entry key="106" type="xstring" value="eng_subustype"/>
+                <entry key="107" type="xstring" value="eng_ombustype"/>
+                <entry key="108" type="xstring" value="eng_exreason_oth"/>
+                <entry key="109" type="xstring" value="eng_barel_oth"/>
+                <entry key="110" type="xstring" value="eng_occup_oth"/>
+                <entry key="111" type="xstring" value="subustype_code"/>
+                <entry key="112" type="xstring" value="ombustype_code"/>
+                <entry key="113" type="xstring" value="COhhinc"/>
+                <entry key="114" type="xstring" value="COREduc"/>
+                <entry key="115" type="xstring" value="COcity"/>
+                <entry key="116" type="xstring" value="COpost"/>
+                <entry key="117" type="xstring" value="COregion"/>
+                <entry key="118" type="xstring" value="COstrata"/>
+                <entry key="119" type="xstring" value="dtsurv"/>
+                <entry key="120" type="xstring" value="contact"/>
+                <entry key="121" type="xstring" value="callback"/>
+                <entry key="122" type="xstring" value="COinterviewer"/>
+                <entry key="123" type="xstring" value="cphhinc"/>
+                <entry key="124" type="xstring" value="incontact"/>
+                <entry key="125" type="xstring" value="COsufinan1"/>
+                <entry key="126" type="xstring" value="COsufinan2"/>
+                <entry key="127" type="xstring" value="COsufinan3"/>
+                <entry key="128" type="xstring" value="COsufinan4"/>
+                <entry key="129" type="xstring" value="COsufinan5"/>
+                <entry key="130" type="xstring" value="COsufinan6"/>
+                <entry key="131" type="xstring" value="COsufinan7"/>
+                <entry key="132" type="xstring" value="COsufinan8"/>
+                <entry key="133" type="xstring" value="COsufinan9"/>
+                <entry key="134" type="xstring" value="COsufinan10"/>
+                <entry key="135" type="xstring" value="COsufinan_oth"/>
+                <entry key="136" type="xstring" value="COsureg1"/>
+                <entry key="137" type="xstring" value="COsureg2sureg2_1"/>
+                <entry key="138" type="xstring" value="COsureg2sureg2_2"/>
+                <entry key="139" type="xstring" value="COsureg2sureg2_3"/>
+                <entry key="140" type="xstring" value="COsureg2sureg2_4"/>
+                <entry key="141" type="xstring" value="COsureg2sureg2_5"/>
+                <entry key="142" type="xstring" value="COsureg2sureg2_6"/>
+                <entry key="143" type="xstring" value="COsureg2_6razones"/>
+                <entry key="144" type="xstring" value="COsucorinn1sucorinn1_1"/>
+                <entry key="145" type="xstring" value="COsucorinn1sucorinn1_2"/>
+                <entry key="146" type="xstring" value="COsucorinn1sucorinn1_3"/>
+                <entry key="147" type="xstring" value="COsucorinn1sucorinn1_4"/>
+                <entry key="148" type="xstring" value="COsucorinn1sucorinn1_5"/>
+                <entry key="149" type="xstring" value="COsucorinn1sucorinn1_6"/>
+                <entry key="150" type="xstring" value="COsucorinn1sucorinn1_7"/>
+                <entry key="151" type="xstring" value="COsucorinn1sucorinn1_8"/>
+                <entry key="152" type="xstring" value="COsucorinn1sucorinn1_9"/>
+                <entry key="153" type="xstring" value="COsucorinn1sucorinn1_10"/>
+                <entry key="154" type="xstring" value="COsucorinn1_9other"/>
+                <entry key="155" type="xstring" value="COsucorinn2sucorinn2_1"/>
+                <entry key="156" type="xstring" value="COsucorinn2sucorinn2_2"/>
+                <entry key="157" type="xstring" value="COsucorinn2sucorinn2_3"/>
+                <entry key="158" type="xstring" value="COsucorinn2sucorinn2_4"/>
+                <entry key="159" type="xstring" value="COsucorinn2sucorinn2_5"/>
+                <entry key="160" type="xstring" value="COsucorinn2sucorinn2_6"/>
+                <entry key="161" type="xstring" value="COsucorinn2sucorinn2_7"/>
+                <entry key="162" type="xstring" value="COsucorinn2sucorinn2_8"/>
+                <entry key="163" type="xstring" value="COsucorinn2sucorinn2_9"/>
+                <entry key="164" type="xstring" value="COsucorinn2sucorinn2_10"/>
+                <entry key="165" type="xstring" value="COsucorinn2sucorinn2_11"/>
+                <entry key="166" type="xstring" value="COsucorinn2sucorinn2_12"/>
+                <entry key="167" type="xstring" value="COsucorinn2sucorinn2_13"/>
+                <entry key="168" type="xstring" value="COsucorinn2_12other"/>
+                <entry key="169" type="xstring" value="COsucorinn4"/>
+                <entry key="170" type="xstring" value="COsucorinn6sucorinn6_1"/>
+                <entry key="171" type="xstring" value="COsucorinn6sucorinn6_2"/>
+                <entry key="172" type="xstring" value="COsucorinn6sucorinn6_3"/>
+                <entry key="173" type="xstring" value="COsucorinn6sucorinn6_4"/>
+                <entry key="174" type="xstring" value="COsucorinn6sucorinn6_5"/>
+                <entry key="175" type="xstring" value="COsucorinn6sucorinn6_6"/>
+                <entry key="176" type="xstring" value="COsucorinn6sucorinn6_7"/>
+                <entry key="177" type="xstring" value="COsucorinn6_6other"/>
+                <entry key="178" type="xstring" value="COsucorinn7"/>
+                <entry key="179" type="xstring" value="COsucorinn9"/>
+                <entry key="180" type="xstring" value="COsufamily1"/>
+                <entry key="181" type="xstring" value="COsufamily2"/>
+                <entry key="182" type="xstring" value="COomfinanomfinan1"/>
+                <entry key="183" type="xstring" value="COomfinanomfinan2"/>
+                <entry key="184" type="xstring" value="COomfinanomfinan3"/>
+                <entry key="185" type="xstring" value="COomfinanomfinan4"/>
+                <entry key="186" type="xstring" value="COomfinanomfinan5"/>
+                <entry key="187" type="xstring" value="COomfinanomfinan6"/>
+                <entry key="188" type="xstring" value="COomfinanomfinan7"/>
+                <entry key="189" type="xstring" value="COomfinanomfinan8"/>
+                <entry key="190" type="xstring" value="COomfinanomfinan9"/>
+                <entry key="191" type="xstring" value="COomfinanomfinan10"/>
+                <entry key="192" type="xstring" value="COsufinan10_other"/>
+                <entry key="193" type="xstring" value="COomreg1"/>
+                <entry key="194" type="xstring" value="COomreg2omreg2_1"/>
+                <entry key="195" type="xstring" value="COomreg2omreg2_2"/>
+                <entry key="196" type="xstring" value="COomreg2omreg2_3"/>
+                <entry key="197" type="xstring" value="COomreg2omreg2_4"/>
+                <entry key="198" type="xstring" value="COomreg2omreg2_5"/>
+                <entry key="199" type="xstring" value="COomreg2omreg2_6"/>
+                <entry key="200" type="xstring" value="COomreg2_6other"/>
+                <entry key="201" type="xstring" value="COomcorinn1omcorinn1_1"/>
+                <entry key="202" type="xstring" value="COomcorinn1omcorinn1_2"/>
+                <entry key="203" type="xstring" value="COomcorinn1omcorinn1_3"/>
+                <entry key="204" type="xstring" value="COomcorinn1omcorinn1_4"/>
+                <entry key="205" type="xstring" value="COomcorinn1omcorinn1_5"/>
+                <entry key="206" type="xstring" value="COomcorinn1omcorinn1_6"/>
+                <entry key="207" type="xstring" value="COomcorinn1omcorinn1_7"/>
+                <entry key="208" type="xstring" value="COomcorinn1omcorinn1_8"/>
+                <entry key="209" type="xstring" value="COomcorinn1omcorinn1_9"/>
+                <entry key="210" type="xstring" value="COomcorinn1omcorinn1_10"/>
+                <entry key="211" type="xstring" value="COOMCORINN1_9other"/>
+                <entry key="212" type="xstring" value="COomcorinn2omcorinn2_1"/>
+                <entry key="213" type="xstring" value="COomcorinn2omcorinn2_2"/>
+                <entry key="214" type="xstring" value="COomcorinn2omcorinn2_3"/>
+                <entry key="215" type="xstring" value="COomcorinn2omcorinn2_4"/>
+                <entry key="216" type="xstring" value="COomcorinn2omcorinn2_5"/>
+                <entry key="217" type="xstring" value="COomcorinn2omcorinn2_6"/>
+                <entry key="218" type="xstring" value="COomcorinn2omcorinn2_7"/>
+                <entry key="219" type="xstring" value="COomcorinn2omcorinn2_8"/>
+                <entry key="220" type="xstring" value="COomcorinn2omcorinn2_9"/>
+                <entry key="221" type="xstring" value="COomcorinn2omcorinn2_10"/>
+                <entry key="222" type="xstring" value="COomcorinn2omcorinn2_11"/>
+                <entry key="223" type="xstring" value="COomcorinn2omcorinn2_12"/>
+                <entry key="224" type="xstring" value="COomcorinn2_12other"/>
+                <entry key="225" type="xstring" value="COomcorinn4"/>
+                <entry key="226" type="xstring" value="COomcorinn3omcorinn6_1"/>
+                <entry key="227" type="xstring" value="COomcorinn3omcorinn6_2"/>
+                <entry key="228" type="xstring" value="COomcorinn3omcorinn6_3"/>
+                <entry key="229" type="xstring" value="COomcorinn3omcorinn6_4"/>
+                <entry key="230" type="xstring" value="COomcorinn3omcorinn6_5"/>
+                <entry key="231" type="xstring" value="COomcorinn3omcorinn6_6"/>
+                <entry key="232" type="xstring" value="COomcorinn3omcorinn6_7"/>
+                <entry key="233" type="xstring" value="COOMCORINN6_6other"/>
+                <entry key="234" type="xstring" value="COomcorinn7"/>
+                <entry key="235" type="xstring" value="COomcorinn9"/>
+                <entry key="236" type="xstring" value="COomenfe"/>
+                <entry key="237" type="xstring" value="COomenfea"/>
+                <entry key="238" type="xstring" value="COomenfc"/>
+                <entry key="239" type="xstring" value="COexetapa"/>
+                <entry key="240" type="xstring" value="COeng_SUREG2_6razones"/>
+                <entry key="241" type="xstring" value="COname"/>
+                <entry key="242" type="xstring" value="COXXNIVSE"/>
+                <entry key="243" type="xstring" value="COaddress"/>
+                <entry key="244" type="xstring" value="COmail"/>
+                <entry key="245" type="xstring" value="COward"/>
+                <entry key="246" type="xstring" value="COdoublecount_other_mobile"/>
+                <entry key="247" type="xstring" value="COdoublecount_other_fixed"/>
+                <entry key="248" type="xstring" value="COxxetn"/>
+                <entry key="249" type="xstring" value="CONACIO"/>
+                <entry key="250" type="xstring" value="CONACIO1"/>
+                <entry key="251" type="xstring" value="CONACIO2"/>
+                <entry key="252" type="xstring" value="TEA22STA"/>
+                <entry key="253" type="xstring" value="omwgyr_c"/>
+                <entry key="254" type="xstring" value="BAFUNDUS"/>
+                <entry key="255" type="xstring" value="SU_ISIC4_4D"/>
+                <entry key="256" type="xstring" value="BB_ISIC4_4D"/>
+                <entry key="257" type="xstring" value="EB_ISIC4_4D"/>
+                <entry key="258" type="xstring" value="TEAISIC4_4D"/>
+                <entry key="259" type="xstring" value="EB_22TEC"/>
+                <entry key="260" type="xstring" value="TEA22TEC"/>
+                <entry key="261" type="xstring" value="ext22tec"/>
+                <entry key="262" type="xstring" value="BUSOWNER"/>
+                <entry key="263" type="xstring" value="BUSOWN_A"/>
+                <entry key="264" type="xstring" value="EXIT_RS"/>
+                <entry key="265" type="xstring" value="EB_22J10"/>
+                <entry key="266" type="xstring" value="SU_JOB5Y"/>
+                <entry key="267" type="xstring" value="BB_JOB5Y"/>
+                <entry key="268" type="xstring" value="EB_JOB5Y"/>
+                <entry key="269" type="xstring" value="SU_JOBNW"/>
+                <entry key="270" type="xstring" value="BB_JOBNW"/>
+                <entry key="271" type="xstring" value="EB_JOBNW"/>
+                <entry key="272" type="xstring" value="TEA22J5Y"/>
+                <entry key="273" type="xstring" value="su_22j5y"/>
+                <entry key="274" type="xstring" value="bb_22j5y"/>
+                <entry key="275" type="xstring" value="EB_22J5Y"/>
+                <entry key="276" type="xstring" value="TEA22JNW"/>
+                <entry key="277" type="xstring" value="su_22jnw"/>
+                <entry key="278" type="xstring" value="bb_22jnw"/>
+                <entry key="279" type="xstring" value="EB_22JNW"/>
+                <entry key="280" type="xstring" value="tea22j5yr"/>
+                <entry key="281" type="xstring" value="SU_JOBGR"/>
+                <entry key="282" type="xstring" value="BB_JOBGR"/>
+                <entry key="283" type="xstring" value="EB_JOBGR"/>
+                <entry key="284" type="xstring" value="TEAJOBGR"/>
+                <entry key="285" type="xstring" value="SU_JOBGP"/>
+                <entry key="286" type="xstring" value="BB_JOBGP"/>
+                <entry key="287" type="xstring" value="EB_JOBGP"/>
+                <entry key="288" type="xstring" value="TEAJOBGP"/>
+                <entry key="289" type="xstring" value="su_22job"/>
+                <entry key="290" type="xstring" value="bb_22job"/>
+                <entry key="291" type="xstring" value="EB_22JOB"/>
+                <entry key="292" type="xstring" value="TEA22JOB"/>
+                <entry key="293" type="xstring" value="ext22job"/>
+                <entry key="294" type="xstring" value="su_22exp"/>
+                <entry key="295" type="xstring" value="bb_22exp"/>
+                <entry key="296" type="xstring" value="eb_22exp"/>
+                <entry key="297" type="xstring" value="tea22exp"/>
+                <entry key="298" type="xstring" value="SU_EXP4C"/>
+                <entry key="299" type="xstring" value="BB_EXP4C"/>
+                <entry key="300" type="xstring" value="EB_EXP4C"/>
+                <entry key="301" type="xstring" value="TEAEXP4C"/>
+                <entry key="302" type="xstring" value="SU_OWNER"/>
+                <entry key="303" type="xstring" value="BB_OWNER"/>
+                <entry key="304" type="xstring" value="EB_OWNER"/>
+                <entry key="305" type="xstring" value="TEAOWNER"/>
+                <entry key="306" type="xstring" value="TEAEDHI"/>
+                <entry key="307" type="xstring" value="TEAJOBEX"/>
+                <entry key="308" type="xstring" value="SU_EXP5C"/>
+                <entry key="309" type="xstring" value="BB_EXP5C"/>
+                <entry key="310" type="xstring" value="EB_EXP5C"/>
+                <entry key="311" type="xstring" value="TEAEXP5C"/>
+                <entry key="312" type="xstring" value="TEAEXPST"/>
+                <entry key="313" type="xstring" value="TEAEXPWK"/>
+                <entry key="314" type="xstring" value="FRFAILOP"/>
+                <entry key="315" type="xstring" value="TEA22MOT1"/>
+                <entry key="316" type="xstring" value="TEA22MOT2"/>
+                <entry key="317" type="xstring" value="TEA22MOT3"/>
+                <entry key="318" type="xstring" value="TEA22MOT4"/>
+                <entry key="319" type="xstring" value="SU_22MOT1"/>
+                <entry key="320" type="xstring" value="SU_22MOT2"/>
+                <entry key="321" type="xstring" value="SU_22MOT3"/>
+                <entry key="322" type="xstring" value="SU_22MOT4"/>
+                <entry key="323" type="xstring" value="BB_22MOT1"/>
+                <entry key="324" type="xstring" value="BB_22MOT2"/>
+                <entry key="325" type="xstring" value="BB_22MOT3"/>
+                <entry key="326" type="xstring" value="BB_22MOT4"/>
+                <entry key="327" type="xstring" value="EB_22MOT1"/>
+                <entry key="328" type="xstring" value="EB_22MOT2"/>
+                <entry key="329" type="xstring" value="EB_22MOT3"/>
+                <entry key="330" type="xstring" value="EB_22MOT4"/>
+                <entry key="331" type="xstring" value="TEA22MOT1yes"/>
+                <entry key="332" type="xstring" value="TEA22MOT2yes"/>
+                <entry key="333" type="xstring" value="TEA22MOT3yes"/>
+                <entry key="334" type="xstring" value="TEA22MOT4yes"/>
+                <entry key="335" type="xstring" value="SU_22MOT1yes"/>
+                <entry key="336" type="xstring" value="SU_22MOT2yes"/>
+                <entry key="337" type="xstring" value="SU_22MOT3yes"/>
+                <entry key="338" type="xstring" value="SU_22MOT4yes"/>
+                <entry key="339" type="xstring" value="BB_22MOT1yes"/>
+                <entry key="340" type="xstring" value="BB_22MOT2yes"/>
+                <entry key="341" type="xstring" value="BB_22MOT3yes"/>
+                <entry key="342" type="xstring" value="BB_22MOT4yes"/>
+                <entry key="343" type="xstring" value="EB_22MOT1yes"/>
+                <entry key="344" type="xstring" value="EB_22MOT2yes"/>
+                <entry key="345" type="xstring" value="EB_22MOT3yes"/>
+                <entry key="346" type="xstring" value="EB_22MOT4yes"/>
+                <entry key="347" type="xstring" value="TEA22MMOT1"/>
+                <entry key="348" type="xstring" value="TEA22FMOT1"/>
+                <entry key="349" type="xstring" value="TEA22MMOT2"/>
+                <entry key="350" type="xstring" value="TEA22FMOT2"/>
+                <entry key="351" type="xstring" value="TEA22MMOT3"/>
+                <entry key="352" type="xstring" value="TEA22FMOT3"/>
+                <entry key="353" type="xstring" value="TEA22MMOT4"/>
+                <entry key="354" type="xstring" value="TEA22FMOT4"/>
+                <entry key="355" type="xstring" value="TEA22MKSC"/>
+                <entry key="356" type="xstring" value="TEACSTLOC"/>
+                <entry key="357" type="xstring" value="TEACSTNAT"/>
+                <entry key="358" type="xstring" value="TEACSTEXP"/>
+                <entry key="359" type="xstring" value="TEANEWPROD"/>
+                <entry key="360" type="xstring" value="TEANEWPROC"/>
+                <entry key="361" type="xstring" value="SU_CSTLOC"/>
+                <entry key="362" type="xstring" value="SU_CSTNAT"/>
+                <entry key="363" type="xstring" value="SU_CSTEXP"/>
+                <entry key="364" type="xstring" value="SU_NEWPROD"/>
+                <entry key="365" type="xstring" value="SU_NEWPROC"/>
+                <entry key="366" type="xstring" value="EB_NEWPROC"/>
+                <entry key="367" type="xstring" value="SU_CRSTART"/>
+                <entry key="368" type="xstring" value="BB_CRSTART"/>
+                <entry key="369" type="xstring" value="EB_CRSTART"/>
+                <entry key="370" type="xstring" value="TEACRSTART"/>
+                <entry key="371" type="xstring" value="SU_CRGROW"/>
+                <entry key="372" type="xstring" value="BB_CRGROW"/>
+                <entry key="373" type="xstring" value="EB_CRGROW"/>
+                <entry key="374" type="xstring" value="TEACRGROW"/>
+                <entry key="375" type="xstring" value="SU_CPNEWOPP"/>
+                <entry key="376" type="xstring" value="BB_CPNEWOPP"/>
+                <entry key="377" type="xstring" value="EB_CPNEWOPP"/>
+                <entry key="378" type="xstring" value="TEACPNEWOPP"/>
+                <entry key="379" type="xstring" value="SU_CPGOVRES"/>
+                <entry key="380" type="xstring" value="BB_CPGOVRES"/>
+                <entry key="381" type="xstring" value="EB_CPGOVRES"/>
+                <entry key="382" type="xstring" value="TEACPGOVRES"/>
+                <entry key="383" type="xstring" value="SU_CPTECH1"/>
+                <entry key="384" type="xstring" value="BB_CPTECH1"/>
+                <entry key="385" type="xstring" value="TEACPTECH1"/>
+                <entry key="386" type="xstring" value="EB_CPTECH1"/>
+                <entry key="387" type="xstring" value="SU_CPTECH2"/>
+                <entry key="388" type="xstring" value="BB_CPTECH2"/>
+                <entry key="389" type="xstring" value="TEACPTECH2"/>
+                <entry key="390" type="xstring" value="EB_CPTECH2"/>
+                <entry key="391" type="xstring" value="SU_SDG_SOC_HI"/>
+                <entry key="392" type="xstring" value="BB_SDG_SOC_HI"/>
+                <entry key="393" type="xstring" value="TEASDG_SOC_HI"/>
+                <entry key="394" type="xstring" value="EB_SDG_SOC_HI"/>
+                <entry key="395" type="xstring" value="SU_SDG_ENV_HI"/>
+                <entry key="396" type="xstring" value="BB_SDG_ENV_HI"/>
+                <entry key="397" type="xstring" value="TEASDG_ENV_HI"/>
+                <entry key="398" type="xstring" value="EB_SDG_ENV_HI"/>
+                <entry key="399" type="xstring" value="SU_SDG_PRI_HI"/>
+                <entry key="400" type="xstring" value="BB_SDG_PRI_HI"/>
+                <entry key="401" type="xstring" value="TEASDG_PRI_HI"/>
+                <entry key="402" type="xstring" value="EB_SDG_PRI_HI"/>
+                <entry key="403" type="xstring" value="SU_SDG_STEPS1"/>
+                <entry key="404" type="xstring" value="BB_SDG_STEPS1"/>
+                <entry key="405" type="xstring" value="TEASDG_STEPS1"/>
+                <entry key="406" type="xstring" value="EB_SDG_STEPS1"/>
+                <entry key="407" type="xstring" value="SU_SDG_STEPS2"/>
+                <entry key="408" type="xstring" value="BB_SDG_STEPS2"/>
+                <entry key="409" type="xstring" value="TEASDG_STEPS2"/>
+                <entry key="410" type="xstring" value="EB_SDG_STEPS2"/>
+                <entry key="411" type="xstring" value="SU_SDG_AWARE1"/>
+                <entry key="412" type="xstring" value="BB_SDG_AWARE1"/>
+                <entry key="413" type="xstring" value="TEASDG_AWARE1"/>
+                <entry key="414" type="xstring" value="EB_SDG_AWARE1"/>
+                <entry key="415" type="xstring" value="SU_SDG_AWARE2"/>
+                <entry key="416" type="xstring" value="BB_SDG_AWARE2"/>
+                <entry key="417" type="xstring" value="TEASDG_AWARE2"/>
+            </config>
+            <entry key="keep_all_columns_selected" type="xboolean" value="false"/>
+        </config>
+        <config key="maxNoneNumericalVals_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_integer"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="maxNoneNumericalVals" type="xint" value="10000"/>
+        <config key="enableHilite_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="enableHilite" type="xboolean" value="false"/>
+        <config key="valueDelimiter_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="valueDelimiter" type="xstring" value=", "/>
+        <config key="sortInMemory_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="sortInMemory" type="xboolean" value="false"/>
+        <config key="columnNamePolicy_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_string"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="columnNamePolicy" type="xstring" value="Aggregation method (column name)"/>
+        <config key="aggregationColumn">
+            <config key="columnNames">
+                <entry key="array-size" type="xint" value="1"/>
+                <entry key="0" type="xstring" value="age7c"/>
+            </config>
+            <config key="columnTypes">
+                <entry key="array-size" type="xint" value="1"/>
+                <config key="0">
+                    <entry key="cell_class" type="xstring" value="org.knime.core.data.def.StringCell"/>
+                    <entry key="is_null" type="xboolean" value="false"/>
+                </config>
+            </config>
+            <config key="aggregationMethod">
+                <entry key="array-size" type="xint" value="1"/>
+                <entry key="0" type="xstring" value="Count"/>
+            </config>
+            <config key="inclMissingVals">
+                <entry key="array-size" type="xint" value="1"/>
+                <entry key="0" type="xboolean" value="true"/>
+            </config>
+        </config>
+        <config key="aggregationOperatorSettings"/>
+        <config key="patternAggregators"/>
+        <config key="dataTypeAggregators"/>
+        <config key="retainOrder_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="retainOrder" type="xboolean" value="false"/>
+        <config key="inMemory_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_boolean"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="inMemory" type="xboolean" value="false"/>
+        <config key="nodeVersion_Internals">
+            <entry key="SettingsModelID" type="xstring" value="SMID_integer"/>
+            <entry key="EnabledStatus" type="xboolean" value="true"/>
+        </config>
+        <entry key="nodeVersion" type="xint" value="1"/>
+        <entry key="typeMatch" type="xbyte" value="0"/>
+    </config>
+    <entry key="customDescription" type="xstring" isnull="true" value=""/>
+    <entry key="state" type="xstring" value="EXECUTED"/>
+    <entry key="factory" type="xstring" value="org.knime.base.node.preproc.groupby.GroupByNodeFactory"/>
+    <entry key="node-name" type="xstring" value="GroupBy"/>
+    <entry key="node-bundle-name" type="xstring" value="KNIME Base Nodes"/>
+    <entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.base"/>
+    <entry key="node-bundle-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+    <entry key="node-bundle-version" type="xstring" value="5.5.1.v202507241550"/>
+    <entry key="node-feature-name" type="xstring" value="KNIME Base nodes"/>
+    <entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.base.feature.group"/>
+    <entry key="node-feature-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+    <entry key="node-feature-version" type="xstring" value="5.5.1.v202507241550"/>
+    <config key="factory_settings"/>
+    <entry key="name" type="xstring" value="GroupBy"/>
+    <entry key="hasContent" type="xboolean" value="true"/>
+    <entry key="isInactive" type="xboolean" value="false"/>
+    <config key="ports">
+        <config key="port_1">
+            <entry key="index" type="xint" value="1"/>
+            <entry key="port_spec_class" type="xstring" value="org.knime.core.data.DataTableSpec"/>
+            <entry key="port_object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
+            <entry key="port_object_summary" type="xstring" value="Rows: 13, Cols: 2"/>
+            <entry key="port_dir_location" type="xstring" value="port_1"/>
+        </config>
+    </config>
+    <config key="filestores">
+        <entry key="file_store_location" type="xstring" isnull="true" value=""/>
+        <entry key="file_store_id" type="xstring" value="c3454c35-868e-43f8-bfeb-6acbf00e4fb0"/>
+    </config>
+</config>

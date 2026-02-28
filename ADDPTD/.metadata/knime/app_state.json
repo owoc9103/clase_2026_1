@@ -1,12 +1,44 @@
 {
   "version" : "5.5.1.v202507241444",
   "projects" : [ {
-    "name" : "KNIME_project_Taller_1",
+    "name" : "Taller_1_VF_Local",
+    "active" : false,
+    "origin" : {
+      "providerId" : "local",
+      "spaceId" : "local",
+      "relativePath" : "Taller_1_VF_Local"
+    }
+  }, {
+    "name" : "Taller_21",
+    "active" : false,
+    "origin" : {
+      "providerId" : "local",
+      "spaceId" : "local",
+      "relativePath" : "Taller_21"
+    }
+  }, {
+    "name" : "Taller_31",
+    "active" : false,
+    "origin" : {
+      "providerId" : "local",
+      "spaceId" : "local",
+      "relativePath" : "Taller_31"
+    }
+  }, {
+    "name" : "KNIME_project_MBA",
+    "active" : false,
+    "origin" : {
+      "providerId" : "local",
+      "spaceId" : "local",
+      "relativePath" : "KNIME_project_MBA"
+    }
+  }, {
+    "name" : "Taller 3_vp",
     "active" : true,
     "origin" : {
       "providerId" : "local",
       "spaceId" : "local",
-      "relativePath" : "KNIME_project_Taller_1"
+      "relativePath" : "Taller 3_vp"
     }
   } ],
   "mostRecentlyUsedProjects" : [ {
@@ -17,6 +49,78 @@
       "spaceId" : "local",
       "projectType" : "WORKFLOW",
       "relativePath" : "KNIME_project_Taller_1"
+    }
+  }, {
+    "name" : "KNIME_project_Taller_1_20260205",
+    "timeUsed" : "2026-02-07T08:09:41.5634581-05:00",
+    "origin" : {
+      "providerId" : "local",
+      "spaceId" : "local",
+      "projectType" : "WORKFLOW",
+      "relativePath" : "KNIME_project_Taller_1_20260205"
+    }
+  }, {
+    "name" : "Taller_1_VF_Local",
+    "timeUsed" : "2026-02-07T09:00:01.4332472-05:00",
+    "origin" : {
+      "providerId" : "local",
+      "spaceId" : "local",
+      "projectType" : "WORKFLOW",
+      "relativePath" : "Taller_1_VF_Local"
+    }
+  }, {
+    "name" : "Taller_2_k",
+    "timeUsed" : "2026-02-11T13:42:45.0399288-05:00",
+    "origin" : {
+      "providerId" : "local",
+      "spaceId" : "local",
+      "projectType" : "WORKFLOW",
+      "relativePath" : "Taller_2_k"
+    }
+  }, {
+    "name" : "Taller_21",
+    "timeUsed" : "2026-02-12T10:37:41.9264035-05:00",
+    "origin" : {
+      "providerId" : "local",
+      "spaceId" : "local",
+      "projectType" : "WORKFLOW",
+      "relativePath" : "Taller_21"
+    }
+  }, {
+    "name" : "Taller_31",
+    "timeUsed" : "2026-02-19T10:55:21.0953212-05:00",
+    "origin" : {
+      "providerId" : "local",
+      "spaceId" : "local",
+      "projectType" : "WORKFLOW",
+      "relativePath" : "Taller_31"
+    }
+  }, {
+    "name" : "KNIME_project_MBA",
+    "timeUsed" : "2026-02-19T19:40:58.1417149-05:00",
+    "origin" : {
+      "providerId" : "local",
+      "spaceId" : "local",
+      "projectType" : "WORKFLOW",
+      "relativePath" : "KNIME_project_MBA"
+    }
+  }, {
+    "name" : "KNIME_project_Aplicacion1",
+    "timeUsed" : "2026-02-19T19:41:06.6874726-05:00",
+    "origin" : {
+      "providerId" : "local",
+      "spaceId" : "local",
+      "projectType" : "WORKFLOW",
+      "relativePath" : "KNIME_project_Aplicacion1"
+    }
+  }, {
+    "name" : "Taller 3_vp",
+    "timeUsed" : "2026-02-26T11:04:02.1332381-05:00",
+    "origin" : {
+      "providerId" : "local",
+      "spaceId" : "local",
+      "projectType" : "WORKFLOW",
+      "relativePath" : "Taller 3_vp"
     }
   } ]
 }

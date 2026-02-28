@@ -1,0 +1,4 @@
+C:\Users\owoc9\OneDrive\Desktop\columnas_a_excluir_transpuesto.table
+C:\Users\owoc9\OneDrive\Desktop\columnas_a_excluir.table
+C:\Users\owoc9\Documents\U Javeriana\2026-I\ADDPTD\Taller_3\columnas_a_excluir - copia.xlsx
+C:\Users\owoc9\Documents\U Javeriana\2026-I\ADDPTD\Taller_3\columnas_a_excluir.csv

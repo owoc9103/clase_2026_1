@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+    <entry key="node_file" type="xstring" value="settings.xml"/>
+    <config key="flow_stack"/>
+    <config key="internal_node_subsettings">
+        <entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+    </config>
+    <config key="model">
+        <config key="rules">
+            <entry key="array-size" type="xint" value="34"/>
+            <entry key="0" type="xstring" value="// enter ordered set of rules, e.g.:"/>
+            <entry key="1" type="xstring" value="// $double column name$ &gt; 5.0 =&gt; &quot;large&quot;"/>
+            <entry key="2" type="xstring" value="// $string column name$ LIKE &quot;*blue*&quot; =&gt; &quot;small and blue&quot;"/>
+            <entry key="3" type="xstring" value="// TRUE =&gt; &quot;default outcome&quot;"/>
+            <entry key="4" type="xstring" value="$Departamento$ = 5 =&gt; &quot;Antioquia&quot;"/>
+            <entry key="5" type="xstring" value="$Departamento$ = 8 =&gt; &quot;Atlantico&quot;"/>
+            <entry key="6" type="xstring" value="$Departamento$ = 11 =&gt; &quot;Bogota&quot;"/>
+            <entry key="7" type="xstring" value="$Departamento$ = 13 =&gt; &quot;Bolivar&quot;"/>
+            <entry key="8" type="xstring" value="$Departamento$ = 15 =&gt; &quot;Boyaca&quot;"/>
+            <entry key="9" type="xstring" value="$Departamento$ = 17 =&gt; &quot;Caldas&quot;"/>
+            <entry key="10" type="xstring" value="$Departamento$ = 18 =&gt; &quot;Caqueta&quot;"/>
+            <entry key="11" type="xstring" value="$Departamento$ = 19 =&gt; &quot;Cauca&quot;"/>
+            <entry key="12" type="xstring" value="$Departamento$ = 20 =&gt; &quot;Cesar&quot;"/>
+            <entry key="13" type="xstring" value="$Departamento$ = 23 =&gt; &quot;Cordoba&quot;"/>
+            <entry key="14" type="xstring" value="$Departamento$ = 25 =&gt; &quot;Cundinamarca&quot;"/>
+            <entry key="15" type="xstring" value="$Departamento$ = 27 =&gt; &quot;Choco&quot;"/>
+            <entry key="16" type="xstring" value="$Departamento$ = 41 =&gt; &quot;Huila&quot;"/>
+            <entry key="17" type="xstring" value="$Departamento$ = 44 =&gt; &quot;Guajira&quot;"/>
+            <entry key="18" type="xstring" value="$Departamento$ = 47 =&gt; &quot;Magdalena&quot;"/>
+            <entry key="19" type="xstring" value="$Departamento$ = 50 =&gt; &quot;Meta&quot;"/>
+            <entry key="20" type="xstring" value="$Departamento$ = 52 =&gt; &quot;Nariño&quot;"/>
+            <entry key="21" type="xstring" value="$Departamento$ = 54 =&gt; &quot;Norte de Santander&quot;"/>
+            <entry key="22" type="xstring" value="$Departamento$ = 63 =&gt; &quot;Quindio&quot;"/>
+            <entry key="23" type="xstring" value="$Departamento$ = 66 =&gt; &quot;Risaralda&quot;"/>
+            <entry key="24" type="xstring" value="$Departamento$ = 68 =&gt; &quot;Santander&quot;"/>
+            <entry key="25" type="xstring" value="$Departamento$ = 70 =&gt; &quot;Sucre&quot;"/>
+            <entry key="26" type="xstring" value="$Departamento$ = 73 =&gt; &quot;Tolima&quot;"/>
+            <entry key="27" type="xstring" value="$Departamento$ = 76 =&gt; &quot;Valle del Cauca&quot;"/>
+            <entry key="28" type="xstring" value="$Departamento$ = 81 =&gt; &quot;Arauca&quot;"/>
+            <entry key="29" type="xstring" value="$Departamento$ = 85 =&gt; &quot;Casanare&quot;"/>
+            <entry key="30" type="xstring" value="$Departamento$ = 86 =&gt; &quot;Putumayo&quot;"/>
+            <entry key="31" type="xstring" value="$Departamento$ = 88 =&gt; &quot;San Andres&quot;"/>
+            <entry key="32" type="xstring" value="$Departamento$ = 99 =&gt; &quot;Vichada&quot;"/>
+            <entry key="33" type="xstring" value="TRUE =&gt; &quot;Otro&quot;"/>
+        </config>
+        <entry key="new-column-name" type="xstring" value=""/>
+        <entry key="replace-column-name" type="xstring" value="Departamento"/>
+        <entry key="append-column" type="xboolean" value="false"/>
+        <entry key="disallowLongOutputForCompatibility" type="xboolean" value="false"/>
+    </config>
+    <entry key="customDescription" type="xstring" isnull="true" value=""/>
+    <entry key="state" type="xstring" value="CONFIGURED"/>
+    <entry key="factory" type="xstring" value="org.knime.base.node.rules.engine.RuleEngineNodeFactory"/>
+    <entry key="node-name" type="xstring" value="Rule Engine"/>
+    <entry key="node-bundle-name" type="xstring" value="KNIME Java Snippet Nodes"/>
+    <entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.jsnippets"/>
+    <entry key="node-bundle-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+    <entry key="node-bundle-version" type="xstring" value="5.5.0.v202506051602"/>
+    <entry key="node-feature-name" type="xstring" value="KNIME Javasnippet"/>
+    <entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.javasnippet.feature.group"/>
+    <entry key="node-feature-vendor" type="xstring" value="KNIME AG, Zurich, Switzerland"/>
+    <entry key="node-feature-version" type="xstring" value="5.5.0.v202506051602"/>
+    <config key="factory_settings"/>
+    <entry key="name" type="xstring" value="Rule Engine"/>
+    <entry key="hasContent" type="xboolean" value="false"/>
+    <entry key="isInactive" type="xboolean" value="false"/>
+    <config key="ports">
+        <config key="port_1">
+            <entry key="index" type="xint" value="1"/>
+            <entry key="port_dir_location" type="xstring" isnull="true" value=""/>
+        </config>
+    </config>
+    <config key="filestores">
+        <entry key="file_store_location" type="xstring" isnull="true" value=""/>
+        <entry key="file_store_id" type="xstring" isnull="true" value=""/>
+    </config>
+</config>

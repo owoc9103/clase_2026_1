@@ -1,0 +1,8 @@
+C:\Users\owoc9\Documents\U Javeriana\2026-I\ADDPTD\Taller_3\columnas_a_excluir_transpuesto.csv
+C:\Users\owoc9\Documents\U Javeriana\2026-I\ADDPTD\Taller_3\columnas_a_excluir.csv
+C:\Users\owoc9\OneDrive\Documents\Caracteristicas.csv
+C:\Users\owoc9\OneDrive\Desktop\Caracteristicas.csv
+C:\Users\owoc9\Documents\U Javeriana\2026-I\ADDPTD\Taller_2\Insumos\Ocupados
+C:\Users\owoc9\Documents\U Javeriana\2026-I\ADDPTD\Taller_2\Insumos\Caracteristicas
+C:\Users\owoc9\Documents\U Javeriana\2026-I\ADDPTD\Taller_2\Insumos\Caracteristicas\2024 Febrero Caracteristicas.csv
+C:\Users\owoc9\Documents\U Javeriana\2026-I\ADDPTD\Taller_2\Insumos\Caracteristicas\2024 Enero Caracteristicas.csv

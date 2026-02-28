@@ -1,0 +1,9 @@
+# Paquetes R necesarios para Taller_RegresionLogistica_Balanceada.Rmd
+# Ejecutar en R: install.packages(c("tidyverse", "caret", "pROC", "smotefamily", "knitr", "kableExtra"))
+
+tidyverse
+caret
+pROC
+smotefamily
+knitr
+kableExtra
