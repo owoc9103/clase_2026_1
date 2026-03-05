@@ -1,0 +1,61 @@
+---
+title: "Quiz 3 - Fundamentos de Programación"
+subtitle: "Clases 1, 2 y 3 - Versión Preguntas"
+author: "Introducción Python, Control de Flujo, Estructuras de Datos"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: false
+geometry:
+  - margin=1.5cm
+  - top=1.5cm
+  - bottom=1.5cm
+fontsize: 9pt
+header-includes:
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyfoot[C]{Quiz 3 - Preguntas}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+**Nombre:** \underline{\hspace{6cm}}
+
+---
+
+**1. (Escribir código)** Escriba una función llamada `clave_maximo` que reciba un diccionario de números y retorne la clave que tiene el valor máximo. Ejemplo: `clave_maximo({"a": 10, "b": 25, "c": 15})` debe retornar `"b"`.
+
+\vspace{3cm}
+
+**2. (Verdadero/Falso)** La función `map()` aplica una función a cada elemento de una secuencia y retorna los resultados.
+
+- ( ) Verdadero \hspace{2cm} ( ) Falso
+
+**3. (Verdadero/Falso)** En Python, las listas se pueden usar como pilas (LIFO) usando los métodos `append()` y `pop()`.
+
+- ( ) Verdadero \hspace{2cm} ( ) Falso
+
+**4. (Opción múltiple)** ¿Qué operador de división en Python siempre retorna un número decimal (float)?
+
+- A) `%` 
+- B) `**` 
+- C) `//` 
+- D) `/`
+
+**5. (Opción múltiple)** ¿Cuál estructura de datos en Python es inmutable y puede usarse como clave en diccionarios?
+
+- A) Conjunto 
+- B) Lista 
+- C) Diccionario 
+- D) Tupla
+
+**6. (Identificar el error)** Señale el error en el siguiente código y explique por qué causa un problema:
+
+```python
+conjunto = {1, 2, 3}
+conjunto.append(4)
+```
+
+\vspace{2cm}

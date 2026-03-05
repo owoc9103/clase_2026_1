@@ -1,0 +1,62 @@
+---
+title: "Quiz 1 - Fundamentos de Programación"
+subtitle: "Clases 1, 2 y 3 - Versión Preguntas"
+author: "Introducción Python, Control de Flujo, Estructuras de Datos"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: false
+geometry:
+  - margin=1.5cm
+  - top=1.5cm
+  - bottom=1.5cm
+fontsize: 9pt
+header-includes:
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyfoot[C]{Quiz 1 - Preguntas}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+**Nombre:** \underline{\hspace{6cm}}
+
+---
+
+**1. (Opción múltiple)** ¿Qué operador de división en Python siempre retorna un número decimal (float)?
+
+- A) `//` 
+- B) `/` 
+- C) `%` 
+- D) `**`
+
+**2. (Opción múltiple)** ¿Cuál estructura de datos en Python es inmutable y puede usarse como clave en diccionarios?
+
+- A) Lista 
+- B) Diccionario 
+- C) Tupla 
+- D) Conjunto
+
+**3. (Verdadero/Falso)** En Python, los strings (cadenas de texto) son inmutables.
+
+- ( ) Verdadero \hspace{2cm} ( ) Falso
+
+**4. (Verdadero/Falso)** El operador `is` compara valores mientras que `==` compara la identidad de objetos en memoria.
+
+- ( ) Verdadero \hspace{2cm} ( ) Falso
+
+**5. (Identificar el error)** Señale el error en el siguiente código y explique por qué causa un problema:
+
+```python
+x = 10
+if x > 5:
+print("x es mayor que 5")
+```
+
+\vspace{2cm}
+
+**6. (Escribir código)** Escriba una función llamada `promedio` que reciba una lista de números y retorne el promedio (suma entre cantidad de elementos). Ejemplo: `promedio([10, 20, 30])` debe retornar `20.0`.
+
+\vspace{3cm}

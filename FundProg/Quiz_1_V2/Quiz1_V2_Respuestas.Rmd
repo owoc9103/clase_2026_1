@@ -1,0 +1,77 @@
+---
+title: "Quiz 1"
+subtitle: "Fundamentos de Programación - CON RESPUESTAS"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: false
+geometry:
+  - margin=1.5cm
+  - top=1.5cm
+  - bottom=1.5cm
+fontsize: 9pt
+header-includes:
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyfoot[C]{Quiz 1 - V2 - Respuestas}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+---
+
+**1.** El operador `is` compara valores mientras que `==` compara la identidad de objetos en memoria.
+
+- ( ) Verdadero \hspace{2cm} **(X) Falso** ✓  
+*Correcto: `==` compara valores, `is` compara identidad de objetos.*
+
+**2.** ¿Qué imprime `for i in range(3): print(i, end=" ")`?
+
+- A) 0 1 2 3 
+- B) 1 2 3 
+- C) **0 1 2** ✓ 
+- D) 3 2 1 0
+
+**3.** En un bucle `while`, ¿por qué es crucial modificar la condición dentro del bucle?
+
+- A) Para que el código sea más legible 
+- B) **Para evitar bucles infinitos y que el bucle eventualmente termine** ✓ 
+- C) Para mejorar el rendimiento 
+- D) No es necesario modificarla
+
+**4.** ¿Cuál estructura de datos en Python es inmutable y puede usarse como clave en diccionarios?
+
+- A) Conjunto 
+- B) **Tupla** ✓ 
+- C) Diccionario 
+- D) Lista
+
+**5.** ¿Qué método de lista inserta un elemento en la última posición?
+
+- A) `extend()` 
+- B) `add()` 
+- C) **`append()`** ✓ 
+- D) `insert()`
+
+**6.** La función `map()` aplica una función a cada elemento de una secuencia y retorna los resultados.
+
+- **(X) Verdadero** ✓ \hspace{2cm} ( ) Falso
+
+**7.** Señale el error en el siguiente código:
+
+```python
+x = 10
+if x > 5:
+print("x es mayor que 5")
+```
+
+**Respuesta:** Falta indentación en la línea `print()`. En Python el bloque del `if` debe estar indentado. Sin ello se produce `IndentationError`.
+
+**8.** Función `promedio`:
+
+```python
+def promedio(numeros):
+    return sum(numeros) / len(numeros)
+```

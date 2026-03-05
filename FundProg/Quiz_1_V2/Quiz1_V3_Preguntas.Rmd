@@ -1,0 +1,74 @@
+---
+title: "Quiz 1"
+subtitle: "Fundamentos de Programación"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: false
+geometry:
+  - margin=1.5cm
+  - top=1.5cm
+  - bottom=1cm
+fontsize: 9pt
+header-includes:
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyfoot[C]{Quiz 1 - V3 - Preguntas}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+**Nombre:** \underline{\hspace{10cm}}
+
+
+**1.** Escriba una función llamada `promedio` que reciba un iterable de números y devuelva su valor promedio. Ejemplo: `promedio([100, 200, 300])` retorna `200.0`.
+
+\vspace{2.5cm}
+
+**2.** ¿Qué imprime `for i in range(2, 6): print(i)`?
+
+- A) 2 3 4 5 6 
+- B) 2 3 4 5 
+- C) 0 1 2 3 4 5 
+- D) 6 5 4 3 2
+
+**3.** ¿Cuál es la principal diferencia entre un bucle `for` y un bucle `while`?
+
+- A) `for` usa índices y `while` no 
+- B) `for` itera sobre secuencias conocidas; `while` repite mientras una condición sea verdadera 
+- C) `while` es más rápido que `for` 
+- D) No hay diferencia significativa
+
+**4.** ¿Cuál estructura de datos en Python es inmutable y puede usarse como clave en diccionarios?
+
+- A) Tupla 
+- B) Conjunto 
+- C) Diccionario 
+- D) Lista
+
+**5.** ¿Qué método de lista inserta un elemento en la última posición?
+
+- A) `extend()` 
+- B) `add()` 
+- C) `insert()` 
+- D) `append()`
+
+**6.** La función `map()` aplica una función a cada elemento de una secuencia y retorna los resultados.
+
+- ( ) Verdadero \hspace{2cm} ( ) Falso
+
+**7.** El operador `is` compara valores mientras que `==` compara la identidad de objetos en memoria.
+
+- ( ) Verdadero \hspace{2cm} ( ) Falso
+
+**8.** Señale el error en el siguiente código y explique por qué causa un problema:
+
+```python
+x = 10
+if x > 5:
+print("x es mayor que 5")
+```
+
+\vspace{1.5cm}

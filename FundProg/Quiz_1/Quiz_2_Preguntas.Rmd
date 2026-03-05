@@ -1,0 +1,61 @@
+---
+title: "Quiz 2 - Fundamentos de Programación"
+subtitle: "Clases 1, 2 y 3 - Versión Preguntas"
+author: "Introducción Python, Control de Flujo, Estructuras de Datos"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: false
+geometry:
+  - margin=1.5cm
+  - top=1.5cm
+  - bottom=1.5cm
+fontsize: 9pt
+header-includes:
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyfoot[C]{Quiz 2 - Preguntas}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+**Nombre:** \underline{\hspace{6cm}}
+
+---
+
+**1. (Verdadero/Falso)** El operador `is` compara valores mientras que `==` compara la identidad de objetos en memoria.
+
+- ( ) Verdadero \hspace{2cm} ( ) Falso
+
+**2. (Identificar el error)** Señale el error en el siguiente código y explique por qué causa un problema:
+
+```python
+coordenadas = (10, 20)
+coordenadas[0] = 5
+```
+
+\vspace{2cm}
+
+**3. (Opción múltiple)** ¿Qué hace el operador lógico `and` cuando la primera condición es `False`?
+
+- A) Evalúa ambas condiciones 
+- B) Retorna `True` 
+- C) No evalúa la segunda condición (cortocircuito) 
+- D) Produce un error
+
+**4. (Escribir código)** Escriba una expresión con comprensión de listas que genere los cuadrados de los números pares del 0 al 9. Resultado esperado: `[0, 4, 16, 36, 64]`.
+
+\vspace{3cm}
+
+**5. (Opción múltiple)** ¿Qué método de lista inserta un elemento en una posición específica?
+
+- A) `append()` 
+- B) `extend()` 
+- C) `add()` 
+- D) `insert()`
+
+**6. (Verdadero/Falso)** La función `enumerate()` retorna tanto el índice como el valor al iterar sobre una secuencia.
+
+- ( ) Verdadero \hspace{2cm} ( ) Falso

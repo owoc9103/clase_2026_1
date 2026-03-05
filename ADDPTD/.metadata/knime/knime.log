@@ -4691,3 +4691,205 @@ java.nio.file.FileSystemException: C:\Users\owoc9\OneDrive\Desktop\Prueba_2026_0
 	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
 	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:125)
 	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:252)
+2026-03-04 08:31:53,174 : INFO  : main :  : NodeLogger :  :  : #########################################################################################
+2026-03-04 08:31:53,175 : INFO  : main :  : NodeLogger :  :  : #                                                                                       #
+2026-03-04 08:31:53,176 : INFO  : main :  : NodeLogger :  :  : # Welcome to KNIME Analytics Platform v5.5.1.v202507241444 (Build July 30, 2025)        #
+2026-03-04 08:31:53,176 : INFO  : main :  : NodeLogger :  :  : # Based on Eclipse, http://www.eclipse.org                                              #
+2026-03-04 08:31:53,176 : INFO  : main :  : NodeLogger :  :  : #                                                                                       #
+2026-03-04 08:31:53,176 : INFO  : main :  : NodeLogger :  :  : #########################################################################################
+2026-03-04 08:31:53,176 : INFO  : main :  : NodeLogger :  :  : #                                                                                       #
+2026-03-04 08:31:53,176 : INFO  : main :  : NodeLogger :  :  : # Copyright by KNIME AG, Zurich, Switzerland and others.                                #
+2026-03-04 08:31:53,176 : INFO  : main :  : NodeLogger :  :  : # Website: http://www.knime.com                                                         #
+2026-03-04 08:31:53,176 : INFO  : main :  : NodeLogger :  :  : # E-mail: contact@knime.com                                                             #
+2026-03-04 08:31:53,176 : INFO  : main :  : NodeLogger :  :  : #                                                                                       #
+2026-03-04 08:31:53,176 : INFO  : main :  : NodeLogger :  :  : #########################################################################################
+2026-03-04 08:31:53,176 : INFO  : main :  : NodeLogger :  :  : # For more details see the KNIME log file:                                              #
+2026-03-04 08:31:53,176 : INFO  : main :  : NodeLogger :  :  : # C:\Users\owoc9\Documents\U Javeriana\2026-I\ADDPTD\.metadata\knime\knime.log
+2026-03-04 08:31:53,176 : INFO  : main :  : NodeLogger :  :  : #---------------------------------------------------------------------------------------#
+2026-03-04 08:31:53,192 : INFO  : main :  : NodeLogger :  :  : # logging date=mié mar. 04 08:31:53 COT 2026
+2026-03-04 08:31:53,192 : INFO  : main :  : NodeLogger :  :  : # java.version=17.0.5
+2026-03-04 08:31:53,192 : INFO  : main :  : NodeLogger :  :  : # java.vm.version=17.0.5+8
+2026-03-04 08:31:53,192 : INFO  : main :  : NodeLogger :  :  : # java.vendor=Eclipse Adoptium
+2026-03-04 08:31:53,192 : INFO  : main :  : NodeLogger :  :  : # os.name=Windows 11
+2026-03-04 08:31:53,192 : INFO  : main :  : NodeLogger :  :  : # os.arch=amd64
+2026-03-04 08:31:53,192 : INFO  : main :  : NodeLogger :  :  : # number of CPUs=12
+2026-03-04 08:31:53,192 : INFO  : main :  : NodeLogger :  :  : # assertions=off
+2026-03-04 08:31:53,200 : INFO  : main :  : NodeLogger :  :  : # host=OWOC
+2026-03-04 08:31:53,203 : INFO  : main :  : NodeLogger :  :  : # username=owoc9
+2026-03-04 08:31:53,204 : INFO  : main :  : NodeLogger :  :  : # max mem=8028MB
+2026-03-04 08:31:53,204 : INFO  : main :  : NodeLogger :  :  : # application=org.knime.product.KNIME_APPLICATION
+2026-03-04 08:31:53,213 : INFO  : main :  : NodeLogger :  :  : # KNID=11-ca233d5dafc0d064-01-923bf6b2a0b69f4b
+2026-03-04 08:31:53,213 : INFO  : main :  : NodeLogger :  :  : #########################################################################################
+2026-03-04 08:31:53,214 : DEBUG : main :  : KNIMELogger :  :  : 12 messages were logged before logging was initialized; see below...
+2026-03-04 08:31:49,663 : DEBUG : main :  : EclipseProxyServiceInitializer :  :  : (1/3) Opened OSGi service tracker for 'org.eclipse.core.net.proxy.IProxyService'
+2026-03-04 08:31:49,747 : DEBUG : main :  : ApplicationHealth :  :  : Registering JMX bean for org.knime.core:type=Execution,name=GlobalPool
+2026-03-04 08:31:49,749 : DEBUG : main :  : ApplicationHealth :  :  : Registering JMX bean for org.knime.core:type=Execution,name=NodeStates
+2026-03-04 08:31:49,750 : DEBUG : main :  : ApplicationHealth :  :  : Registering JMX bean for org.knime.core:type=Memory,name=ObjectInstances
+2026-03-04 08:31:49,761 : DEBUG : main :  : IEarlyStartup :  :  : Running application "org.knime.product.KNIME_APPLICATION"
+2026-03-04 08:31:49,761 : DEBUG : main :  : IEarlyStartup :  :  : Moving from stage <none> to stage EARLIEST
+2026-03-04 08:31:49,764 : DEBUG : main :  : IEarlyStartup :  :  : Executing startup hook `org.knime.core.node.logging.JavaUtilLoggingAdapter#run()` at stage EARLIEST
+2026-03-04 08:31:49,767 : DEBUG : main :  : IEarlyStartup :  :  : Executing startup hook `org.knime.js.cef.CEFEarlyStartup#run()` at stage EARLIEST
+2026-03-04 08:31:50,018 : DEBUG : main :  : KNIMEApplication :  :  : Checking for instance location
+2026-03-04 08:31:52,942 : DEBUG : main :  : KNIMEApplication :  :  : Instance location set
+2026-03-04 08:31:53,077 : DEBUG : main :  : IEarlyStartup :  :  : Moving from stage EARLIEST to stage AFTER_PROFILES_SET
+2026-03-04 08:31:53,077 : DEBUG : main :  : IEarlyStartup :  :  : Executing startup hook `org.knime.core.node.logging.KNIMELogger$EarlyStartupInitializer#run()` at stage AFTER_PROFILES_SET
+2026-03-04 08:31:53,214 : DEBUG : main :  : KNIMELogger :  :  : End of buffered log messages
+2026-03-04 08:31:53,214 : DEBUG : main :  : IEarlyStartup :  :  : Executing startup hook `org.knime.core.eclipseUtil.EclipseProxyServiceInitializer#run()` at stage AFTER_PROFILES_SET
+2026-03-04 08:31:53,460 : DEBUG : main :  : NativeProxyProviderWrapper :  :  : Invoked default constructor in class "class org.eclipse.core.internal.net.ProxyManager" via reflectionto forcibly create new instance
+2026-03-04 08:31:53,462 : DEBUG : main :  : NativeProxyProviderWrapper :  :  : Forcibly set field "preferenceManager" in class "class org.eclipse.core.internal.net.ProxyManager" to "org.eclipse.core.internal.net.PreferenceManager@2ee456c7" via reflection
+2026-03-04 08:31:53,468 : DEBUG : main :  : NativeProxyProviderWrapper :  :  : Forcibly set field "nativeProxyProvider" in class "class org.eclipse.core.internal.net.ProxyManager" to "org.knime.core.eclipseUtil.NativeProxyProviderWrapper@429f0ca8" via reflection
+2026-03-04 08:31:53,468 : DEBUG : main :  : EclipseProxyServiceInitializer :  :  : (3/3) Successfully installed proxy support
+2026-03-04 08:31:53,468 : DEBUG : main :  : EclipseProxyServiceInitializer :  :  : (2/3) Initialized OSGi service 'org.eclipse.core.net.proxy.IProxyService'
+2026-03-04 08:31:53,468 : DEBUG : main :  : IEarlyStartup :  :  : Executing startup hook `org.knime.core.internal.MountTableInitializerEarlyStartup#run()` at stage AFTER_PROFILES_SET
+2026-03-04 08:31:54,217 : DEBUG : main :  : WorkbenchMountTable :  :  : Mounted Explorer Temp Space 'knime-temp-space' - com.knime.explorer.tempspace
+2026-03-04 08:31:54,241 : DEBUG : main :  : IEarlyStartup :  :  : Executing startup hook `org.knime.ui.java.OnEarlyStartup#run()` at stage AFTER_PROFILES_SET
+2026-03-04 08:31:54,277 : DEBUG : KNIME-Worker-0 :  : NodeFactoryProvider :  :  : Duplicate node factory id: org.knime.base.filehandling.filemetainfo.FileMetaInfoNodeFactory
+2026-03-04 08:31:54,277 : DEBUG : KNIME-Worker-0 :  : NodeFactoryProvider :  :  : Duplicate node factory id: org.knime.base.node.preproc.filter.column.FilterColumnNodeFactory
+2026-03-04 08:31:54,279 : DEBUG : KNIME-Worker-0 :  : NodeFactoryProvider :  :  : Duplicate node factory id: org.knime.base.node.preproc.joiner.NewJoinerNodeFactory
+2026-03-04 08:31:54,279 : DEBUG : KNIME-Worker-0 :  : NodeFactoryProvider :  :  : Duplicate node factory id: org.knime.base.node.preproc.split.SplitNodeFactory
+2026-03-04 08:31:54,279 : DEBUG : KNIME-Worker-0 :  : NodeFactoryProvider :  :  : Duplicate node factory id: org.knime.distmatrix.knn.KnnDistNodeFactory
+2026-03-04 08:31:54,288 : DEBUG : KNIME-Worker-0 :  : NodeFactoryProvider :  :  : Collected NodeFactory extensions... found 1156 nodes (390 deprecated, 9 hidden) in 0,0s
+2026-03-04 08:31:54,364 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : HadoopInitializer :  :  : Setting system property hadoop.home.dir to C:\Users\owoc9\AppData\Local\Temp\hadoop_home_25970 (for Hadoop winutils).
+2026-03-04 08:31:54,909 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : SparkProviderRegistry :  :  : Registering Spark provider class: org.knime.bigdata.spark.core.databricks.DatabricksNodeFactoryProvider from extension: org.knime.bigdata.databricks
+2026-03-04 08:31:54,938 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : SparkProviderRegistry :  :  : Registering Spark provider class: org.knime.bigdata.spark.core.livy.LivyNodeFactoryProvider from extension: org.knime.bigdata.spark.core.livy
+2026-03-04 08:31:54,949 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : SparkProviderRegistry :  :  : Registering Spark provider class: org.knime.bigdata.spark.local.SparkLocalNodeFactoryProvider from extension: org.knime.bigdata.spark.local
+2026-03-04 08:31:54,963 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : SparkProviderRegistry :  :  : Registering Spark provider class: org.knime.bigdata.spark.node.StandardSparkNodeFactoryProvider from extension: org.knime.bigdata.spark.node
+2026-03-04 08:31:55,279 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : SvgPluginActivator :  :  : Added SVG export option to node view class
+2026-03-04 08:31:55,668 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.IntValue to java.lang.Integer
+2026-03-04 08:31:55,669 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.LongValue to java.lang.Long
+2026-03-04 08:31:55,669 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.DoubleValue to java.lang.Double
+2026-03-04 08:31:55,669 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.BooleanValue to java.lang.Boolean
+2026-03-04 08:31:55,669 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.vector.bitvector.BitVectorValue to java.lang.String
+2026-03-04 08:31:55,670 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.xml.XMLValue to org.w3c.dom.Document
+2026-03-04 08:31:55,670 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.StringValue to java.lang.String
+2026-03-04 08:31:55,671 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.blob.BinaryObjectDataValue to java.io.InputStream
+2026-03-04 08:31:55,671 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.uri.URIDataValue to java.lang.String
+2026-03-04 08:31:55,672 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.base.data.xml.SvgValue to org.w3c.dom.svg.SVGDocument
+2026-03-04 08:31:55,672 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.filehandling.core.data.location.FSLocationValue to org.knime.filehandling.core.connections.FSLocation
+2026-03-04 08:31:55,673 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.time.localtime.LocalTimeValue to java.time.LocalTime
+2026-03-04 08:31:55,673 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.time.localdate.LocalDateValue to java.time.LocalDate
+2026-03-04 08:31:55,674 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.time.localdatetime.LocalDateTimeValue to java.time.LocalDateTime
+2026-03-04 08:31:55,674 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.time.zoneddatetime.ZonedDateTimeValue to java.time.ZonedDateTime
+2026-03-04 08:31:55,675 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.time.duration.DurationValue to java.time.Duration
+2026-03-04 08:31:55,675 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Registered DataCellToJavaConverterFactory from DataValueAccessMethod annotation for org.knime.core.data.time.period.PeriodValue to java.time.Period
+2026-03-04 08:31:55,676 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Found ConverterProvider extension: org.knime.core.data.vector.bytevector.ByteVectorValueToIntStreamConverterFactory(ByteVectorValue,interface java.util.stream.IntStream,IntStream (values in [0-255]))
+2026-03-04 08:31:55,678 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Found ConverterProvider extension: org.knime.core.data.vector.bytevector.ByteVectorValueToPrimitiveIntArrayConverterFactory(ByteVectorValue,class [I,int[] (values in [0-255]))
+2026-03-04 08:31:55,681 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : DataCellToJavaConverterRegistry :  :  : Found ConverterProvider extension: org.knime.core.data.json.JsonValueToJavaConverterFactory(JSONValue,interface jakarta.json.JsonValue,JsonValue)
+2026-03-04 08:31:55,736 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: int to Number (Integer)
+2026-03-04 08:31:55,736 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to Number (Integer)
+2026-03-04 08:31:55,736 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to Number (Float)
+2026-03-04 08:31:55,737 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: long to Number (Float)
+2026-03-04 08:31:55,737 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: float to Number (Float)
+2026-03-04 08:31:55,737 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: double to Number (Float)
+2026-03-04 08:31:55,737 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: int to Number (Float)
+2026-03-04 08:31:55,737 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: boolean to Boolean
+2026-03-04 08:31:55,737 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to Boolean
+2026-03-04 08:31:55,738 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to Number (Long Integer)
+2026-03-04 08:31:55,738 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: int to Number (Long Integer)
+2026-03-04 08:31:55,738 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: long to Number (Long Integer)
+2026-03-04 08:31:55,738 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to Bit Vector (Sparse)
+2026-03-04 08:31:55,738 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to Bit Vector
+2026-03-04 08:31:55,739 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.io.InputStream to XML
+2026-03-04 08:31:55,740 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: org.w3c.dom.Document to XML
+2026-03-04 08:31:55,740 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to XML
+2026-03-04 08:31:55,740 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.io.InputStream to XML
+2026-03-04 08:31:55,740 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.io.InputStream to Image (PNG)
+2026-03-04 08:31:55,741 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.io.InputStream to Binary Object
+2026-03-04 08:31:55,741 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: [B to Binary Object
+2026-03-04 08:31:55,741 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.io.InputStream to Model (PMML)
+2026-03-04 08:31:55,741 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to Model (PMML)
+2026-03-04 08:31:55,742 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.io.Reader to String
+2026-03-04 08:31:55,742 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.io.InputStream to String
+2026-03-04 08:31:55,742 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to String
+2026-03-04 08:31:55,743 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to URI
+2026-03-04 08:31:55,743 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.io.Reader to Image (SVG)
+2026-03-04 08:31:55,743 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.io.InputStream to Image (SVG)
+2026-03-04 08:31:55,743 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to Image (SVG)
+2026-03-04 08:31:55,744 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: org.knime.filehandling.core.connections.FSLocation to Path
+2026-03-04 08:31:55,745 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: jakarta.json.JsonValue to JSON
+2026-03-04 08:31:55,745 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.io.InputStream to JSON
+2026-03-04 08:31:55,745 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.io.Reader to JSON
+2026-03-04 08:31:55,745 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to JSON
+2026-03-04 08:31:55,745 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to HTML
+2026-03-04 08:31:55,746 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.time.LocalTime to Time
+2026-03-04 08:31:55,746 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to Time
+2026-03-04 08:31:55,747 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.time.LocalDate to Date
+2026-03-04 08:31:55,747 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to Date
+2026-03-04 08:31:55,747 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.time.LocalDateTime to Date&time (Local)
+2026-03-04 08:31:55,747 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to Date&time (Local)
+2026-03-04 08:31:55,748 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.time.ZonedDateTime to Date&time (Zoned)
+2026-03-04 08:31:55,748 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to Date&time (Zoned)
+2026-03-04 08:31:55,748 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.time.Duration to Duration (Time-based)
+2026-03-04 08:31:55,748 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to Duration (Time-based)
+2026-03-04 08:31:55,749 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.time.Period to Duration (Date-based)
+2026-03-04 08:31:55,749 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Registered JavaToDataCellConverterFactory from DataCellFactoryMethod annotation for: java.lang.String to Duration (Date-based)
+2026-03-04 08:31:55,749 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Found ConverterProvider extension: org.eclipse.core.internal.registry.ExtensionHandle@261d
+2026-03-04 08:31:55,752 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaToDataCellConverterRegistry :  :  : Found ConverterProvider extension: org.eclipse.core.internal.registry.ExtensionHandle@261d
+2026-03-04 08:31:55,755 : DEBUG : ForkJoinPool.commonPool-worker-1 :  : JavaSnippetActivator :  :  : Cached custom type classpaths [620 ms]
+2026-03-04 08:31:55,842 : DEBUG : KNIME-Worker-0 :  : NodeFactoryProvider :  :  : Collected NodeSetFactory extensions... found 4 node sets with 152 nodes in 1,6s
+2026-03-04 08:31:56,032 : DEBUG : Node Repository Initializer :  : NodeSpecCache :  :  : Computing node specifications for KNIME AP Core feature
+2026-03-04 08:31:56,499 : DEBUG : Node Repository Initializer :  : NodeSpecCache :  :  : Computing node specifications for KNIME Distance Matrix Extension
+2026-03-04 08:31:56,570 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.base.node.mine.treeensemble2.distance.RandomForestDistanceFactory'
+2026-03-04 08:31:56,575 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.distmatrix.calculate.measure.MatrixDistanceFactory'
+2026-03-04 08:31:56,577 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.base.distance.measure.OldDistanceWrapperDistanceFactory'
+2026-03-04 08:31:56,580 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.distance.measure.string.levenshtein.LevenshteinDistanceFactory'
+2026-03-04 08:31:56,583 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.distance.measure.string.tversky.TverskyDistanceFactory'
+2026-03-04 08:31:56,585 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.distance.measure.bitvector.cosine.CosineDistanceFactory'
+2026-03-04 08:31:56,586 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.distance.measure.bitvector.tversky.TverskyDistanceFactory'
+2026-03-04 08:31:56,587 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.base.distance.bytevector.CosineDistanceMeasureFactory'
+2026-03-04 08:31:56,588 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.base.distance.bytevector.EuclideanDistanceMeasureFactory'
+2026-03-04 08:31:56,589 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.base.distance.bytevector.ManhattanDistanceMeasureFactory'
+2026-03-04 08:31:56,590 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.base.distance.bytevector.PNormDistanceMeasureFactory'
+2026-03-04 08:31:56,594 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.distance.measure.numerical.lnorm.LNormDistanceFactory'
+2026-03-04 08:31:56,596 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.distance.measure.numerical.cosine.CosineDistanceFactory'
+2026-03-04 08:31:56,597 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.distance.measure.jsnippet.JSnippetDistanceFactory'
+2026-03-04 08:31:56,599 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.distance.measure.jsnippet.aggregated.AggregatedDistanceFactory'
+2026-03-04 08:31:56,601 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.distance.measure.mahalanobis.MahalanobisDistanceFactory'
+2026-03-04 08:31:56,604 : DEBUG : Node Repository Initializer :  : DistanceMeasureRepository :  :  : added factory: 'org.knime.distance.measure.string.jarowinkler.JaroWinklerDistanceFactory'
+2026-03-04 08:31:56,640 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.EuclideanDistanceMeasureFactory
+2026-03-04 08:31:56,667 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.EuclideanDistanceMeasureFactory
+2026-03-04 08:31:56,670 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.EuclideanDistanceMeasureFactory
+2026-03-04 08:31:56,672 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.EuclideanDistanceMeasureFactory
+2026-03-04 08:31:56,674 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.CosineDistanceMeasureFactory
+2026-03-04 08:31:56,675 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.CosineDistanceMeasureFactory
+2026-03-04 08:31:56,676 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.CosineDistanceMeasureFactory
+2026-03-04 08:31:56,677 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.CosineDistanceMeasureFactory
+2026-03-04 08:31:56,678 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.PNormDistanceMeasureFactory
+2026-03-04 08:31:56,678 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.PNormDistanceMeasureFactory
+2026-03-04 08:31:56,679 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.PNormDistanceMeasureFactory
+2026-03-04 08:31:56,680 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.PNormDistanceMeasureFactory
+2026-03-04 08:31:56,681 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.ManhattanDistanceMeasureFactory
+2026-03-04 08:31:56,682 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.ManhattanDistanceMeasureFactory
+2026-03-04 08:31:56,684 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.ManhattanDistanceMeasureFactory
+2026-03-04 08:31:56,685 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.base.distance.bytevector.ManhattanDistanceMeasureFactory
+2026-03-04 08:31:56,814 : DEBUG : Node Repository Initializer :  : HiLiteHandler :  :  : Adding hilite translator to handler d70af475-0dc7-4a79-91d3-53263c6e9285
+2026-03-04 08:31:56,889 : DEBUG : Node Repository Initializer :  : HiLiteHandler :  :  : Adding hilite translator to handler 4c7db3dd-929c-4ff1-b00b-442479eb4d5e
+2026-03-04 08:31:56,973 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.bitvector.tversky.TverskyDistanceFactory
+2026-03-04 08:31:56,974 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.bitvector.tversky.TverskyDistanceFactory
+2026-03-04 08:31:56,975 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.bitvector.tversky.TverskyDistanceFactory
+2026-03-04 08:31:56,976 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.bitvector.tversky.TverskyDistanceFactory
+2026-03-04 08:31:56,978 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.bitvector.cosine.CosineDistanceFactory
+2026-03-04 08:31:56,980 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.bitvector.cosine.CosineDistanceFactory
+2026-03-04 08:31:56,981 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.bitvector.cosine.CosineDistanceFactory
+2026-03-04 08:31:56,982 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.bitvector.cosine.CosineDistanceFactory
+2026-03-04 08:31:57,059 : DEBUG : Node Repository Initializer :  : HiLiteHandler :  :  : Adding hilite translator to handler 965a1d8b-809e-4053-ac3a-9ba3653002ad
+2026-03-04 08:31:57,168 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.numerical.lnorm.LNormDistanceFactory
+2026-03-04 08:31:57,169 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.numerical.lnorm.LNormDistanceFactory
+2026-03-04 08:31:57,171 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.numerical.lnorm.LNormDistanceFactory
+2026-03-04 08:31:57,172 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.numerical.lnorm.LNormDistanceFactory
+2026-03-04 08:31:57,173 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.numerical.cosine.CosineDistanceFactory
+2026-03-04 08:31:57,174 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.numerical.cosine.CosineDistanceFactory
+2026-03-04 08:31:57,175 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.numerical.cosine.CosineDistanceFactory
+2026-03-04 08:31:57,176 : DEBUG : Node Repository Initializer :  : DistanceMeasureDescriptionFactory :  :  : Loading description for factory: class org.knime.distance.measure.numerical.cosine.CosineDistanceFactory
+2026-03-04 08:31:57,177 : INFO  : main :  : StringHistory :  :  : History file 'C:\Users\owoc9\Documents\U Javeriana\2026-I\ADDPTD\.metadata\knime\history_database_drivers.txt' does not exist.
+2026-03-04 08:31:57,177 : INFO  : main :  : StringHistory :  :  : History file 'C:\Users\owoc9\Documents\U Javeriana\2026-I\ADDPTD\.metadata\knime\history_database_urls.txt' does not exist.
+2026-03-04 08:31:57,177 : DEBUG : main :  : DatabaseConnectionSettings :  :  : Settings database timeout to 15 seconds
+2026-03-04 08:31:57,179 : DEBUG : main :  : DatabaseConnectionSettings :  :  : Database concurrency (sync via database connection) is true.
+2026-03-04 08:31:57,185 : DEBUG : main :  : KNIMECorePlugin :  :  : Setting KNIME max thread count to 24
+2026-03-04 08:31:57,187 : DEBUG : main :  : KNIMECorePlugin :  :  : Setting KNIME temp dir to "C:\Users\owoc9\AppData\Local\Temp"
+2026-03-04 08:32:06,757 : WARN  : ModalContext :  : Node : Excel Writer : 3:60 : Execute failed: C:\Users\owoc9\OneDrive\Desktop\Prueba_2026_02_26.xlsx: El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso
+2026-03-04 08:33:49,096 : WARN  : ModalContext :  : Node : Column Renamer : 5:13 : The columns "P6020", "P6016" are configured but no longer exist.
+2026-03-04 08:33:49,155 : WARN  : ModalContext :  : Node : CSV Writer : 5:21 : Please specify a file
+2026-03-04 08:33:49,156 : WARN  : ModalContext :  : Node : CSV Writer : 5:21 : Please specify a file
+2026-03-04 08:33:50,842 : WARN  : ModalContext :  : Node : CSV Reader : 6:10 : Node created an empty data table.
+2026-03-04 08:33:50,854 : WARN  : ModalContext :  : Node : Table Reader : 6:16 : Node created an empty data table.

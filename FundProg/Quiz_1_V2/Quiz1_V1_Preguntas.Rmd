@@ -1,0 +1,74 @@
+---
+title: "Quiz 1"
+subtitle: "Fundamentos de Programación"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: false
+geometry:
+  - margin=1.5cm
+  - top=1.5cm
+  - bottom=1cm
+fontsize: 9pt
+header-includes:
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyfoot[C]{Quiz 1 - V1 - Preguntas}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+**Nombre:** \underline{\hspace{10cm}}
+
+
+**1.** ¿Qué valores produce `range(2, 8)` en un bucle `for`?
+
+- A) 2, 3, 4, 5, 6, 7, 8 
+- B) 2, 3, 4, 5, 6, 7 
+- C) 2, 4, 6, 8 
+- D) 0, 1, 2, 3, 4, 5, 6, 7
+
+**2.** ¿Cuándo es más apropiado usar un bucle `while` en lugar de un bucle `for`?
+
+- A) Cuando se conoce exactamente el número de iteraciones 
+- B) Cuando se debe iterar sobre una lista o secuencia 
+- C) Cuando no se sabe cuántas veces repetir pero hay una condición de parada 
+- D) Nunca, `for` siempre es preferible
+
+**3.** ¿Cuál estructura de datos en Python es inmutable y puede usarse como clave en diccionarios?
+
+- A) Conjunto 
+- B) Lista 
+- C) Diccionario 
+- D) Tupla
+
+**4.** ¿Qué método de lista inserta un elemento en la última posición?
+
+- A) `append()` 
+- B) `extend()` 
+- C) `add()` 
+- D) `insert()`
+
+**5.** La función `map()` aplica una función a cada elemento de una secuencia y retorna los resultados.
+
+- ( ) Verdadero \hspace{2cm} ( ) Falso
+
+**6.** El operador `is` compara valores mientras que `==` compara la identidad de objetos en memoria.
+
+- ( ) Verdadero \hspace{2cm} ( ) Falso
+
+**7.** Señale el error en el siguiente código y explique por qué causa un problema:
+
+```python
+x = 10
+if x > 5:
+print("x es mayor que 5")
+```
+
+\vspace{1.5cm}
+
+**8.** Escriba una función llamada `promedio` que reciba una lista de números y retorne el promedio (suma entre cantidad de elementos). Ejemplo: `promedio([10, 20, 30])` debe retornar `20.0`.
+
+\vspace{2.5cm}

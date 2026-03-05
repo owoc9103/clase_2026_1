@@ -1,0 +1,328 @@
+---
+title: "Modelo de Regresión Logística - Riesgo de Crédito Alemán (German Credit)"
+subtitle: "Predicción de buen/mal pagador"
+author: "Análítica Financiera"
+date: "`r format(Sys.Date(), '%d de %B de %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+    theme: flatly
+    highlight: tango
+lang: es
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.align = "center")
+```
+
+# Contexto del problema
+
+## Base de datos
+
+La base de datos **German Credit** contiene información de **1.000 solicitantes de crédito** en Alemania. Cada observación representa un cliente que solicitó un préstamo, con variables demográficas, financieras y del propósito del crédito. La variable respuesta **Risk** clasifica al cliente como **good** (buen pagador) o **bad** (mal pagador).
+
+## Variables principales
+
+| Variable | Descripción |
+|---------|-------------|
+| Age | Edad del solicitante (años) |
+| Sex | Género (male/female) |
+| Job | Tipo de empleo (0-3) |
+| Housing | Tipo de vivienda (own, free, rent) |
+| Saving accounts | Cuentas de ahorro (little, moderate, quite rich, rich, NA) |
+| Checking account | Cuenta corriente (little, moderate, rich, NA) |
+| Credit amount | Monto del crédito solicitado |
+| Duration | Duración del crédito en meses |
+| Purpose | Propósito del crédito (radio/TV, car, education, etc.) |
+| Risk | **Variable respuesta**: good = buen pagador, bad = mal pagador |
+
+## Objetivo
+
+Construir **modelos de regresión logística** que permitan predecir la probabilidad de que un solicitante sea un **buen pagador (good)**. Se estimarán dos modelos específicos con interpretación completa de coeficientes, Odds Ratios y matrices de confusión.
+
+# Importación de librerías
+
+```{r librerias}
+library(tidyverse)
+library(ggplot2)
+library(caret)      # Para train/test split y métricas
+library(pROC)       # Para curva ROC
+library(knitr)      # Para tablas
+library(scales)     # Para formato de ejes
+```
+
+# Importación y exploración del conjunto de datos
+
+```{r cargar_datos}
+# Cargar datos (el archivo debe estar en el mismo directorio que este .Rmd)
+data_raw <- read.csv("german_credit_data.csv", stringsAsFactors = FALSE)
+
+# Eliminar primera columna (índice) si existe
+if (ncol(data_raw) == 11) {
+  data_raw <- data_raw[, -1]
+}
+
+# Estandarizar nombres de columnas
+names(data_raw) <- c("Age", "Sex", "Job", "Housing", "Saving_accounts", 
+                     "Checking_account", "Credit_amount", "Duration", "Purpose", "Risk")
+
+head(data_raw, 10)
+```
+
+# Estudio descriptivo
+
+```{r dimensiones}
+dim(data_raw)
+paste("El dataset tiene", nrow(data_raw), "filas y", ncol(data_raw), "columnas")
+```
+
+```{r tipos_datos}
+glimpse(data_raw)
+```
+
+```{r distribucion_risk}
+data_raw %>%
+  count(Risk) %>%
+  mutate(pct = n / sum(n) * 100) %>%
+  kable(caption = "Distribución de la variable respuesta (Risk)")
+```
+
+```{r grafico_risk, fig.width=6, fig.height=4}
+data_raw %>%
+  count(Risk) %>%
+  mutate(pct = n / sum(n), lbl = paste0(round(pct * 100, 1), "%")) %>%
+  ggplot(aes(x = Risk, y = n, fill = Risk)) +
+  geom_col() +
+  geom_text(aes(label = lbl), vjust = -0.5) +
+  scale_fill_manual(values = c("bad" = "#e74c3c", "good" = "#2ecc71")) +
+  theme_minimal() +
+  labs(title = "Distribución de la variable respuesta (Risk)", x = "Riesgo", y = "Frecuencia")
+```
+
+# Preparación de datos para el modelo
+
+## Creación de variables dummy
+
+Se crean las variables necesarias para los dos modelos especificados:
+
+- **female**: 1 si Sex == "female", 0 si male
+- **s_little**: 1 si Saving_accounts == "little", 0 en otro caso
+- **s_rich**: 1 si Saving_accounts == "rich", 0 en otro caso
+- **c_little**: 1 si Checking_account == "little", 0 en otro caso
+- **c_moderate**: 1 si Checking_account == "moderate", 0 en otro caso
+- **c_rich**: 1 si Checking_account == "rich", 0 en otro caso
+- **radio/TV**: 1 si Purpose == "radio/TV", 0 en otro caso
+- **good**: 1 si Risk == "good", 0 si Risk == "bad"
+
+```{r crear_dummy}
+data <- data_raw %>%
+  mutate(
+    female = as.integer(Sex == "female"),
+    s_little = as.integer(Saving_accounts == "little"),
+    s_rich = as.integer(Saving_accounts == "rich"),
+    c_little = as.integer(Checking_account == "little"),
+    c_moderate = as.integer(Checking_account == "moderate"),
+    c_rich = as.integer(Checking_account == "rich"),
+    `radio/TV` = as.integer(Purpose == "radio/TV"),
+    good = as.integer(Risk == "good")
+  )
+
+# Filtrar filas con NA en variables clave (Saving_accounts, Checking_account)
+# para evitar problemas en el modelo
+data_modelo <- data %>%
+  filter(!is.na(Saving_accounts), !is.na(Checking_account))
+
+cat("Observaciones después de eliminar NA en Saving y Checking:", nrow(data_modelo), "\n")
+cat("Observaciones originales:", nrow(data), "\n")
+```
+
+```{r verificar_variables}
+data_modelo %>%
+  select(Age, Duration, female, s_little, s_rich, c_little, c_moderate, c_rich, `radio/TV`, good) %>%
+  head(15) %>%
+  kable()
+```
+
+# División en entrenamiento y prueba
+
+```{r train_test}
+set.seed(42)
+train_index <- createDataPartition(data_modelo$good, p = 0.7, list = FALSE)
+train_data <- data_modelo[train_index, ]
+test_data <- data_modelo[-train_index, ]
+
+cat("Observaciones de entrenamiento:", nrow(train_data), "\n")
+cat("Observaciones de prueba:", nrow(test_data), "\n")
+```
+
+# Modelo 1: good ~ Age + Duration + female + s_little + s_rich + c_little + c_moderate + c_rich
+
+## Estimación del modelo
+
+```{r modelo1}
+modelo1 <- glm(
+  good ~ Age + Duration + female + s_little + s_rich + c_little + c_moderate + c_rich,
+  data = train_data,
+  family = binomial(link = "logit")
+)
+
+summary(modelo1)
+```
+
+## Coeficientes y Odds Ratios - Modelo 1
+
+```{r coef_odds_modelo1}
+coef_m1 <- coef(modelo1)
+tabla_coef_m1 <- data.frame(
+  Variable = names(coef_m1),
+  Coeficiente = round(coef_m1, 4),
+  Odds_Ratio = round(exp(coef_m1), 4)
+)
+kable(tabla_coef_m1, caption = "Coeficientes y Odds Ratios - Modelo 1")
+```
+
+## Interpretación de coeficientes - Modelo 1
+
+**Variables numéricas:**
+
+- **Age**: Por cada año adicional de edad, el logit de la probabilidad de ser buen pagador cambia en `r round(coef_m1["Age"], 4)`. Odds Ratio = `r round(exp(coef_m1["Age"]), 4)`: por cada año más, las odds de ser buen pagador se multiplican por este factor.
+- **Duration**: Por cada mes adicional de duración del crédito, el logit cambia en `r round(coef_m1["Duration"], 4)`. Odds Ratio = `r round(exp(coef_m1["Duration"]), 4)`.
+
+**Variables categóricas (dummy):**
+
+- **female**: Ser mujer (vs. hombre) cambia las odds en un factor de `r round(exp(coef_m1["female"]), 4)`.
+- **s_little**: Tener cuenta de ahorros "little" (vs. referencia: moderate, quite rich, NA) multiplica las odds por `r round(exp(coef_m1["s_little"]), 4)`.
+- **s_rich**: Tener cuenta "rich" multiplica las odds por `r round(exp(coef_m1["s_rich"]), 4)`.
+- **c_little, c_moderate, c_rich**: Efecto de la cuenta corriente (vs. NA) sobre las odds de ser buen pagador.
+
+**Significación:** Coeficientes con p-value < 0.05 son estadísticamente significativos.
+
+## Predicciones y matriz de confusión - Modelo 1
+
+```{r predicciones_modelo1}
+pred_proba_m1 <- predict(modelo1, newdata = test_data, type = "response")
+pred_clase_m1 <- factor(ifelse(pred_proba_m1 >= 0.5, 1, 0), levels = c(0, 1))
+test_good <- factor(test_data$good, levels = c(0, 1))
+```
+
+```{r confusion_modelo1}
+cm1 <- confusionMatrix(pred_clase_m1, test_good, positive = "1")
+cm1
+```
+
+```{r tabla_confusion_m1}
+kable(cm1$table, caption = "Matriz de confusión - Modelo 1")
+```
+
+```{r metricas_modelo1}
+cat("Precisión (Accuracy) Modelo 1:", round(cm1$overall["Accuracy"], 4), "\n")
+cat("Sensibilidad (Recall clase good):", round(cm1$byClass["Sensitivity"], 4), "\n")
+cat("Especificidad (Recall clase bad):", round(cm1$byClass["Specificity"], 4), "\n")
+cat("F1-Score:", round(cm1$byClass["F1"], 4), "\n")
+```
+
+## Curva ROC - Modelo 1
+
+```{r roc_modelo1, fig.width=6, fig.height=5}
+roc_m1 <- roc(test_data$good, pred_proba_m1)
+plot(roc_m1, main = "Curva ROC - Modelo 1", col = "steelblue", lwd = 2)
+abline(a = 0, b = 1, lty = 2, col = "gray")
+text(0.5, 0.3, paste("AUC =", round(auc(roc_m1), 4)), cex = 1.2)
+```
+
+---
+
+# Modelo 2: good ~ Duration + female + s_little + s_rich + c_little + c_moderate + c_rich + `radio/TV`
+
+## Estimación del modelo
+
+```{r modelo2}
+modelo2 <- glm(
+  good ~ Duration + female + s_little + s_rich + c_little + c_moderate + c_rich + `radio/TV`,
+  data = train_data,
+  family = binomial(link = "logit")
+)
+
+summary(modelo2)
+```
+
+## Coeficientes y Odds Ratios - Modelo 2
+
+```{r coef_odds_modelo2}
+coef_m2 <- coef(modelo2)
+tabla_coef_m2 <- data.frame(
+  Variable = names(coef_m2),
+  Coeficiente = round(coef_m2, 4),
+  Odds_Ratio = round(exp(coef_m2), 4)
+)
+kable(tabla_coef_m2, caption = "Coeficientes y Odds Ratios - Modelo 2")
+```
+
+## Interpretación de coeficientes - Modelo 2
+
+**Variable numérica:**
+
+- **Duration**: Por cada mes adicional de duración, las odds de ser buen pagador se multiplican por `r round(exp(coef_m2["Duration"]), 4)`.
+
+**Variables categóricas:**
+
+- **female**: Efecto de ser mujer sobre las odds (vs. hombre).
+- **s_little, s_rich**: Efecto del nivel de ahorro.
+- **c_little, c_moderate, c_rich**: Efecto del nivel de cuenta corriente.
+- **radio/TV**: Si el propósito del crédito es comprar radio/TV (vs. otros propósitos), las odds cambian según el Odds Ratio mostrado en la tabla anterior.
+
+## Predicciones y matriz de confusión - Modelo 2
+
+```{r predicciones_modelo2}
+pred_proba_m2 <- predict(modelo2, newdata = test_data, type = "response")
+pred_clase_m2 <- factor(ifelse(pred_proba_m2 >= 0.5, 1, 0), levels = c(0, 1))
+```
+
+```{r confusion_modelo2}
+cm2 <- confusionMatrix(pred_clase_m2, test_good, positive = "1")
+cm2
+```
+
+```{r tabla_confusion_m2}
+kable(cm2$table, caption = "Matriz de confusión - Modelo 2")
+```
+
+```{r metricas_modelo2}
+cat("Precisión (Accuracy) Modelo 2:", round(cm2$overall["Accuracy"], 4), "\n")
+cat("Sensibilidad (Recall clase good):", round(cm2$byClass["Sensitivity"], 4), "\n")
+cat("Especificidad (Recall clase bad):", round(cm2$byClass["Specificity"], 4), "\n")
+cat("F1-Score:", round(cm2$byClass["F1"], 4), "\n")
+```
+
+## Curva ROC - Modelo 2
+
+```{r roc_modelo2, fig.width=6, fig.height=5}
+roc_m2 <- roc(test_data$good, pred_proba_m2)
+plot(roc_m2, main = "Curva ROC - Modelo 2", col = "darkgreen", lwd = 2)
+abline(a = 0, b = 1, lty = 2, col = "gray")
+text(0.5, 0.3, paste("AUC =", round(auc(roc_m2), 4)), cex = 1.2)
+```
+
+# Comparación de modelos
+
+```{r comparacion}
+comparacion <- data.frame(
+  Modelo = c("Modelo 1 (con Age)", "Modelo 2 (con radio/TV)"),
+  Accuracy = c(round(cm1$overall["Accuracy"], 4), round(cm2$overall["Accuracy"], 4)),
+  AUC = c(round(auc(roc_m1), 4), round(auc(roc_m2), 4)),
+  Sensibilidad = c(round(cm1$byClass["Sensitivity"], 4), round(cm2$byClass["Sensitivity"], 4)),
+  Especificidad = c(round(cm1$byClass["Specificity"], 4), round(cm2$byClass["Specificity"], 4))
+)
+kable(comparacion, caption = "Comparación de métricas entre modelos")
+```
+
+# Conclusiones
+
+Los dos modelos de regresión logística permiten predecir la probabilidad de que un solicitante de crédito sea un **buen pagador**. 
+
+- **Modelo 1** incluye **Age** y **Duration** como variables numéricas, junto con indicadores de género, nivel de ahorro y cuenta corriente.
+- **Modelo 2** omite Age pero incorpora el propósito del crédito **radio/TV**, lo que puede capturar un perfil específico de solicitantes.
+
+La interpretación de los **Odds Ratios** facilita la toma de decisiones: valores > 1 indican mayor probabilidad de ser buen pagador; valores < 1 indican mayor probabilidad de ser mal pagador. Las **matrices de confusión** y métricas (Accuracy, Sensibilidad, Especificidad, AUC) permiten evaluar el rendimiento predictivo de cada modelo.

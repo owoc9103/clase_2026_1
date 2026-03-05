@@ -1,0 +1,62 @@
+---
+title: "Quiz 2 - Fundamentos de Programación"
+subtitle: "Clases 1, 2 y 3 - Versión CON RESPUESTAS"
+author: "Introducción Python, Control de Flujo, Estructuras de Datos"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: false
+geometry:
+  - margin=1.5cm
+  - top=1.5cm
+  - bottom=1.5cm
+fontsize: 9pt
+header-includes:
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyfoot[C]{Quiz 2 - Respuestas}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+---
+
+**1. (Verdadero/Falso)** El operador `is` compara valores mientras que `==` compara la identidad de objetos en memoria.
+
+- ( ) Verdadero \hspace{2cm} **(X) Falso** ✓  
+*Correcto: `==` compara valores, `is` compara identidad de objetos.*
+
+**2. (Identificar el error)** Señale el error en el siguiente código:
+
+```python
+coordenadas = (10, 20)
+coordenadas[0] = 5
+```
+
+**Respuesta:** Las tuplas son inmutables en Python. No se puede modificar un elemento después de crearlas. El intento de asignar `coordenadas[0] = 5` genera un `TypeError: 'tuple' object does not support item assignment`.
+
+**3. (Opción múltiple)** ¿Qué hace el operador lógico `and` cuando la primera condición es `False`?
+
+- A) Evalúa ambas condiciones 
+- B) Retorna `True` 
+- C) **No evalúa la segunda condición (cortocircuito)** ✓ 
+- D) Produce un error
+
+**4. (Escribir código)** Comprensión de listas para cuadrados de pares:
+
+```python
+[x**2 for x in range(10) if x % 2 == 0]
+```
+
+**5. (Opción múltiple)** ¿Qué método de lista inserta un elemento en una posición específica?
+
+- A) `append()` 
+- B) `extend()` 
+- C) `add()` 
+- D) **`insert()`** ✓
+
+**6. (Verdadero/Falso)** La función `enumerate()` retorna tanto el índice como el valor al iterar sobre una secuencia.
+
+- **(X) Verdadero** ✓ \hspace{2cm} ( ) Falso

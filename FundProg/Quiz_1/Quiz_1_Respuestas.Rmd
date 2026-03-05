@@ -1,0 +1,64 @@
+---
+title: "Quiz 1 - Fundamentos de Programación"
+subtitle: "Clases 1, 2 y 3 - Versión CON RESPUESTAS"
+author: "Introducción Python, Control de Flujo, Estructuras de Datos"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: false
+geometry:
+  - margin=1.5cm
+  - top=1.5cm
+  - bottom=1.5cm
+fontsize: 9pt
+header-includes:
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyfoot[C]{Quiz 1 - Respuestas}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+---
+
+**1. (Opción múltiple)** ¿Qué operador de división en Python siempre retorna un número decimal (float)?
+
+- A) `//` 
+- B) **`/`** ✓ 
+- C) `%` 
+- D) `**`
+
+**2. (Opción múltiple)** ¿Cuál estructura de datos en Python es inmutable y puede usarse como clave en diccionarios?
+
+- A) Lista 
+- B) Diccionario 
+- C) **Tupla** ✓ 
+- D) Conjunto
+
+**3. (Verdadero/Falso)** En Python, los strings (cadenas de texto) son inmutables.
+
+- **(X) Verdadero** ✓ \hspace{2cm} ( ) Falso
+
+**4. (Verdadero/Falso)** El operador `is` compara valores mientras que `==` compara la identidad de objetos en memoria.
+
+- ( ) Verdadero \hspace{2cm} **(X) Falso** ✓  
+*Correcto: `==` compara valores, `is` compara identidad.*
+
+**5. (Identificar el error)** Señale el error en el siguiente código:
+
+```python
+x = 10
+if x > 5:
+print("x es mayor que 5")
+```
+
+**Respuesta:** Falta la indentación en la línea `print(...)`. En Python, el bloque que pertenece al `if` debe estar indentado (normalmente 4 espacios). Sin indentación, Python generará un `IndentationError`.
+
+**6. (Escribir código)** Función que retorna el promedio de una lista:
+
+```python
+def promedio(numeros):
+    return sum(numeros) / len(numeros)
+```
