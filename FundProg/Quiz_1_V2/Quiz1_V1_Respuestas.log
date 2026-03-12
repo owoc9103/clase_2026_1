@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.2.20)  3 MAR 2026 09:18
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.2.20)  10 MAR 2026 10:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1085,8 +1085,10 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 Missing character: There is no ✓ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ✓ in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ✓ in font [lmroman10-regular]:mapping=tex-text;!
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 177.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 251.
+Missing character: There is no ✓ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ✓ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ✓ in font [lmroman10-regular]:mapping=tex-text;!
 [1
@@ -1100,7 +1102,7 @@ L3 programming layer <2025-12-24>
 Here is how much of TeX's memory you used:
  19175 strings out of 402987
  344970 string characters out of 5448524
- 947721 words of memory out of 5000000
+ 950711 words of memory out of 5000000
  47683 multiletter control sequences out of 15000+600000
  631295 words of font info for 71 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

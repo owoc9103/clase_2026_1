@@ -1,0 +1,180 @@
+---
+title: "Taller Aplicado: Análisis y Predicción de Churn Bancario"
+author: "Analítica Finaciera"
+output:
+  pdf_document:
+    keep_tex: true
+  html_document: default
+---
+
+# Caso de Estudio: Predicción de Churn en una Entidad Financiera
+
+Una entidad financiera ha detectado un incremento en la tasa de abandono de clientes durante los últimos periodos. 
+El área de analítica ha desarrollado un modelo de regresión logística que permite estimar la probabilidad de que un cliente abandone el banco (churn), utilizando información demográfica, financiera y comportamental.
+
+La variable objetivo del estudio es:
+
+- Exited = 1: El cliente abandonó el banco  
+- Exited = 0: El cliente permanece activo  
+
+El propósito de este taller es analizar la estructura de los datos, estudiar sus distribuciones, identificar relaciones bivariadas con la variable respuesta y comprender la interpretación del modelo mediante Odds Ratios.
+
+
+# Contexto de las Variables del Modelo
+
+Las siguientes variables forman parte del modelo predictivo:
+
+| Variable | Descripción | Tipo |
+|-----------|-------------|------|
+| CreditScore | Puntaje crediticio del cliente. Indica el nivel de riesgo financiero histórico del cliente. | Numérica |
+| Geography | País de residencia del cliente (France, Germany, Spain). Se codifica mediante variables dummy tomando France como categoría base. | Categórica |
+| Gender | Género del cliente (Female, Male). Se codifica como variable dummy. | Categórica |
+| Age | Edad del cliente en años. Variable demográfica relevante en decisiones financieras. | Numérica |
+| Tenure | Número de años que el cliente ha permanecido en el banco. | Numérica |
+| Balance | Saldo disponible en la cuenta bancaria del cliente. | Numérica |
+| NumOfProducts | Número de productos financieros que el cliente posee en el banco. | Numérica |
+| HasCrCard | Indica si el cliente posee tarjeta de crédito (0 = No, 1 = Sí). | Binaria |
+| IsActiveMember | Indica si el cliente es activo en el banco (0 = No, 1 = Sí). | Binaria |
+| EstimatedSalary | Estimación del salario anual del cliente. | Numérica |
+
+
+# 1. Estructura de los Datos
+
+1. ¿Cuántas variables tiene la base de datos?
+2. ¿Cuántas son cuantitativas?
+3. ¿Cuántas son categóricas o binarias?
+4. ¿Qué implicaciones tiene esta combinación de variables para el análisis estadístico?
+
+
+# 2. Análisis Descriptivo Univariado
+
+5. Muestre las distribuciones de las variables que considere relevantes e interprete estos datos.
+
+
+# 3. Análisis Bivariado con la Variable Respuesta
+
+6. Compare la distribución de Age entre clientes que abandonan y los que permanecen.
+   - ¿Se observan diferencias relevantes?
+
+7. Analice la relación entre IsActiveMember y Exited.
+    - ¿Los clientes activos presentan menor abandono?
+
+8. Evalúe la relación entre NumOfProducts y Exited.
+    - ¿Mayor número de productos se asocia con menor churn?
+
+9. Identifique qué variable parece tener mayor relación con el abandono, justificando con base en distribuciones comparativas.
+
+
+# 4. Interpretación del Modelo: Odds Ratios
+
+10. Identifique los factores de riesgo y los factores protectores del modelo. Recuerde: los odds ratios mayores que 1 son factores de riesgo; los odds ratios menores que 1 son factores protectores.
+
+
+# 5. Aplicación Práctica: Evaluación de Perfiles de Clientes
+
+Utilizando la calculadora de churn, estime la probabilidad de abandono para los siguientes casos:
+
+
+## Caso 1: Cliente poco vinculado
+
+- CreditScore: 650  
+- Geography: France  
+- Gender: Female  
+- Age: 40  
+- Tenure: 5  
+- Balance: 100000  
+- NumOfProducts: 1  
+- HasCrCard: 0  
+- IsActiveMember: 0  
+- EstimatedSalary: 100000  
+
+Probabilidad estimada: ___________________
+
+
+## Caso 2: Cliente joven y activo
+
+- CreditScore: 720  
+- Geography: Spain  
+- Gender: Male  
+- Age: 30  
+- Tenure: 6  
+- Balance: 50000  
+- NumOfProducts: 2  
+- HasCrCard: 1  
+- IsActiveMember: 1  
+- EstimatedSalary: 80000  
+
+Probabilidad estimada: ___________________
+
+
+## Caso 3: Cliente mayor con alto saldo e inactivo
+
+- CreditScore: 580  
+- Geography: Germany  
+- Gender: Female  
+- Age: 55  
+- Tenure: 3  
+- Balance: 150000  
+- NumOfProducts: 1  
+- HasCrCard: 1  
+- IsActiveMember: 0  
+- EstimatedSalary: 90000  
+
+Probabilidad estimada: ___________________
+
+
+## Caso 4: Cliente altamente vinculado
+
+- CreditScore: 700  
+- Geography: France  
+- Gender: Male  
+- Age: 45  
+- Tenure: 9  
+- Balance: 120000  
+- NumOfProducts: 3  
+- HasCrCard: 1  
+- IsActiveMember: 1  
+- EstimatedSalary: 110000  
+
+Probabilidad estimada: ___________________
+
+
+# 6. Análisis Comparativo Final
+
+11. ¿Cuál de los cuatro clientes presenta mayor riesgo de abandono?
+
+12. ¿Qué variables parecen explicar las diferencias observadas?
+
+13. Desde el punto de vista estratégico, ¿a cuál cliente priorizaría para una campaña de retención?
+
+
+# 7. Matriz de Confusión y Métricas de Clasificación
+
+14. A partir de la matriz de confusión mostrada en la aplicación, identifique los valores de:
+
+- TP (Verdaderos Positivos)  
+- TN (Verdaderos Negativos)  
+- FP (Falsos Positivos)  
+- FN (Falsos Negativos)  
+
+Explique qué representa cada uno en el contexto de predicción de churn.
+
+15. Con base en los valores anteriores, calcule manualmente los siguientes indicadores utilizando sus fórmulas:
+
+Exactitud (Accuracy): Accuracy = (TP + TN) / (TP + TN + FP + FN)
+
+Sensibilidad (Recall, clase Churn): Sensibilidad = TP / (TP + FN)
+
+Especificidad: Especificidad = TN / (TN + FP)
+
+Interprete cada resultado en el contexto del modelo de predicción de abandono y compare con los valores reportados por la aplicación.
+
+
+# Objetivo del Taller
+
+Este ejercicio busca que el estudiante:
+
+- Muestre e interprete distribuciones de variables relevantes.
+- Analice relaciones bivariadas con la variable respuesta.
+- Identifique factores de riesgo (OR > 1) y factores protectores (OR < 1) a partir de los Odds Ratios.
+- Relacione resultados estadísticos con decisiones de negocio.  
