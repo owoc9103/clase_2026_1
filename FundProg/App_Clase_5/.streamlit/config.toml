@@ -1,0 +1,17 @@
+# Configuración de Streamlit para App Clase 5
+# Asegura contraste legible en tema claro y oscuro
+
+[theme]
+primaryColor = "#1e3a5f"
+
+[theme.light]
+primaryColor = "#1e3a5f"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f0f2f6"
+textColor = "#262730"
+
+[theme.dark]
+primaryColor = "#63b3ed"
+backgroundColor = "#0e1117"
+secondaryBackgroundColor = "#262730"
+textColor = "#fafafa"
