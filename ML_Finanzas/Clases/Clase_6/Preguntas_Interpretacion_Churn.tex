@@ -1,0 +1,428 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Taller Aplicado: Análisis y Predicción de Churn Bancario},
+  pdfauthor={Machine Learning para Economía y Finanzas},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Taller Aplicado: Análisis y Predicción de Churn Bancario}
+\author{Machine Learning para Economía y Finanzas}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Caso de Estudio: Predicción de Churn en una Entidad
+Financiera}\label{caso-de-estudio-predicciuxf3n-de-churn-en-una-entidad-financiera}
+
+Una entidad financiera ha detectado un incremento en la tasa de abandono
+de clientes durante los últimos periodos. El área de analítica ha
+desarrollado un modelo de regresión logística que permite estimar la
+probabilidad de que un cliente abandone el banco (churn), utilizando
+información demográfica, financiera y comportamental.
+
+La variable objetivo del estudio es:
+
+\begin{itemize}
+\tightlist
+\item
+  Exited = 1: El cliente abandonó el banco\\
+\item
+  Exited = 0: El cliente permanece activo
+\end{itemize}
+
+El propósito de este taller es analizar la estructura de los datos,
+estudiar sus distribuciones, identificar relaciones bivariadas con la
+variable respuesta y comprender la interpretación del modelo mediante
+Odds Ratios.
+
+\section{Contexto de las Variables del
+Modelo}\label{contexto-de-las-variables-del-modelo}
+
+Las siguientes variables forman parte del modelo predictivo:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Descripción
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Tipo
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+CreditScore & Puntaje crediticio del cliente. Indica el nivel de riesgo
+financiero histórico del cliente. & Numérica \\
+Geography & País de residencia del cliente (France, Germany, Spain). Se
+codifica mediante variables dummy tomando France como categoría base. &
+Categórica \\
+Gender & Género del cliente (Female, Male). Se codifica como variable
+dummy. & Categórica \\
+Age & Edad del cliente en años. Variable demográfica relevante en
+decisiones financieras. & Numérica \\
+Tenure & Número de años que el cliente ha permanecido en el banco. &
+Numérica \\
+Balance & Saldo disponible en la cuenta bancaria del cliente. &
+Numérica \\
+NumOfProducts & Número de productos financieros que el cliente posee en
+el banco. & Numérica \\
+HasCrCard & Indica si el cliente posee tarjeta de crédito (0 = No, 1 =
+Sí). & Binaria \\
+IsActiveMember & Indica si el cliente es activo en el banco (0 = No, 1 =
+Sí). & Binaria \\
+EstimatedSalary & Estimación del salario anual del cliente. &
+Numérica \\
+\end{longtable}
+
+\section{1. Estructura de los Datos}\label{estructura-de-los-datos}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ¿Cuántas variables tiene la base de datos?
+\item
+  ¿Cuántas son cuantitativas?
+\item
+  ¿Cuántas son categóricas o binarias?
+\item
+  ¿Qué implicaciones tiene esta combinación de variables para el
+  análisis estadístico?
+\end{enumerate}
+
+\section{2. Análisis Descriptivo
+Univariado}\label{anuxe1lisis-descriptivo-univariado}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Muestre las distribuciones de las variables que considere relevantes e
+  interprete estos datos.
+\end{enumerate}
+
+\section{3. Análisis Bivariado con la Variable
+Respuesta}\label{anuxe1lisis-bivariado-con-la-variable-respuesta}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Compare la distribución de Age entre clientes que abandonan y los que
+  permanecen.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ¿Se observan diferencias relevantes?
+  \end{itemize}
+\item
+  Analice la relación entre IsActiveMember y Exited.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ¿Los clientes activos presentan menor abandono?
+  \end{itemize}
+\item
+  Evalúe la relación entre NumOfProducts y Exited.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ¿Mayor número de productos se asocia con menor churn?
+  \end{itemize}
+\item
+  Identifique qué variable parece tener mayor relación con el abandono,
+  justificando con base en distribuciones comparativas.
+\end{enumerate}
+
+\section{4. Interpretación del Modelo: Odds
+Ratios}\label{interpretaciuxf3n-del-modelo-odds-ratios}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  Identifique los factores de riesgo y los factores protectores del
+  modelo. Recuerde: los odds ratios mayores que 1 son factores de
+  riesgo; los odds ratios menores que 1 son factores protectores.
+\end{enumerate}
+
+\section{5. Aplicación Práctica: Evaluación de Perfiles de
+Clientes}\label{aplicaciuxf3n-pruxe1ctica-evaluaciuxf3n-de-perfiles-de-clientes}
+
+Utilizando la calculadora de churn, estime la probabilidad de abandono
+para los siguientes casos:
+
+\subsection{Caso 1: Cliente poco
+vinculado}\label{caso-1-cliente-poco-vinculado}
+
+\begin{itemize}
+\tightlist
+\item
+  CreditScore: 650\\
+\item
+  Geography: France\\
+\item
+  Gender: Female\\
+\item
+  Age: 40\\
+\item
+  Tenure: 5\\
+\item
+  Balance: 100000\\
+\item
+  NumOfProducts: 1\\
+\item
+  HasCrCard: 0\\
+\item
+  IsActiveMember: 0\\
+\item
+  EstimatedSalary: 100000
+\end{itemize}
+
+Probabilidad estimada: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\subsection{Caso 2: Cliente joven y
+activo}\label{caso-2-cliente-joven-y-activo}
+
+\begin{itemize}
+\tightlist
+\item
+  CreditScore: 720\\
+\item
+  Geography: Spain\\
+\item
+  Gender: Male\\
+\item
+  Age: 30\\
+\item
+  Tenure: 6\\
+\item
+  Balance: 50000\\
+\item
+  NumOfProducts: 2\\
+\item
+  HasCrCard: 1\\
+\item
+  IsActiveMember: 1\\
+\item
+  EstimatedSalary: 80000
+\end{itemize}
+
+Probabilidad estimada: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\subsection{Caso 3: Cliente mayor con alto saldo e
+inactivo}\label{caso-3-cliente-mayor-con-alto-saldo-e-inactivo}
+
+\begin{itemize}
+\tightlist
+\item
+  CreditScore: 580\\
+\item
+  Geography: Germany\\
+\item
+  Gender: Female\\
+\item
+  Age: 55\\
+\item
+  Tenure: 3\\
+\item
+  Balance: 150000\\
+\item
+  NumOfProducts: 1\\
+\item
+  HasCrCard: 1\\
+\item
+  IsActiveMember: 0\\
+\item
+  EstimatedSalary: 90000
+\end{itemize}
+
+Probabilidad estimada: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\subsection{Caso 4: Cliente altamente
+vinculado}\label{caso-4-cliente-altamente-vinculado}
+
+\begin{itemize}
+\tightlist
+\item
+  CreditScore: 700\\
+\item
+  Geography: France\\
+\item
+  Gender: Male\\
+\item
+  Age: 45\\
+\item
+  Tenure: 9\\
+\item
+  Balance: 120000\\
+\item
+  NumOfProducts: 3\\
+\item
+  HasCrCard: 1\\
+\item
+  IsActiveMember: 1\\
+\item
+  EstimatedSalary: 110000
+\end{itemize}
+
+Probabilidad estimada: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\section{6. Análisis Comparativo
+Final}\label{anuxe1lisis-comparativo-final}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{10}
+\item
+  ¿Cuál de los cuatro clientes presenta mayor riesgo de abandono?
+\item
+  ¿Qué variables parecen explicar las diferencias observadas?
+\item
+  Desde el punto de vista estratégico, ¿a cuál cliente priorizaría para
+  una campaña de retención?
+\end{enumerate}
+
+\section{7. Matriz de Confusión y Métricas de
+Clasificación}\label{matriz-de-confusiuxf3n-y-muxe9tricas-de-clasificaciuxf3n}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{13}
+\tightlist
+\item
+  A partir de la matriz de confusión mostrada en la aplicación,
+  identifique los valores de:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  TP (Verdaderos Positivos)\\
+\item
+  TN (Verdaderos Negativos)\\
+\item
+  FP (Falsos Positivos)\\
+\item
+  FN (Falsos Negativos)
+\end{itemize}
+
+Explique qué representa cada uno en el contexto de predicción de churn.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{14}
+\tightlist
+\item
+  Con base en los valores anteriores, calcule manualmente los siguientes
+  indicadores utilizando sus fórmulas:
+\end{enumerate}
+
+Exactitud (Accuracy): Accuracy = (TP + TN) / (TP + TN + FP + FN)
+
+Sensibilidad (Recall, clase Churn): Sensibilidad = TP / (TP + FN)
+
+Especificidad: Especificidad = TN / (TN + FP)
+
+Interprete cada resultado en el contexto del modelo de predicción de
+abandono y compare con los valores reportados por la aplicación.
+
+\section{Objetivo del Taller}\label{objetivo-del-taller}
+
+Este ejercicio busca que el estudiante:
+
+\begin{itemize}
+\tightlist
+\item
+  Muestre e interprete distribuciones de variables relevantes.
+\item
+  Analice relaciones bivariadas con la variable respuesta.
+\item
+  Identifique factores de riesgo (OR \textgreater{} 1) y factores
+  protectores (OR \textless{} 1) a partir de los Odds Ratios.
+\item
+  Relacione resultados estadísticos con decisiones de negocio.
+\end{itemize}
+
+\end{document}

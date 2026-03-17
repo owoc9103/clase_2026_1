@@ -1,6 +1,6 @@
 ---
 title: "Taller Aplicado: Análisis y Predicción de Churn Bancario"
-author: "Analítica Finaciera"
+author: "Machine Learning para Economía y Finanzas"
 output:
   pdf_document:
     keep_tex: true

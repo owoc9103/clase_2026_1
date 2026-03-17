@@ -12,10 +12,10 @@ Clase_5/
 │   ├── 2_Clases_POO.py
 │   ├── 3_Biblioteca_Estandar.py
 │   ├── 4_Proyecto_Practico.py
-│   └── 5_Editor_Validacion.py
+│   └── 5_Ejercicios_Copiar.py
 ├── utils/
 │   ├── __init__.py
-│   └── code_executor.py
+│   └── theme.py
 ├── requirements.txt
 └── README.md
 ```

@@ -8,7 +8,6 @@ import streamlit as st
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from utils.code_executor import ejecutar_codigo
 from utils.preguntas import pregunta_con_ampliar
 from utils.theme import inject_theme_styles
 
@@ -18,7 +17,7 @@ inject_theme_styles()
 st.title("📚 Biblioteca Estándar de Python")
 st.markdown("---")
 
-tab_teoria, tab_preguntas, tab_codigo = st.tabs(["📖 Teoría", "❓ Preguntas", "💻 Editor de Código"])
+tab_teoria, tab_preguntas, tab_codigo = st.tabs(["📖 Teoría", "❓ Preguntas", "📋 Código para copiar"])
 
 with tab_teoria:
     st.header("Módulos esenciales")
@@ -163,10 +162,11 @@ with tab_preguntas:
     )
 
 with tab_codigo:
-    st.header("Editor de código")
-    st.markdown("Practica con los módulos de la biblioteca estándar.")
+    st.header("📋 Código para copiar")
+    st.info("**Copia** el código con el botón Copy y pégalo en **Google Colab** o en tu **asistente de IA** para ejecutarlo.")
     
-    codigo_default = '''# Ejemplo: math y statistics
+    st.subheader("Ejemplo: math y statistics")
+    st.code("""# Ejemplo: math y statistics
 import math
 import statistics
 
@@ -174,24 +174,11 @@ datos = [85, 90, 78, 92, 88]
 print("Promedio:", statistics.mean(datos))
 print("Raíz de 144:", math.sqrt(144))
 print("Pi:", math.pi)
-'''
-    
-    codigo = st.text_area("Código Python", value=codigo_default, height=200)
-    
-    if st.button("▶️ Ejecutar"):
-        stdout, stderr, success = ejecutar_codigo(codigo)
-        if success:
-            if stdout:
-                st.text("Salida:")
-                st.code(stdout)
-            else:
-                st.success("Código ejecutado correctamente.")
-        else:
-            st.error(stderr)
+""", language="python")
     
     st.subheader("Ejercicio sugerido")
     st.markdown("""
-    Usa `datetime` para:
+    Pide a tu IA o implementa en Colab usando `datetime`:
     1. Obtener la fecha actual
     2. Calcular la fecha de hace 7 días
     3. Formatear ambas como 'YYYY-MM-DD'

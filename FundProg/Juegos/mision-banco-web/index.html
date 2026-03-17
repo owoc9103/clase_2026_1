@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mision Banco Python Millonario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-show-state="idle">
+    <div class="stage-glow stage-glow-left"></div>
+    <div class="stage-glow stage-glow-right"></div>
+    <div class="spotlight spotlight-left"></div>
+    <div class="spotlight spotlight-center"></div>
+    <div class="spotlight spotlight-right"></div>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Modo concurso estilo millonario</p>
+          <h1>Mision Banco Python</h1>
+          <p class="hero-text">
+            Varios personajes compiten por subir la escalera del conocimiento.
+            Cada turno presenta una gran pregunta, y siempre aparece
+            retroalimentacion para aprender incluso cuando se falla.
+          </p>
+        </div>
+
+        <div class="hero-stats">
+          <button id="audio-toggle-btn" class="audio-btn" type="button">
+            Audio: apagado
+          </button>
+          <div class="stat-card">
+            <span class="stat-value">6</span>
+            <span class="stat-label">niveles</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">2-4</span>
+            <span class="stat-label">jugadores</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">100%</span>
+            <span class="stat-label">feedback</span>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section id="setup-screen" class="screen active">
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Configurar concurso</h2>
+              <p>
+                Agrega los jugadores, reparte personajes unicos y define cuantas
+                preguntas tendra cada participante.
+              </p>
+            </div>
+
+            <div class="controls-row">
+              <label class="field">
+                <span>Niveles por jugador</span>
+                <input id="rounds-input" type="number" min="3" max="6" value="4" />
+              </label>
+
+              <div class="button-group">
+                <button id="add-player-btn" class="secondary-btn" type="button">
+                  Agregar jugador
+                </button>
+                <button id="start-game-btn" class="primary-btn" type="button">
+                  Comenzar concurso
+                </button>
+              </div>
+            </div>
+
+            <div id="setup-message" class="status-message"></div>
+            <div id="players-form" class="players-grid"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Personajes y ventajas</h2>
+              <p>
+                Cada personaje ofrece un beneficio durante la competencia.
+              </p>
+            </div>
+            <div id="character-gallery" class="character-gallery"></div>
+          </div>
+        </section>
+
+        <section id="game-screen" class="screen">
+          <aside class="sidebar">
+            <div class="panel compact-panel">
+              <div class="panel-header">
+                <h2>Competidores</h2>
+                <p>El ganador sera quien consiga el mayor puntaje final.</p>
+              </div>
+              <div id="scoreboard" class="scoreboard"></div>
+            </div>
+
+            <div class="panel compact-panel">
+              <div class="panel-header">
+                <h2>Turno actual</h2>
+              </div>
+              <div class="turn-card">
+                <p id="turn-label" class="turn-label"></p>
+                <p id="turn-subtitle" class="turn-subtitle"></p>
+                <div class="timer-wrap">
+                  <div id="timer-bar" class="timer-bar"></div>
+                </div>
+                <p id="timer-text" class="timer-text"></p>
+              </div>
+            </div>
+          </aside>
+
+          <section class="play-area">
+            <div class="panel question-panel">
+              <div class="question-meta">
+                <span id="mission-badge" class="badge"></span>
+                <span id="topic-badge" class="badge subtle"></span>
+                <span id="question-value-badge" class="badge gold"></span>
+              </div>
+
+              <h2 id="question-title" class="question-title"></h2>
+              <p id="question-text" class="question-text"></p>
+
+              <div id="options-container" class="options-grid"></div>
+
+              <div class="question-actions">
+                <button id="clue-btn" class="secondary-btn" type="button">
+                  Usar pista
+                </button>
+                <button id="skip-btn" class="ghost-btn" type="button">
+                  Pasar pregunta
+                </button>
+              </div>
+
+              <div id="feedback-box" class="feedback-box hidden"></div>
+            </div>
+          </section>
+
+          <aside class="ladder-area">
+            <div class="panel compact-panel">
+              <div class="panel-header">
+                <h2>Escalera millonaria</h2>
+                <p>El turno actual siempre marca el valor en juego.</p>
+              </div>
+              <div id="ladder-board" class="ladder-board"></div>
+            </div>
+          </aside>
+        </section>
+
+        <section id="results-screen" class="screen">
+          <div class="panel results-panel">
+            <div class="panel-header">
+              <h2>Ganador del concurso</h2>
+              <p>
+                Se muestran puntajes finales, precision y el historial local de
+                partidas.
+              </p>
+            </div>
+
+            <div id="winner-card" class="winner-card"></div>
+
+            <div class="results-layout">
+              <div>
+                <h3>Tabla final</h3>
+                <div id="results-table" class="results-table"></div>
+              </div>
+              <div>
+                <h3>Historial local</h3>
+                <div id="history-table" class="results-table"></div>
+              </div>
+            </div>
+
+            <div class="button-group">
+              <button id="play-again-btn" class="primary-btn" type="button">
+                Jugar otra vez
+              </button>
+              <button id="back-setup-btn" class="secondary-btn" type="button">
+                Volver a configurar
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer-note panel">
+        <strong>Listo para navegador.</strong>
+        Esta version usa solo `HTML`, `CSS` y `JavaScript`, con sonidos
+        generados en el navegador, lo que la hace facil de subir como juego web
+        a `itch.io`.
+      </footer>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

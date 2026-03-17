@@ -5,11 +5,14 @@ Estilos compatibles con tema claro y oscuro de Streamlit.
 
 import streamlit as st
 
-def inject_theme_styles():
-    """Inyecta CSS que asegura legibilidad en tema claro y oscuro."""
-    st.markdown("""
+
+@st.cache_data
+def _get_theme_css() -> str:
+    """CSS en caché para no recalcular en cada rerun."""
+    return """
     <style>
     /* === Tema claro (default) === */
+    .objetivo-card,
     .app-theme-objetivo-card {
         background: #f8f9fa;
         color: #1a1a2e;
@@ -40,50 +43,46 @@ def inject_theme_styles():
     .main-header h1, .main-header p {
         color: white !important;
     }
-    
+
     /* === Tema oscuro === */
     @media (prefers-color-scheme: dark) {
-        .app-theme-objetivo-card {
+        .objetivo-card, .app-theme-objetivo-card {
             background: #2d3748;
             color: #e2e8f0;
             border-left-color: #63b3ed;
         }
-        .app-theme-tip-text {
-            color: #a0aec0;
-        }
+        .app-theme-tip-text { color: #a0aec0; }
         .app-theme-info-box {
             background: #2c5282;
             color: #e2e8f0;
             border-left-color: #63b3ed;
         }
     }
-    
-    /* Streamlit: data-theme en html, body o contenedores */
-    html[data-theme="dark"] .app-theme-objetivo-card,
-    html[data-theme="Dark"] .app-theme-objetivo-card,
+
+    [data-theme="dark"] .objetivo-card,
     [data-theme="dark"] .app-theme-objetivo-card,
+    [data-theme="Dark"] .objetivo-card,
     [data-theme="Dark"] .app-theme-objetivo-card {
         background: #2d3748 !important;
         color: #e2e8f0 !important;
         border-left-color: #63b3ed !important;
     }
-    html[data-theme="dark"] .app-theme-tip-text,
-    html[data-theme="Dark"] .app-theme-tip-text,
     [data-theme="dark"] .app-theme-tip-text,
     [data-theme="Dark"] .app-theme-tip-text {
         color: #a0aec0 !important;
     }
-    html[data-theme="dark"] .app-theme-info-box,
-    html[data-theme="Dark"] .app-theme-info-box,
     [data-theme="dark"] .app-theme-info-box,
     [data-theme="Dark"] .app-theme-info-box {
         background: #2c5282 !important;
         color: #e2e8f0 !important;
         border-left-color: #63b3ed !important;
     }
-    
-    .stSuccess, .stError {
-        border-radius: 8px;
-    }
+
+    .stSuccess, .stError { border-radius: 8px; }
     </style>
-    """, unsafe_allow_html=True)
+    """
+
+
+def inject_theme_styles() -> None:
+    """Inyecta CSS para legibilidad en tema claro y oscuro."""
+    st.markdown(_get_theme_css(), unsafe_allow_html=True)

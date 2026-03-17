@@ -7,7 +7,6 @@ import streamlit as st
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from utils.code_executor import ejecutar_codigo
 from utils.theme import inject_theme_styles
 
 st.set_page_config(page_title="Proyecto Práctico", page_icon="🏦", layout="wide")
@@ -66,10 +65,11 @@ with tab_pasos:
         """)
 
 with tab_codigo:
-    st.header("Editor de código del proyecto")
-    st.markdown("Implementa los pasos y ejecuta tu código aquí.")
+    st.header("📋 Código para copiar")
+    st.info("**Copia** el código y pégalo en **Google Colab** o en tu **asistente de IA** para ejecutarlo.")
     
-    codigo_default = '''# Paso 1: Excepciones y CuentaBancaria base
+    st.subheader("Paso 1: Excepciones y CuentaBancaria base")
+    st.code("""# Paso 1: Excepciones y CuentaBancaria base
 class SaldoInsuficienteError(Exception):
     pass
 
@@ -108,20 +108,5 @@ print(c)
 c.retirar(200)
 print(c)
 print("Transacciones:", c.transacciones)
-'''
-    
-    codigo = st.text_area("Código del proyecto", value=codigo_default, height=350)
-    
-    if st.button("▶️ Ejecutar"):
-        stdout, stderr, success = ejecutar_codigo(codigo)
-        if success:
-            if stdout:
-                st.text("Salida:")
-                st.code(stdout)
-            else:
-                st.success("Código ejecutado correctamente.")
-        else:
-            st.error(stderr)
-            if stdout:
-                st.text("Salida antes del error:")
-                st.code(stdout)
+""", language="python")
+    st.caption("Implementa los pasos 2-6 en Colab o pide a tu IA que te guíe.")

@@ -8,7 +8,6 @@ import streamlit as st
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from utils.code_executor import ejecutar_codigo
 from utils.preguntas import pregunta_con_ampliar
 from utils.theme import inject_theme_styles
 
@@ -18,7 +17,7 @@ inject_theme_styles()
 st.title("⚠️ Errores y Excepciones")
 st.markdown("---")
 
-tab_teoria, tab_preguntas, tab_codigo = st.tabs(["📖 Teoría", "❓ Preguntas", "💻 Editor de Código"])
+tab_teoria, tab_preguntas, tab_codigo = st.tabs(["📖 Teoría", "❓ Preguntas", "📋 Código para copiar"])
 
 with tab_teoria:
     st.header("8.1 ¿Qué son los errores?")
@@ -181,10 +180,11 @@ with tab_preguntas:
     )
 
 with tab_codigo:
-    st.header("Editor de código")
-    st.markdown("Escribe código Python y ejecútalo. Prueba manejar excepciones.")
+    st.header("📋 Código para copiar")
+    st.info("**Copia** el código con el botón Copy y pégalo en **Google Colab** o en tu **asistente de IA** para ejecutarlo.")
     
-    codigo_default = '''# Ejemplo: función que divide con manejo de errores
+    st.subheader("Ejemplo: función dividir con manejo de errores")
+    st.code("""# Ejemplo: función que divide con manejo de errores
 def dividir(a, b):
     try:
         return a / b
@@ -195,27 +195,11 @@ def dividir(a, b):
 # Prueba
 print(dividir(10, 2))
 print(dividir(10, 0))
-'''
-    
-    codigo = st.text_area("Código Python", value=codigo_default, height=250)
-    
-    if st.button("▶️ Ejecutar"):
-        stdout, stderr, success = ejecutar_codigo(codigo)
-        if success:
-            if stdout:
-                st.text("Salida:")
-                st.code(stdout)
-            if not stdout and not stderr:
-                st.success("Código ejecutado sin salida visible.")
-        else:
-            st.error(stderr)
-            if stdout:
-                st.text("Salida antes del error:")
-                st.code(stdout)
+""", language="python")
     
     st.subheader("Ejercicio sugerido")
     st.markdown("""
-    Escribe una función `procesar_numero(texto)` que:
+    Pide a tu IA o implementa en Colab una función `procesar_numero(texto)` que:
     1. Convierta `texto` a float
     2. Calcule 100 / numero
     3. Capture `ValueError` y `ZeroDivisionError` con mensajes claros

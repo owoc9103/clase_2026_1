@@ -64,7 +64,7 @@ st.markdown("---")
 st.markdown("""
 <div class="app-theme-tip-text">
     💡 <strong>Tip:</strong> En cada página encontrarás teoría ampliada, preguntas de comprensión 
-    y un editor de código para practicar y validar tus respuestas.
+    y código listo para <strong>copiar y pegar</strong> en Google Colab o en tu asistente de IA (ChatGPT, Claude, Cursor).
 </div>
 """, unsafe_allow_html=True)
 

@@ -8,7 +8,6 @@ import streamlit as st
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from utils.code_executor import ejecutar_codigo
 from utils.preguntas import pregunta_con_ampliar
 from utils.theme import inject_theme_styles
 
@@ -19,7 +18,7 @@ st.title("🏛️ Clases y Programación Orientada a Objetos")
 st.markdown("---")
 
 tab_teoria, tab_preguntas, tab_ejercicio_ia, tab_codigo = st.tabs([
-    "📖 Teoría", "❓ Preguntas", "🤖 Ejercicio con IA", "💻 Editor de Código"
+    "📖 Teoría", "❓ Preguntas", "🤖 Ejercicio con IA", "📋 Código para copiar"
 ])
 
 with tab_teoria:
@@ -276,21 +275,22 @@ Por favor, empieza con el Paso 1 y su explicación.'''
     """)
 
 with tab_codigo:
-    st.header("Editor de código")
-    st.markdown("Practica definiendo clases y usando herencia.")
+    st.header("📋 Código para copiar")
+    st.info("**Copia** el código con el botón Copy y pégalo en **Google Colab** o en tu **asistente de IA** para ejecutarlo.")
     
-    codigo_default = '''# Ejemplo: clase CuentaBancaria simple
+    st.subheader("Ejemplo: clase CuentaBancaria simple")
+    st.code("""# Ejemplo: clase CuentaBancaria simple
 class CuentaBancaria:
     def __init__(self, titular, saldo_inicial=0):
         self.titular = titular
         self.saldo = saldo_inicial
-    
+
     def depositar(self, monto):
         if monto > 0:
             self.saldo += monto
             return True
         return False
-    
+
     def __str__(self):
         return f"Cuenta de {self.titular}: ${self.saldo:,.2f}"
 
@@ -298,27 +298,13 @@ class CuentaBancaria:
 cuenta = CuentaBancaria("Juan", 1000)
 cuenta.depositar(500)
 print(cuenta)
-'''
-    
-    codigo = st.text_area("Código Python", value=codigo_default, height=280)
-    
-    if st.button("▶️ Ejecutar"):
-        stdout, stderr, success = ejecutar_codigo(codigo)
-        if success:
-            if stdout:
-                st.text("Salida:")
-                st.code(stdout)
-            else:
-                st.success("Código ejecutado correctamente.")
-        else:
-            st.error(stderr)
+""", language="python")
     
     st.subheader("Ejercicio sugerido")
     st.markdown("""
-    Crea una clase `CuentaAhorros` que herede de `CuentaBancaria` y añada:
+    Pide a tu IA o implementa en Colab una clase `CuentaAhorros` que herede de `CuentaBancaria` y añada:
     - Atributo `tasa_interes` en el constructor
     - Método `aplicar_interes()` que sume al saldo el interés (saldo * tasa_interes)
     - Sobrescribe `__str__` para mostrar la tasa de interés
     """)
-    
-    st.caption("💡 **Tip:** Para un ejercicio guiado paso a paso con explicaciones, usa la pestaña **Ejercicio con IA**.")
+    st.caption("💡 **Tip:** Para un ejercicio guiado paso a paso, usa la pestaña **Ejercicio con IA**.")
