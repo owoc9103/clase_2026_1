@@ -35,8 +35,7 @@ Esta aplicación presenta el algoritmo **K-Nearest Neighbors (KNN)** con **énfa
 **Contenido:**
 - **Teoría:** Conceptos detallados de KNN, regresor vs clasificador, métricas, distancias y escalado
 - **Ejemplo trivial:** Un ejemplo numérico paso a paso para identificar y entender la lógica del algoritmo
-- **KNN Regresor:** Implementación completa con California Housing y explicaciones detalladas
-- **Código para Colab:** Bloques listos para copiar y pegar en Google Colab y construir desde cero
+- **KNN Regresor:** Implementación con precios de boletos aéreos — bloques para copiar en Google Colab
 
 Usa el menú lateral para navegar.
 """)
@@ -48,8 +47,7 @@ st.markdown("""
 |--------|-----------|
 | **1. Teoría KNN** | Conceptos completos, regresor vs clasificador, métricas, distancias, escalado |
 | **2. Ejemplo trivial** | Ejemplo numérico paso a paso para entender la lógica de KNN regresión |
-| **3. KNN Regresor** | Predicción precios boletos aéreos (Kaggle) — bloques para Colab |
-| **4. Código para Colab** | Bloques de código para copiar y ejecutar en Google Colab |
+| **3. KNN Regresor** | Predicción precios boletos aéreos — bloques para copiar en Google Colab |
 """)
 
 st.info("💡 **Tip:** Los bloques de código están en secciones desplegables (haz clic para expandir). Cada uno tiene botón para copiar.")
