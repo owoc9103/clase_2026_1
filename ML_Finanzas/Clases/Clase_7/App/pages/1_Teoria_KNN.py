@@ -166,13 +166,14 @@ st.markdown("""
 """)
 
 # ========== Distancias ==========
-st.header("Distancia Euclidiana vs Manhattan")
+st.header("Métricas de distancia en KNN")
 
 st.markdown("""
-La **distancia** define qué puntos se consideran "cercanos". Las dos más usadas en KNN son:
+La **distancia** define qué puntos se consideran "cercanos". scikit-learn ofrece varias opciones 
+en el parámetro `metric` de `KNeighborsRegressor`. Las más usadas son:
 """)
 
-st.subheader("Distancia Euclidiana (L2)")
+st.subheader("Distancia Euclidiana (L2) — `metric='euclidean'`")
 
 st.markdown("""
 Es la distancia "en línea recta" que conocemos del plano cartesiano, generalizada a n dimensiones:
@@ -184,7 +185,7 @@ $$d(p_1, p_2) = \\sqrt{(x_1-x_2)^2 + (y_1-y_2)^2 + ... + (z_1-z_2)^2}$$
 - **Uso:** Cuando las relaciones entre características son aproximadamente lineales y las escalas son similares.
 """)
 
-st.subheader("Distancia Manhattan (L1)")
+st.subheader("Distancia Manhattan (L1) — `metric='manhattan'`")
 
 st.markdown("""
 Suma de las diferencias absolutas en cada dimensión. Recibe su nombre por el movimiento en una cuadrícula 
@@ -197,8 +198,55 @@ $$d(p_1, p_2) = |x_1-x_2| + |y_1-y_2| + ... + |z_1-z_2|$$
 - **Uso:** Cuando hay outliers o cuando las dimensiones tienen significados muy distintos.
 """)
 
+st.subheader("Distancia Minkowski — `metric='minkowski'`")
+
 st.markdown("""
-En scikit-learn, se puede elegir con el parámetro `metric`: `'euclidean'` (por defecto) o `'manhattan'`.
+Generaliza Euclidiana y Manhattan. Con el parámetro $p$:
+
+$$d(p_1, p_2) = \\left( |x_1-x_2|^p + |y_1-y_2|^p + ... + |z_1-z_2|^p \\right)^{1/p}$$
+
+- **p=1:** Equivale a Manhattan.
+- **p=2:** Equivale a Euclidiana.
+- **p>2:** Da más peso a las dimensiones con mayor diferencia.
+
+En scikit-learn: `KNeighborsRegressor(metric='minkowski', p=3)` para p=3.
+""")
+
+st.subheader("Distancia Chebyshev — `metric='chebyshev'`")
+
+st.markdown("""
+Máxima diferencia absoluta entre las coordenadas (distancia del rey en ajedrez):
+
+$$d(p_1, p_2) = \\max(|x_1-x_2|, |y_1-y_2|, ..., |z_1-z_2|)$$
+
+- **Interpretación geométrica:** La dimensión en la que más difieren los puntos.
+- **Propiedad:** Solo considera la dimensión con mayor diferencia; ignora las demás.
+- **Uso:** Cuando interesa la peor discrepancia en una sola dimensión.
+""")
+
+st.subheader("Distancia Coseno — `metric='cosine'`")
+
+st.markdown("""
+Mide el ángulo entre dos vectores (similitud de dirección, no magnitud):
+
+$$d(p_1, p_2) = 1 - \\frac{p_1 \\cdot p_2}{\\|p_1\\| \\|p_2\\|} = 1 - \\cos(\\theta)$$
+
+- **Interpretación:** 0 si los vectores son paralelos; 2 si son opuestos.
+- **Propiedad:** No depende de la magnitud, solo de la dirección. Útil cuando el tamaño absoluto no importa.
+- **Uso:** Textos, recomendaciones, cuando la orientación es más importante que la escala.
+""")
+
+st.subheader("Otras métricas en scikit-learn")
+
+st.markdown("""
+| Métrica | Parámetro | Descripción |
+|---------|-----------|-------------|
+| Euclidiana | `metric='euclidean'` | L2, por defecto |
+| Manhattan | `metric='manhattan'` | L1 |
+| Minkowski | `metric='minkowski', p=k` | Generalización (p=1→Manhattan, p=2→Euclidiana) |
+| Chebyshev | `metric='chebyshev'` | Máximo de diferencias absolutas |
+| Coseno | `metric='cosine'` | 1 - coseno del ángulo |
+| Haversine | `metric='haversine'` | Para coordenadas geográficas (lat/lon) |
 """)
 
 # ========== Escalado de características ==========

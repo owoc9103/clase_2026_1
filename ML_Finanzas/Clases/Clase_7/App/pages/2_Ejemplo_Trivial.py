@@ -66,7 +66,8 @@ st.header("Paso 3: Calcular distancias")
 st.markdown("""
 KNN usa la **distancia** para medir similitud. Puntos más cercanos son más similares.
 
-Existen varias formas de medir distancia. A continuación el mismo ejemplo con **tres tipos**:
+Existen varias formas de medir distancia. A continuación el mismo ejemplo con **cinco tipos** 
+(definidos en la sección de teoría):
 """)
 
 Q = np.array([2.5, 2])
@@ -151,12 +152,65 @@ $d(Q, A) = \\left( |1.5|^3 + |0|^3 \\right)^{1/3} = (3.375 + 0)^{1/3} = 1.5$
 $d(Q, B) = \\left( |0.5|^3 + |1|^3 \\right)^{1/3} = (0.125 + 1)^{1/3} \\approx 1.04$
 """)
 
+# --- Chebyshev ---
+st.subheader("3.4 Distancia Chebyshev")
+
+st.markdown("""
+Máxima diferencia absoluta entre las coordenadas (distancia del rey en ajedrez):
+$$d(Q, P) = \\max(|x_Q - x_P|, |y_Q - y_P|)$$
+""")
+
+distancias_cheb = []
+for i, (p, precio) in enumerate(puntos):
+    d = np.max(np.abs(Q - p))
+    distancias_cheb.append((labels[i], p[0], p[1], precio, round(d, 4)))
+
+tabla_cheb = "| Vivienda | (X₁, X₂) | Precio | Distancia Chebyshev a Q=(2.5, 2) |\n|----------|----------|--------|----------------------------------|\n"
+tabla_cheb += "\n".join(f"| {v} | ({x1}, {x2}) | {p} | {d} |" for v, x1, x2, p, d in distancias_cheb)
+st.markdown(tabla_cheb)
+
+st.markdown("""
+**Ejemplo de cálculo para A:**  
+$d(Q, A) = \\max(|2.5-1|, |2-2|) = \\max(1.5, 0) = 1.5$
+
+**Ejemplo para B:**  
+$d(Q, B) = \\max(|2.5-2|, |2-3|) = \\max(0.5, 1) = 1$
+""")
+
+# --- Coseno ---
+st.subheader("3.5 Distancia Coseno")
+
+st.markdown("""
+Mide el ángulo entre vectores: $d(Q, P) = 1 - \\frac{Q \\cdot P}{\\|Q\\| \\|P\\|}$. 
+Valores cercanos a 0 indican vectores en la misma dirección.
+""")
+
+distancias_cos = []
+for i, (p, precio) in enumerate(puntos):
+    dot = np.dot(Q, p)
+    norm_q = np.linalg.norm(Q)
+    norm_p = np.linalg.norm(p)
+    cos_sim = dot / (norm_q * norm_p) if (norm_q * norm_p) > 0 else 0
+    d = 1 - cos_sim
+    distancias_cos.append((labels[i], p[0], p[1], precio, round(d, 4)))
+
+tabla_cos = "| Vivienda | (X₁, X₂) | Precio | Distancia Coseno a Q=(2.5, 2) |\n|----------|----------|--------|--------------------------------|\n"
+tabla_cos += "\n".join(f"| {v} | ({x1}, {x2}) | {p} | {d} |" for v, x1, x2, p, d in distancias_cos)
+st.markdown(tabla_cos)
+
+st.markdown("""
+**Ejemplo de cálculo para A:**  
+$\\cos(\\theta) = \\frac{2.5\\cdot1 + 2\\cdot2}{\\sqrt{2.5^2+2^2} \\cdot \\sqrt{1^2+2^2}} = \\frac{6.5}{\\sqrt{10.25}\\sqrt{5}} \\approx 0.908$  
+$d(Q, A) = 1 - 0.908 \\approx 0.092$
+""")
+
 # Usar Euclidiana para el resto del flujo
 distancias = distancias_euc
 
 st.markdown("""
 **Nota:** En este ejemplo seguimos con **distancia Euclidiana**. El orden de los vecinos puede cambiar 
-según la métrica: con Manhattan, A, B y C empatan en 1.5; con Minkowski p=3, B y C quedan más cerca que A.
+según la métrica: con Manhattan, A, B y C empatan en 1.5; con Minkowski p=3, B y C quedan más cerca que A; 
+con Chebyshev, B y C son los más cercanos (d=1); con Coseno, el orden depende del ángulo entre vectores.
 """)
 
 # ========== K vecinos más cercanos ==========
@@ -216,7 +270,8 @@ st.header("Código equivalente (para Colab)")
 
 st.markdown("El mismo ejemplo implementado en Python:")
 
-st.code("""import numpy as np
+with st.expander("📋 Ver código: implementación manual", expanded=False):
+    st.code("""import numpy as np
 
 # Datos de entrenamiento: (X1, X2) -> precio
 X_train = np.array([[1, 2], [2, 3], [3, 1], [4, 4], [5, 2]])
@@ -241,10 +296,11 @@ st.markdown("---")
 st.subheader("Mismo ejemplo usando KNeighborsRegressor (scikit-learn)")
 
 st.markdown("""
-El mismo ejemplo con **KNeighborsRegressor** de scikit-learn, probando las tres métricas de distancia:
+El mismo ejemplo con **KNeighborsRegressor** de scikit-learn, probando las cinco métricas de distancia:
 """)
 
-st.code("""import numpy as np
+with st.expander("📋 Ver código: KNeighborsRegressor con todas las métricas", expanded=False):
+    st.code("""import numpy as np
 from sklearn.neighbors import KNeighborsRegressor
 
 # Datos de entrenamiento
@@ -271,7 +327,21 @@ knn_min.fit(X_train, y_train)
 pred_min = knn_min.predict(Q)[0]
 print(f"Minkowski p=3: {pred_min:.2f} millones")
 
-# Salida:
-# Euclidiana:  12.33 millones
-# Manhattan:   12.33 millones  (A, B, C empatan en distancia)
-# Minkowski p=3: 12.33 millones""", language="python")
+# --- Chebyshev ---
+knn_cheb = KNeighborsRegressor(n_neighbors=K, metric='chebyshev')
+knn_cheb.fit(X_train, y_train)
+pred_cheb = knn_cheb.predict(Q)[0]
+print(f"Chebyshev:     {pred_cheb:.2f} millones")
+
+# --- Coseno ---
+knn_cos = KNeighborsRegressor(n_neighbors=K, metric='cosine')
+knn_cos.fit(X_train, y_train)
+pred_cos = knn_cos.predict(Q)[0]
+print(f"Coseno:        {pred_cos:.2f} millones")
+
+# Salida (el orden de vecinos cambia según la métrica):
+# Euclidiana:  12.33 millones  (vecinos: A, B, C)
+# Manhattan:   12.33 millones  (vecinos: A, B, C)
+# Minkowski p=3: 12.33 millones  (vecinos: B, C, A)
+# Chebyshev:    12.33 millones  (vecinos: B, C, A)
+# Coseno:       17.67 millones  (vecinos: D, E, B — orden por ángulo)""", language="python")

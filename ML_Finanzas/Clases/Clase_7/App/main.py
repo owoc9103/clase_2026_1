@@ -30,8 +30,7 @@ st.markdown("""
 st.markdown("### Bienvenido")
 
 st.markdown("""
-Esta aplicación presenta el algoritmo **K-Nearest Neighbors (KNN)** con **énfasis en regresión**, 
-basada en los notebooks de [MachineLearning-concepts](https://github.com/slothengineer/MachineLearning-concepts).
+Esta aplicación presenta el algoritmo **K-Nearest Neighbors (KNN)** con **énfasis en regresión**.
 
 **Contenido:**
 - **Teoría:** Conceptos detallados de KNN, regresor vs clasificador, métricas, distancias y escalado
@@ -49,8 +48,8 @@ st.markdown("""
 |--------|-----------|
 | **1. Teoría KNN** | Conceptos completos, regresor vs clasificador, métricas, distancias, escalado |
 | **2. Ejemplo trivial** | Ejemplo numérico paso a paso para entender la lógica de KNN regresión |
-| **3. KNN Regresor** | Implementación con California Housing y explicaciones detalladas |
+| **3. KNN Regresor** | Predicción precios boletos aéreos (Kaggle) — bloques para Colab |
 | **4. Código para Colab** | Bloques de código para copiar y ejecutar en Google Colab |
 """)
 
-st.info("💡 **Tip:** Cada bloque de código tiene un botón para copiar. Copia y pega en Colab para construir el notebook desde cero.")
+st.info("💡 **Tip:** Los bloques de código están en secciones desplegables (haz clic para expandir). Cada uno tiene botón para copiar.")
