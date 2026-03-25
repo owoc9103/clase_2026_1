@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Angry Birds Académico — NumPy</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <h1>🐦 Angry Birds Académico — NumPy</h1>
+    <p class="sub">
+      Lanza el pájaro y derriba la respuesta correcta. La nota va de
+      <strong>3 a 5</strong> en pasos de <strong>0,2</strong> (menos lanzamientos
+      y menos tiempo → nota más alta). <strong>18 preguntas</strong> de NumPy
+      en orden aleatorio cada partida.
+    </p>
+
+    <section id="screen-intro" class="screen active">
+      <div class="panel intro-panel">
+        <label for="player-name">Nombre completo</label>
+        <input
+          id="player-name"
+          type="text"
+          autocomplete="name"
+          placeholder="Ej. Ana María Pérez López"
+          maxlength="120"
+        />
+        <div class="intro-actions">
+          <button type="button" class="btn-primary" id="btn-start">
+            Comenzar
+          </button>
+        </div>
+        <div class="grade-help" aria-label="Tablas de calificación">
+          <h3 class="grade-help-title">¿Cómo se obtiene la nota?</h3>
+          <div id="grading-table-root"></div>
+          <p class="hint">
+            Menor nivel = mejor. Más lanzamientos de los necesarios o más tiempo
+            suben el nivel y bajan la nota.
+          </p>
+        </div>
+        <p class="hint intro-hint-controls">
+          Arrastra hacia atrás desde la honda (izquierda) y suelta. Las opciones
+          A–D van en columna a la derecha; golpea el bloque correcto.
+        </p>
+      </div>
+    </section>
+
+    <section id="screen-game" class="screen">
+      <div class="hud">
+        <span id="hud-name"></span>
+        <span id="hud-q"></span>
+        <span id="hud-launches"></span>
+        <span id="hud-time"></span>
+      </div>
+      <div id="game-wrap">
+        <canvas id="game-canvas" width="960" height="540"></canvas>
+      </div>
+    </section>
+
+    <section id="screen-end" class="screen">
+      <div class="panel">
+        <h2>Partida terminada</h2>
+        <pre id="result-pre"></pre>
+        <div class="end-actions">
+          <button type="button" class="btn-primary" id="btn-save">
+            Guardar resultados (PDF)
+          </button>
+          <button type="button" class="btn-secondary" id="btn-replay">
+            Jugar de nuevo
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <footer>
+      Nota: en el navegador no se puede obtener tu IP pública sin un servidor.
+      Se muestra un <strong>ID de sesión</strong> y datos del entorno para
+      identificar la partida en este dispositivo.
+      <br />
+      <strong>Música:</strong> pista en loop incluida en la carpeta del juego
+      (<code>media/*.mp3</code>).
+      <strong>Resultados:</strong> se exportan en PDF con fecha y hora de
+      <strong>Colombia</strong> (zona <code>America/Bogota</code>).
+    </footer>
+
+    <button
+      type="button"
+      id="btn-audio"
+      class="audio-float"
+      hidden
+      aria-pressed="true"
+      title="Silenciar o activar música de fondo"
+    >
+      🔊 Música
+    </button>
+
+    <audio
+      id="bg-music"
+      src="./media/djartmusic-i-love-my-8-bit-game-console-301272.mp3"
+      preload="auto"
+      loop
+    ></audio>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./game.js" defer></script>
+  </body>
+</html>
