@@ -1,0 +1,535 @@
+---
+title: 'Taller — Clasificación: detección de fraude en transacciones bancarias'
+subtitle: Machine Learning en Finanzas
+lang: es
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    theme: flatly
+    highlight: tango
+  pdf_document:
+    toc: true
+    toc_depth: 3
+  word_document:
+    toc: true
+    toc_depth: '3'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, message = FALSE, warning = FALSE)
+```
+
+> **Implementación:** el pipeline se ejecuta en **Python** en el notebook `bank-transaction-fraud-detection-accuracy-95.ipynb` (misma carpeta). Este `.Rmd` es la guía detallada; **Knit** a HTML/PDF si lo pide el curso.
+>
+> **Datos:** `Bank_Transaction_Fraud_Detection.csv`. Sustituye la ruta de Kaggle por `file_path = "Bank_Transaction_Fraud_Detection.csv"` antes de `pd.read_csv`.
+
+------------------------------------------------------------------------
+
+# Contexto del problema (cuaderno *Bank Transaction Fraud Detection*)
+
+Fuente: primera celda markdown de **Problem Statement** en `bank-transaction-fraud-detection-accuracy-95.ipynb`. Siguiente texto: **traducción al español** del planteamiento original.
+
+## Planteamiento del problema
+
+Con el **rápido crecimiento de la banca digital**, las transacciones fraudulentas se han vuelto una preocupación importante para las instituciones financieras. El desafío es construir un **sistema robusto** que detecte y prevenga operaciones fraudulentas en **tiempo real**, preservando la **comodidad del cliente** y la **privacidad**.
+
+El conjunto de datos incluye **información detallada** sobre transacciones bancarias: demografía del cliente, **metadatos** de la transacción, **categorías de comercio**, **tipos de dispositivo**, **ubicaciones** y otros atributos. Campos como la **descripción** de la transacción, el **uso del dispositivo** y las **categorías de comerciante** aportan pistas para identificar conductas anómalas. La etiqueta **`Is_Fraud`** permite usar **aprendizaje supervisado** para diferenciar transacciones genuinas y fraudulentas.
+
+El **objetivo** es analizar patrones de transacción y desarrollar **modelos predictivos** que clasifiquen con acierto las operaciones como fraudulentas o legítimas. La tarea incluye explorar **correlaciones** entre variables, detectar **comportamientos inusuales** y emplear **algoritmos de machine learning** para un sistema de detección de fraude **escalable** y **eficiente**.
+
+Una solución adecuada debe **detectar el fraude** y, al mismo tiempo, **reducir falsos positivos**, de modo que las transacciones genuinas no se marquen sin necesidad. Los resultados pueden **reforzar la seguridad**, **optimizar estrategias** antifraude y **mejorar la experiencia** bancaria del cliente.
+
+## Nota metodológica (complemento al notebook)
+
+En la práctica el problema es **clasificación binaria** con **clases desbalanceadas**; conviene complementar la *accuracy* con **precisión, recall, F1 por clase**, matriz de confusión y **ROC AUC**. El notebook desarrolla limpieza, EDA, fechas como variables, codificación, correlaciones, importancias, PCA (exploración), partición train/test, escalado y modelado con búsqueda de hiperparámetros y técnicas frente al desbalance (**SMOTE**, **pesos de clase**).
+
+------------------------------------------------------------------------
+
+# Objetivos del análisis (*Objectives for Bank Transaction Fraud Detection*)
+
+Fuente: segunda celda markdown de objetivos en `bank-transaction-fraud-detection-accuracy-95.ipynb`. Lista siguiente: **traducción al español**; la numeración corresponde al original en inglés.
+
+1. **Detección de fraude (*Fraud detection*)**  
+   - Desarrollar un modelo predictivo que clasifique las transacciones bancarias como **fraudulentas o legítimas** usando datos históricos de operaciones.
+
+2. **Detección de anomalías (*Anomaly detection*)**  
+   - Identificar **patrones o comportamientos inusuales** en las transacciones de los clientes que puedan indicar **fraude potencial**.
+
+3. **Análisis de variables (*Feature analysis*)**  
+   - Explorar variables clave como **categorías de comercio**, **dispositivos de transacción**, **ubicaciones** y **tipos de cuenta**, y entender su **influencia** en la detección de fraude.
+
+4. **Optimización del rendimiento del modelo (*Model performance optimization*)**  
+   - Lograr **alta exactitud (*accuracy*)**, **precisión** y **recall**, y al mismo tiempo **reducir falsos positivos y falsos negativos**.
+
+5. **Prevención de fraude en tiempo real (*Real-time fraud prevention*)**  
+   - Diseñar una solución **escalable** que pueda adaptarse, en un entorno de producción, a la **detección de fraude en tiempo real**.
+
+6. **Comportamiento del cliente (*Customer behavior insights*)**  
+   - Analizar patrones de transacciones **legítimas** para obtener ideas sobre **hábitos y preferencias** bancarias de los clientes.
+
+7. **Seguridad por dispositivo y ubicación (*Device and location security*)**  
+   - Comprender la **correlación** entre **tipos de dispositivo**, **ubicaciones** de las transacciones y actividades **fraudulentas**.
+
+8. **Mejoras de seguridad (*Security enhancements*)**  
+   - Formular **recomendaciones accionables** para el banco: fortalecer la **prevención del fraude** y la **seguridad** de las transacciones digitales.
+
+## Objetivos operativos en este taller
+
+*(Cómo se concretan los puntos anteriores en tu entrega.)*
+
+1. Separar `X` e `y` con `y = df['Is_Fraud']` y entrenar el **catálogo ampliado** de modelos (mínimo **12**); el resto, opcional por tiempo.  
+2. Por cada hallazgo del EDA, una **interpretación** breve respaldada por gráfico o tabla.  
+3. Tras el encoding, usar **correlaciones** e **importancias** del Random Forest; justificar eliminación de constantes e identificadores.  
+4. Reportar métricas para **ambas clases** (no solo *accuracy* global).  
+5. Comentar coste computacional / despliegue frente a la idea de **tiempo real**.  
+6. Contrastar distribuciones entre `Is_Fraud == 0` y `1`.  
+7. Relacionar **dispositivo y ubicación** con correlaciones e importancias.  
+8. Incluir al menos **tres recomendaciones** concretas al banco.
+
+------------------------------------------------------------------------
+
+# Dependencias (Python)
+
+```text
+pip install pandas numpy matplotlib seaborn scikit-learn imbalanced-learn xgboost lightgbm catboost
+```
+
+------------------------------------------------------------------------
+
+# Verificación rápida al cargar datos
+
+```python
+import pandas as pd
+
+file_path = "Bank_Transaction_Fraud_Detection.csv"
+df = pd.read_csv(file_path)
+print(df.shape)
+print(df["Is_Fraud"].value_counts(normalize=True))
+print(df["Is_Fraud"].value_counts())
+```
+
+------------------------------------------------------------------------
+
+# Actividades por etapa (específicas + código de referencia)
+
+Cada etapa corresponde al **Stage** del mismo número en `bank-transaction-fraud-detection-accuracy-95.ipynb`, salvo que integres el **catálogo ampliado** en la fase de modelado (Etapa 14).
+
+## Etapa 1 — Importación de librerías y lectura (*Stage 1*)
+
+**Qué debes hacer**
+
+1. Ejecutar todas las importaciones del notebook.
+2. Definir `file_path` al CSV local y cargar con `pd.read_csv`.
+3. Ejecutar `df.head()`, `df.info()`, `df.shape`, `df.duplicated().sum()`.
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from imblearn.over_sampling import SMOTE
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score, accuracy_score
+
+file_path = "Bank_Transaction_Fraud_Detection.csv"
+df = pd.read_csv(file_path)
+df.head()
+```
+
+**Comprobación:** `df.shape[0]` del orden de 200000; duplicados 0 según dataset original.
+
+## Etapa 2 — Preprocesamiento (*Stage 2*)
+
+**Qué debes hacer**
+
+1. `df.isnull().sum()` y `df.isna().sum()`.
+2. Tabla `desc` con tipos, `nunique`, nulos y `describe` como en el notebook.
+3. Bucle categóricas: `nunique` y muestra.
+4. Eliminar columnas de un solo valor.
+5. Eliminar `Customer_Contact`, `Customer_Email`, `Customer_Name`, `Customer_ID`, `Transaction_ID`, `Merchant_ID`.
+
+```python
+print(df.isnull().sum())
+single_value_columns = [col for col in df.columns if df[col].nunique() == 1]
+df = df.drop(columns=single_value_columns)
+
+drop_cols = [
+    "Customer_Contact", "Customer_Email", "Customer_Name",
+    "Customer_ID", "Transaction_ID", "Merchant_ID",
+]
+df = df.drop(columns=drop_cols)
+print(df.columns)
+print(df.shape)
+```
+
+## Etapa 3 — EDA (*Stage 3*)
+
+**Qué debes hacer**
+
+1. Imputación con mediana en numéricos si aplica.
+2. Gráficos numéricos y por `Is_Fraud`.
+3. EDA categórico según celdas del notebook.
+
+```python
+numerical_columns = df.select_dtypes(include=["float64", "int64"]).columns
+for col in numerical_columns:
+    df[col] = df[col].fillna(df[col].median())
+```
+
+## Etapa 4 — Fechas y horas numéricas (*Stage 4*)
+
+**Qué debes hacer**
+
+1. `to_datetime` con formatos `%d-%m-%Y` y `%H:%M:%S`.
+2. Derivadas día, mes, año, hora, minuto, segundo.
+3. Eliminar columnas fecha/hora originales.
+4. Revisar constantes otra vez.
+
+```python
+df["Transaction_Date"] = pd.to_datetime(df["Transaction_Date"], format="%d-%m-%Y")
+df["Transaction_Time"] = pd.to_datetime(df["Transaction_Time"], format="%H:%M:%S")
+
+df["Transaction_Day"] = df["Transaction_Date"].dt.day
+df["Transaction_Month"] = df["Transaction_Date"].dt.month
+df["Transaction_Year"] = df["Transaction_Date"].dt.year
+df["Transaction_Hour"] = df["Transaction_Time"].dt.hour
+df["Transaction_Minute"] = df["Transaction_Time"].dt.minute
+df["Transaction_Second"] = df["Transaction_Time"].dt.second
+
+df = df.drop(columns=["Transaction_Date", "Transaction_Time"])
+```
+
+## Etapa 5 — Codificación de categóricas (*Stage 5*)
+
+```python
+from sklearn.preprocessing import LabelEncoder
+
+categorical_columns = df.select_dtypes(include=["object"]).columns
+le = LabelEncoder()
+for col in categorical_columns:
+    df[col] = le.fit_transform(df[col])
+```
+
+## Etapa 6 — EDA tras el encoder (*Stage 6*)
+
+Ejecuta las figuras del notebook en espacio numérico.
+
+## Etapa 7 — Patrones de fraude (*Stage 7*)
+
+KDE / histogramas / boxplots según el cuaderno.
+
+## Etapa 8 — Matriz de correlación (*Stage 8*)
+
+```python
+plt.figure(figsize=(14, 10))
+sns.heatmap(df.corr(numeric_only=True), annot=False, cmap="coolwarm", center=0)
+plt.title("Matriz de correlación")
+plt.tight_layout()
+plt.show()
+```
+
+## Etapa 9 — Importancia con Random Forest (*Stage 9*)
+
+```python
+X = df.drop(columns=["Is_Fraud"])
+y = df["Is_Fraud"]
+
+rf = RandomForestClassifier(n_estimators=100, random_state=42)
+rf.fit(X, y)
+
+feature_importances = pd.DataFrame(
+    {"importance": rf.feature_importances_},
+    index=X.columns,
+).sort_values("importance", ascending=False)
+feature_importances.head(20).plot(kind="bar", figsize=(10, 6))
+plt.tight_layout()
+plt.show()
+```
+
+## Etapa 10 — Selección de variables (*Stage 10*)
+
+```python
+important_features = feature_importances[feature_importances["importance"] > 0.01].index
+X = df[important_features]
+```
+
+## Etapa 11 — PCA (visualización) (*Stage 11*)
+
+**Importante:** el `train_test_split` del notebook usa **`X` (tras selección)**, no `X_pca`.
+
+```python
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+plt.figure(figsize=(8, 6))
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap="coolwarm", alpha=0.3)
+plt.xlabel("PC1")
+plt.ylabel("PC2")
+plt.colorbar(label="Is_Fraud")
+plt.tight_layout()
+plt.show()
+
+print("Varianza explicada por componente:", pca.explained_variance_ratio_)
+```
+
+## Etapa 12 — Partición (*Stage 12*)
+
+```python
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+```
+
+## Etapa 13 — Escalado (*Stage 13*)
+
+```python
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+```
+
+------------------------------------------------------------------------
+
+## Catálogo ampliado de modelos e hiperparámetros
+
+**Meta:** ampliar el entrenamiento más allá del `models` mínimo del notebook. Si el tiempo no alcanza, usa **muestra estratificada** o **`RandomizedSearchCV(..., n_iter=12, random_state=42)`**.
+
+**Imports adicionales:**
+
+```python
+from sklearn.linear_model import LogisticRegression, RidgeClassifier
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
+from sklearn.naive_bayes import GaussianNB
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import (
+    RandomForestClassifier,
+    ExtraTreesClassifier,
+    GradientBoostingClassifier,
+    HistGradientBoostingClassifier,
+    AdaBoostClassifier,
+    BaggingClassifier,
+)
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC, LinearSVC
+from sklearn.neural_network import MLPClassifier
+import xgboost as xgb
+import lightgbm as lgb
+import catboost as cb
+```
+
+**Diccionario `models`:**
+
+```python
+models = {
+    "Logistic Regression": LogisticRegression(max_iter=2000, random_state=42),
+    "Ridge Classifier": RidgeClassifier(random_state=42),
+    "LDA": LinearDiscriminantAnalysis(),
+    "QDA": QuadraticDiscriminantAnalysis(),
+    "Gaussian NB": GaussianNB(),
+    "Decision Tree": DecisionTreeClassifier(random_state=42),
+    "Random Forest": RandomForestClassifier(random_state=42),
+    "Extra Trees": ExtraTreesClassifier(random_state=42),
+    "Gradient Boosting": GradientBoostingClassifier(random_state=42),
+    "Hist Gradient Boosting": HistGradientBoostingClassifier(random_state=42),
+    "AdaBoost": AdaBoostClassifier(random_state=42, algorithm="SAMME"),
+    "Bagging": BaggingClassifier(random_state=42),
+    "KNN": KNeighborsClassifier(),
+    "SVM (RBF)": SVC(kernel="rbf", probability=True, random_state=42),
+    "SVM (Linear)": LinearSVC(random_state=42),
+    "XGBoost": xgb.XGBClassifier(
+        random_state=42, eval_metric="logloss", use_label_encoder=False
+    ),
+    "LightGBM": lgb.LGBMClassifier(random_state=42, verbose=-1),
+    "CatBoost": cb.CatBoostClassifier(random_state=42, verbose=False),
+    "MLP (red neuronal)": MLPClassifier(max_iter=300, random_state=42),
+}
+```
+
+**Notas:** `LinearSVC` y `predict_proba` / ROC AUC; `QDA` y `reg_param`; SMOTE + `class_weight` sin duplicar sin explicar.
+
+**`param_grids` ampliado:**
+
+```python
+param_grids = {
+    "Logistic Regression": {
+        "C": [0.01, 0.1, 1.0, 10.0],
+        "penalty": ["l2"],
+        "solver": ["lbfgs", "liblinear"],
+        "class_weight": [None, "balanced"],
+    },
+    "Ridge Classifier": {
+        "alpha": [0.01, 0.1, 1.0, 10.0],
+        "class_weight": [None, "balanced"],
+    },
+    "LDA": {"solver": ["svd", "lsqr", "eigen"]},
+    "QDA": {"reg_param": [0.0, 0.01, 0.1]},
+    "Gaussian NB": {},
+    "Decision Tree": {
+        "max_depth": [4, 8, 16, None],
+        "min_samples_split": [2, 5, 10],
+        "min_samples_leaf": [1, 2, 4],
+        "criterion": ["gini", "entropy"],
+        "class_weight": [None, "balanced"],
+    },
+    "Random Forest": {
+        "n_estimators": [100, 200],
+        "max_depth": [None, 12, 20],
+        "min_samples_leaf": [1, 2, 4],
+        "max_features": ["sqrt", 0.3],
+        "class_weight": [None, "balanced", "balanced_subsample"],
+    },
+    "Extra Trees": {
+        "n_estimators": [100, 200],
+        "max_depth": [None, 12, 20],
+        "min_samples_leaf": [1, 2, 4],
+        "max_features": ["sqrt", 0.3],
+        "class_weight": [None, "balanced"],
+    },
+    "Gradient Boosting": {
+        "n_estimators": [100, 200],
+        "learning_rate": [0.05, 0.1],
+        "max_depth": [3, 5, 7],
+        "subsample": [0.8, 1.0],
+    },
+    "Hist Gradient Boosting": {
+        "learning_rate": [0.05, 0.1],
+        "max_depth": [None, 5, 10],
+        "max_iter": [100, 200],
+        "min_samples_leaf": [10, 20],
+        "l2_regularization": [0.0, 0.1],
+        "class_weight": [None, "balanced"],
+    },
+    "AdaBoost": {
+        "n_estimators": [100, 200],
+        "learning_rate": [0.01, 0.1, 0.5],
+        "estimator": [
+            DecisionTreeClassifier(max_depth=1, random_state=42),
+            DecisionTreeClassifier(max_depth=2, random_state=42),
+        ],
+    },
+    "Bagging": {
+        "n_estimators": [50, 100],
+        "max_samples": [0.7, 0.9, 1.0],
+        "max_features": [0.7, 1.0],
+    },
+    "KNN": {
+        "n_neighbors": [3, 5, 11, 21],
+        "weights": ["uniform", "distance"],
+        "p": [1, 2],
+    },
+    "SVM (RBF)": {
+        "C": [0.1, 1, 10],
+        "gamma": ["scale", "auto", 0.01, 0.1],
+    },
+    "SVM (Linear)": {"C": [0.1, 1, 10]},
+    "XGBoost": {
+        "n_estimators": [100, 200],
+        "max_depth": [4, 6],
+        "learning_rate": [0.05, 0.1],
+        "subsample": [0.8, 1.0],
+        "colsample_bytree": [0.8, 1.0],
+        "reg_alpha": [0.0, 0.1],
+        "scale_pos_weight": [1.0],
+    },
+    "LightGBM": {
+        "n_estimators": [100, 200],
+        "learning_rate": [0.05, 0.1],
+        "max_depth": [-1, 5, 10],
+        "num_leaves": [31, 63],
+        "min_child_samples": [10, 30],
+        "subsample": [0.8, 1.0],
+        "colsample_bytree": [0.8, 1.0],
+        "class_weight": [None, "balanced"],
+    },
+    "CatBoost": {
+        "depth": [4, 6, 8],
+        "iterations": [200, 400],
+        "learning_rate": [0.05, 0.1],
+        "l2_leaf_reg": [1, 3, 9],
+    },
+    "MLP (red neuronal)": {
+        "hidden_layer_sizes": [(32,), (64, 32), (128, 64)],
+        "alpha": [1e-4, 1e-3],
+        "activation": ["relu"],
+    },
+}
+```
+
+**`Gaussian NB` opcional con `var_smoothing`:**
+
+```python
+import numpy as np
+param_grids["Gaussian NB"] = {
+    "var_smoothing": np.logspace(-12, -6, num=7),
+}
+```
+
+**Mínimo obligatorio sugerido (12 modelos):** Logistic Regression, Ridge, LDA, Gaussian NB, Decision Tree, Random Forest, Extra Trees, Gradient Boosting o Hist Gradient Boosting, XGBoost, LightGBM, KNN, SVM (RBF o Linear). **Ampliación:** QDA, AdaBoost, Bagging, CatBoost, MLP.
+
+**`AdaBoost`:** en sklearn antiguo usar `base_estimator` en vez de `estimator` en la rejilla.
+
+------------------------------------------------------------------------
+
+## Etapa 14 — Entrenamiento y evaluación (*Stage 14*)
+
+**Qué debes hacer**
+
+1. Unificar `models` y `param_grids`.
+2. `GridSearchCV` o `RandomizedSearchCV`; `StratifiedKFold`; `scoring="roc_auc"` (u otra métrica justificada).
+3. SMOTE / `class_weight` como en el notebook o como indique tu informe.
+4. Guardar mejores hiperparámetros, accuracy train/test, ROC AUC, `classification_report`.
+
+```python
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, StratifiedKFold
+
+cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
+
+for name, est in models.items():
+    grid = GridSearchCV(
+        estimator=est,
+        param_grid=param_grids[name],
+        scoring="roc_auc",
+        cv=cv,
+        n_jobs=-1,
+        refit=True,
+        verbose=1,
+    )
+    # grid.fit(X_train_scaled, y_train)  # o datos con SMOTE
+```
+
+**Comprobación:** métricas **por clase** y si se mejora detección de fraude.
+
+## Etapa 15 — Tabla de resultados (*Stage 15*)
+
+Construye el `DataFrame` de resultados y ordénalo por la métrica principal para fraude.
+
+## Etapa 16 — Train vs test accuracy (*Stage 16*)
+
+Gráfico comparativo y comentario de sobreajuste.
+
+## Etapa 17 — Conclusiones (*Stage 17*)
+
+Redacta en español: limitaciones de la accuracy, AUC, clase fraude, mejoras (SMOTE, pesos, umbrales).
+
+*Stage 18: cierre promocional; no obligatoria.*
+
+------------------------------------------------------------------------
+
+# Entregables sugeridos
+
+- Notebook Python ejecutado con ruta de datos local.
+- Informe corto con contexto de negocio, tablas y respuesta a si se detecta fraude o solo la mayoría.
+
+------------------------------------------------------------------------
+
+# Criterios de evaluación orientadores
+
+- Pipeline coherente; `random_state` donde aplique.
+- Catálogo mínimo de **12 modelos** con búsqueda de hiperparámetros (documentar submuestreo o `RandomizedSearchCV` si aplica).
+- Interpretación de **métricas por clase** y desbalance.
+- Comentarios sobre importancias, correlaciones y train vs test.

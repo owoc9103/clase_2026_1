@@ -1,0 +1,264 @@
+---
+title: 'Taller: segmentacion RFM en datos de ventas minoristas'
+author: "Curso ML Finanzas"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+  html_document:
+    number_sections: true
+subtitle: Algoritmos de Tipo No Supervisado 
+lang: es
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+Trabajaras con una tabla de transacciones retail donde cada fila es una compra. El objetivo es comprender el comportamiento de los clientes y aplicar el modelo **RFM** (Recencia, Frecuencia, Monto) para segmentar y apoyar decisiones comerciales.
+
+## Sobre la base de datos
+
+La base de datos transaccional es datos_de_ventas.csv. Significado de cada variable:
+
+- **`ID_Transaccion`:** identificador unico de cada transaccion.
+- **`Fecha`:** fecha de la transaccion (tendencias en el tiempo).
+- **`ID_Cliente`:** identificador unico del cliente.
+- **`Genero`:** genero del cliente (por ejemplo Masculino / Femenino).
+- **`Edad`:** edad del cliente (segmentacion y perfiles).
+- **`Categoria_Producto`:** categoria del articulo (por ejemplo Electronica, Ropa, Belleza).
+- **`Cantidad`:** unidades compradas en esa linea.
+- **`Precio_Unitario`:** precio por unidad.
+- **`Importe_Total`:** importe total de la linea de transaccion.
+
+Cada campo ayuda a describir la operacion y el comportamiento de compra; combinados permiten ver patrones y relaciones entre clientes y productos.
+
+## Como se usan las variables en el modelo RFM
+
+| Idea RFM | Que usar en esta base |
+|----------|------------------------|
+| Identificar al cliente | `ID_Cliente` |
+| Momento de la compra | `Fecha` |
+| Frecuencia de compra | Numero de transacciones (filas) por cliente en el periodo o subconjunto analizado |
+| Monto | Suma de `Importe_Total` por cliente |
+| Comparar lineas de negocio | Filtrar por `Categoria_Producto` o usar todas las categorias (`TODOS`) |
+| Perfil demografico | `Genero`, `Edad` (y derivados, por ejemplo generacion) |
+
+**Orden sugerido de trabajo:** configuracion e importaciones → carga y exploracion inicial → preparacion de fechas → analisis descriptivo → construccion de la funcion RFM → ejecucion del modelo → tablas de apoyo → visualizaciones → (opcional) RFM por categoria.
+
+---
+
+## 1. Configuracion
+
+- Importa las librerias necesarias para manejo de datos, fechas, visualizacion y tablas.
+- Define una ruta de trabajo clara para cargar el archivo de datos de forma reproducible.
+
+---
+
+## 2. Carga y exploracion inicial
+
+- Carga la base y reporta cuantas **filas** y **columnas** tiene.
+- Identifica el **tipo de dato** de cada columna.
+- Muestra las primeras filas de la tabla.
+- Presenta una vision general de la estructura de la base.
+- Calcula el conteo de **valores faltantes** por variable.
+
+---
+
+## 3. Preparacion para RFM
+
+- Convierte `Fecha` a tipo fecha/datetime.
+- Verifica que existan las columnas necesarias para el calculo de RFM.
+- Trata nulos en `Fecha`, `ID_Cliente` o `Importe_Total` si existen e indica cuantas filas afectas.
+- Reporta el **rango** de fechas cubierto por la base.
+- Identifica las categorias presentes en `Categoria_Producto`.
+
+---
+
+## 4. Analisis descriptivo (antes de segmentar)
+
+### 4.1 Univariado: numericas y categoricas
+
+- Resume **tendencia central y dispersion** de `Edad`, `Cantidad`, `Precio_Unitario` e `Importe_Total`.
+- Calcula frecuencias y porcentajes de `Genero`.
+- Calcula frecuencias de `Categoria_Producto`.
+- Reporta cuantos **clientes unicos** hay y cuantas **transacciones** (filas) existen en total.
+
+### 4.2 Graficos univariados
+
+- Construye **histogramas** de las variables numericas relevantes.
+- Elabora un **boxplot** de `Importe_Total` por transaccion.
+
+### 4.3 Bivariado: correlaciones
+
+- Analiza la relacion entre `Cantidad`, `Precio_Unitario` e `Importe_Total`.
+- Presenta una matriz de **correlacion** de las variables numericas.
+- Complementa con un **mapa de calor** para facilitar la interpretacion.
+
+### 4.4 Bivariado: tablas cruzadas
+
+- Construye una tabla cruzada entre `Genero` y `Categoria_Producto`.
+- Reporta los **conteos** absolutos.
+- Calcula las **proporciones por fila** para comparar la composicion dentro de cada genero.
+
+### 4.5 Monto segun categoria y genero
+
+- Para cada `Categoria_Producto`, calcula el numero de transacciones, la suma de importes y el **importe promedio** por linea.
+- Construye graficos de barras para comparar la suma y el promedio de `Importe_Total` por categoria.
+- Elabora **boxplots** de `Importe_Total` por categoria y genero.
+- Realiza un grafico de dispersion entre `Cantidad` e `Importe_Total`, distinguiendo por categoria.
+
+### 4.6 Edad y categorias
+
+- Analiza la distribucion de `Edad` segun `Genero`.
+- Analiza la distribucion de `Edad` segun `Categoria_Producto`.
+- Compara medianas y dispersion.
+
+### 4.7 Rankings de clientes
+
+- Identifica los clientes con mas **transacciones**.
+- Identifica los clientes con mayor **importe total acumulado**.
+- Identifica los clientes con mayor **precio unitario** en alguna linea.
+- Si lo consideras util, compara tambien el **precio unitario promedio** por cliente.
+
+### 4.8 Distribucion del importe y cruces
+
+- Histograma de `Importe_Total` con ejes claros (puedes usar formato tipo moneda en el eje).
+- Realiza un boxplot horizontal del importe.
+- Realiza un boxplot por `Categoria_Producto`.
+- Realiza boxplots por combinacion categoria + genero.
+- Presenta una rejilla de histogramas de las variables numericas utiles.
+
+### 4.9 Volumen y tiempo
+
+- Construye un grafico de barras con el numero de transacciones por `Categoria_Producto`.
+- Deriva de `Fecha` la **hora del dia** y el **dia de la semana**.
+- Elabora un mapa de calor de actividad por hora y dia.
+- Describe los patrones principales observados.
+
+---
+
+## 5. Modelo RFM: definicion
+
+- Explica **Recencia**, **Frecuencia** y **Monto** para un cliente en este dataset.
+- Explica como transformar cada dimension a puntajes **R, F y M** entre 1 y 5.
+- Define un **indice ponderado** `RFM_nivel = peso_R*R + peso_F*F + peso_M*M`.
+- Describe los **segmentos generales** que vas a usar.
+- Describe los **subsegmentos** que vas a usar.
+- Si lo deseas, incorpora una variable derivada de `Edad`, como **Generacion**, para enriquecer el perfil del cliente.
+
+---
+
+## 6. Ejecucion del modelo
+
+- Ejecuta el modelo con pesos **0.1, 0.3, 0.6** para **todas** las categorias (`TODOS`).
+- Muestra una vista preliminar de la tabla RFM resultante.
+- Identifica la categoria con mayor numero de transacciones.
+- Repite la ejecucion del modelo para esa categoria y compara la distribucion de segmentos frente al caso `TODOS`.
+
+---
+
+## 7. Tablas de apoyo
+
+- Calcula el conteo de clientes por **segmento general**.
+- Calcula el conteo de clientes por **subsegmento**.
+- Resume por segmento general el numero de clientes y el **monto total**.
+- Compara la distribucion de **genero** a nivel transaccion frente a la distribucion de genero a nivel cliente en la salida RFM.
+- Reporta el **monto total** de la cartera segmentada.
+- Reporta el numero total de clientes segmentados.
+- Calcula las **transacciones promedio por cliente** en la base original.
+
+### 7.1 Genero: distribucion en transacciones vs en clientes RFM
+
+- Compara el conteo de `Genero` en la base original con el conteo de `cliente_genero` en la tabla RFM.
+- Interpreta si hay diferencias entre la estructura transaccional y la estructura agregada por cliente.
+
+### 7.2 Indicadores agregados de la cartera RFM
+
+- Calcula la suma total de `Monto` en la tabla RFM.
+- Reporta el numero de clientes presentes en la tabla RFM.
+- Calcula el promedio de transacciones por cliente en la base original.
+
+---
+
+## 8. Visualizaciones del resultado RFM
+
+- Construye un grafico de barras ordenado de clientes por **segmento general**.
+- Construye un grafico de barras por segmento general desagregado por **genero**.
+- Construye un grafico de barras por segmento general desagregado por **generacion**, si generas esta variable.
+- Construye un grafico horizontal que cruce **segmento general** y **subsegmento**.
+- Presenta un mapa de calor de **recencia media** por cruce entre segmento general y subsegmento.
+
+### 8.1 Mapa de calor: conteos General_Segment x Segment
+
+- Construye un mapa de calor con el **numero de clientes** en cada combinacion de segmento general y subsegmento.
+
+### 8.2 Estrategia: Diamante y subsegmento Proximos a Perder
+
+- Filtra los clientes clasificados como **Diamante** y simultaneamente en **Proximos a Perder**.
+- Muestra una tabla de esos clientes.
+- Exporta el resultado a CSV si deseas usarlo como insumo de estrategia comercial.
+
+### 8.3 Muestra del dataframe RFM
+
+- Presenta las primeras filas de la tabla RFM final.
+
+### 8.4 Barras horizontales: participacion por subsegmento
+
+- Construye barras horizontales de frecuencia de `Segment`.
+- Etiqueta cada barra con su conteo y porcentaje sobre el total.
+
+### 8.5 Distribucion de scores R y F; M condicionado a cada par (R,F)
+
+- Grafica la distribucion de puntajes **R**.
+- Grafica la distribucion de puntajes **F**.
+- Construye una rejilla de distribuciones de **M** para cada combinacion de valores `(R, F)`.
+
+---
+
+## 9. (Opcional) RFM por categoria de producto
+
+- Calcula RFM por separado para **Belleza**, **Ropa** y **Electronica** usando los mismos pesos.
+- Compara el numero de clientes por categoria.
+- Compara la distribucion de segmentos generales entre categorias.
+- Compara la distribucion de subsegmentos entre categorias.
+
+---
+
+## 10. Analisis alternativo con nuevos pesos
+
+En este punto se repite la logica de los apartados **6** y **7**, pero modificando la ponderacion del modelo a:
+
+- **Recencia:** `0.05`
+- **Frecuencia:** `0.15`
+- **Monto:** `0.80`
+
+El objetivo es evaluar como cambia la segmentacion cuando el **Monto** adquiere un peso mucho mayor dentro del indice RFM.
+
+### 10.1 Ejecucion del modelo con los nuevos pesos
+
+- Ejecuta nuevamente el modelo para **todas** las categorias (`TODOS`) usando los pesos `0.05`, `0.15` y `0.80`.
+- Muestra una vista preliminar de la nueva tabla RFM.
+- Repite la ejecucion del modelo para la categoria con mayor numero de transacciones.
+- Si lo deseas, extiende tambien el analisis a **Belleza**, **Ropa** y **Electronica** por separado.
+
+### 10.2 Tablas de apoyo con los nuevos pesos
+
+- Calcula el conteo de clientes por **segmento general** con los nuevos pesos.
+- Calcula el conteo de clientes por **subsegmento** con los nuevos pesos.
+- Resume por segmento general el numero de clientes y el **monto total** bajo esta nueva ponderacion.
+- Compara la distribucion de **genero** en la base transaccional frente a la distribucion de genero en la nueva salida RFM.
+- Reporta el monto total segmentado y el numero total de clientes bajo esta nueva configuracion.
+
+### 10.3 Comparacion del analisis: pesos originales vs nuevos pesos
+
+- Compara los resultados con los obtenidos en el punto 6 usando pesos `0.1`, `0.3` y `0.6`.
+- Analiza como cambia la distribucion de clientes entre **Diamante**, **Oro**, **Plata** y **Bronce**.
+- Identifica que subsegmentos aumentan o disminuyen con mayor fuerza cuando el peso del **Monto** sube a `0.80`.
+- Describe si los clientes de mayor gasto pasan a ocupar posiciones mas altas en la clasificacion general.
+
+### 10.4 Comparacion general y por producto
+
+- Explica como cambia el analisis **general** al pasar de los pesos originales a los nuevos pesos.
+- Explica como cambia el analisis **por categoria de producto** (`Belleza`, `Ropa`, `Electronica`).
+- Compara si el efecto del nuevo peso del **Monto** es similar en todas las categorias o si algunas se ven mas afectadas que otras.
+- Concluye que tipo de estrategia comercial favorece mas esta nueva ponderacion: una centrada en clientes frecuentes o una centrada en clientes de alto gasto.
